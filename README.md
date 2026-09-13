@@ -1,20 +1,21 @@
 <p align="center">
-  <img src="public/nova-browser-logo.png" alt="Nova Browser Logo" width="160" style="border-radius: 28px;" />
+  <img src="public/nova-browser-logo.png" alt="Nova Browser Logo" width="160" style="border-radius: 28px; box-shadow: 0 8px 24px rgba(0, 229, 255, 0.35);" />
 </p>
 
 <h1 align="center">Nova Browser</h1>
 
 <p align="center">
-  <b>Navegador web moderno, ultrarrápido y seguro para Android, diseñado con Material Design 3 y potenciado por Inteligencia Artificial con Google Gemini.</b>
+  <b>Navegador web moderno, ultrarrápido y seguro para Android, diseñado con Jetpack Compose, Material Design 3 y copiloto de Inteligencia Artificial impulsado por Google Gemini.</b>
 </p>
 
 <p align="center">
-  <a href="https://github.com/luismiguel38338-cmd"><img src="https://img.shields.io/badge/Desarrollador-Luis%20Miguel-00D2FF?style=for-the-badge&logo=github&logoColor=white" alt="Developer" /></a>
-  <img src="https://img.shields.io/badge/Platform-Android%207.0%2B-brightgreen?style=for-the-badge&logo=android&logoColor=white" alt="Platform" />
-  <img src="https://img.shields.io/badge/Kotlin-2.0.21-purple?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
+  <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/releases"><img src="https://img.shields.io/badge/Descargar%20APK-v1.0.0-00E5FF?style=for-the-badge&logo=android&logoColor=black" alt="Descargar APK" /></a>
+  <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/actions"><img src="https://img.shields.io/badge/CI%2FCD-Build%20Passing-success?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build Status" /></a>
+  <img src="https://img.shields.io/badge/Android-7.0%2B%20(API%2024%2B)-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android Version" />
+  <img src="https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
   <img src="https://img.shields.io/badge/UI-Jetpack%20Compose%20M3-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="Jetpack Compose" />
-  <img src="https://img.shields.io/badge/AI-Google%20Gemini-orange?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License" />
+  <img src="https://img.shields.io/badge/AI-Google%20Gemini-EA4335?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/Licencia-MIT-00C853?style=for-the-badge" alt="MIT License" /></a>
 </p>
 
 ---
@@ -22,86 +23,89 @@
 ## 📌 Tabla de Contenidos
 
 1. [Descripción General](#-descripción-general)
-2. [Capturas de Pantalla](#-capturas-de-pantalla)
-3. [Características Principales](#-características-principales)
-4. [Funciones de Navegación](#-funciones-de-navegación)
-5. [Inteligencia Artificial (Nova AI Copilot)](#-inteligencia-artificial-nova-ai-copilot)
-6. [Privacidad y Seguridad](#-privacidad-y-seguridad)
-7. [Tecnologías Utilizadas](#-tecnologías-utilizadas)
+2. [Capturas de Pantalla Reales](#-capturas-de-pantalla-reales)
+3. [Características Destacadas](#-características-destacadas)
+4. [Módulos y Funcionalidades](#-módulos-y-funcionalidades)
+5. [Nova AI Copilot (Google Gemini)](#-nova-ai-copilot-google-gemini)
+6. [Escudo de Privacidad Nova Shield](#-escudo-de-privacidad-nova-shield)
+7. [Tecnologías y Arquitectura](#-tecnologías-y-arquitectura)
 8. [Requisitos del Sistema](#-requisitos-del-sistema)
 9. [Instalación y Configuración](#-instalación-y-configuración)
-10. [Cómo Ejecutar el Proyecto](#-cómo-ejecutar-el-proyecto)
-11. [Cómo Generar el APK para Android](#-cómo-generar-el-apk-para-android)
-12. [Estructura del Proyecto](#-estructura-del-proyecto)
+10. [Cómo Compilar y Generar el APK](#-cómo-compilar-y-generar-el-apk)
+11. [Política de Distribución (100% Gratis - Sin PlayStation)](#-política-de-distribución-100-gratis---sin-playstation)
+12. [Estructura del Repositorio](#-estructura-del-repositorio)
 13. [Cómo Contribuir](#-cómo-contribuir)
 14. [Licencia](#-licencia)
-15. [Desarrollador y Contacto](#-desarrollador-y-contacto)
+15. [Desarrollador](#-desarrollador)
 
 ---
 
 ## 📖 Descripción General
 
-**Nova Browser** es una aplicación de navegación web nativa para Android diseñada desde cero con **Jetpack Compose** y **Material Design 3**. Combina una estética moderna, limpia y futurista (con acentos en cian eléctrico `#00E5FF`, zafiro cósmico y modos oscuros profundos) con una experiencia de navegación ágil, privada y libre de distracciones.
+**Nova Browser** es una aplicación de navegación web nativa para dispositivos Android desarrollada con **Jetpack Compose** y los principios de diseño de **Material Design 3**. Su propósito es ofrecer una experiencia de navegación ágil, estética y privada, combinando un tema visual cósmico (obsidiana oscura, azul zafiro y acentos en cian eléctrico `#00E5FF`) con un conjunto de herramientas avanzadas:
 
-El navegador integra un **Copiloto de Inteligencia Artificial contextual** impulsado por la API de **Google Gemini**, capaz de resumir páginas web completas en segundos, explicar conceptos y brindar síntesis inteligentes directamente desde la barra de herramientas.
+- **Nova AI Copilot**: Inteligencia Artificial integrada mediante la API de Google Gemini para resumir artículos, responder dudas contextuales y traducir contenido web al instante.
+- **Nova Shield**: Sistema de filtrado y protección activa que bloquea anuncios invasivos, rastreadores de telemetría y scripts analíticos de terceros.
+- **Modo Lectura & Búsqueda en Página**: Herramientas integradas para consumir contenido sin distracciones visuales y localizar términos con conteo en tiempo real.
+- **Privacidad Local Garantizada**: Almacenamiento local mediante SQLite y Room. Los datos de navegación, marcadores e historial permanecen siempre en tu dispositivo.
 
 ---
 
-## 📱 Capturas de Pantalla
+## 📱 Capturas de Pantalla Reales
 
-> *Nota: Capturas de demostración de la interfaz visual de Nova Browser en dispositivos móviles.*
+A continuación se muestran las interfaces reales y el diseño visual de **Nova Browser**:
 
 <table align="center">
   <tr>
     <td align="center" width="33%">
       <b>Pantalla de Inicio</b><br/><br/>
-      <img src="public/screenshots/home.png" alt="Pantalla de Inicio Nova Browser" width="240" />
-      <br/><em>Accesos rápidos y multibuscador</em>
+      <img src="public/screenshots/home.png" alt="Pantalla de Inicio Nova Browser" width="240" style="border-radius: 16px; border: 1px solid #1E293B;" />
+      <br/><br/><em>Buscador multiconfigurable y accesos rápidos</em>
     </td>
     <td align="center" width="33%">
-      <b>Navegación Web</b><br/><br/>
-      <img src="public/screenshots/browser.png" alt="Navegador Web Nova Browser" width="240" />
-      <br/><em>Barra superior con escudo y navegación fluida</em>
+      <b>Navegación Web Activa</b><br/><br/>
+      <img src="public/screenshots/browser.png" alt="Navegador Web Nova Browser" width="240" style="border-radius: 16px; border: 1px solid #1E293B;" />
+      <br/><br/><em>Barra con cifrado SSL, escudo y barra inferior</em>
     </td>
     <td align="center" width="33%">
       <b>Nova AI Copilot</b><br/><br/>
-      <img src="public/screenshots/ai.png" alt="Copiloto de IA Nova Browser" width="240" />
-      <br/><em>Resumen de contenido y ayuda inteligente</em>
+      <img src="public/screenshots/ai.png" alt="Copiloto de IA Nova Browser" width="240" style="border-radius: 16px; border: 1px solid #1E293B;" />
+      <br/><br/><em>Resumen de lectura y asistencia con Gemini</em>
     </td>
   </tr>
   <tr>
     <td align="center" width="33%">
       <b>Gestor de Pestañas</b><br/><br/>
-      <img src="public/screenshots/tabs.png" alt="Gestor de Pestañas" width="240" />
-      <br/><em>Tarjetas dinámicas y modo incógnito</em>
+      <img src="public/screenshots/tabs.png" alt="Gestor de Pestañas Nova Browser" width="240" style="border-radius: 16px; border: 1px solid #1E293B;" />
+      <br/><br/><em>Cuadrícula interactiva y modo incógnito</em>
     </td>
     <td align="center" width="33%">
-      <b>Ajustes y Seguridad</b><br/><br/>
-      <img src="public/screenshots/settings.png" alt="Ajustes y Escudo" width="240" />
-      <br/><em>Escudo anti-rastreo y personalización</em>
+      <b>Ajustes y Nova Shield</b><br/><br/>
+      <img src="public/screenshots/settings.png" alt="Ajustes y Escudo Nova Browser" width="240" style="border-radius: 16px; border: 1px solid #1E293B;" />
+      <br/><br/><em>Protección de rastreo y limpieza de datos</em>
     </td>
     <td align="center" width="33%">
-      <b>Identidad Visual</b><br/><br/>
-      <img src="public/nova-browser-logo.png" alt="Logo Nova Browser" width="200" />
-      <br/><em>Emblema oficial de Nova Browser</em>
+      <b>Emblema Oficial</b><br/><br/>
+      <img src="public/nova-browser-logo.png" alt="Logo Oficial Nova Browser" width="180" style="border-radius: 24px; box-shadow: 0 4px 16px rgba(0, 229, 255, 0.25);" />
+      <br/><br/><em>Identidad visual de Nova Browser</em>
     </td>
   </tr>
 </table>
 
 ---
 
-## ⚡ Características Principales
+## ⚡ Características Destacadas
 
-- **✨ Diseño Moderno Nova**: Interfaz de alto contraste con tonos oscuros y acentos en cian eléctrico (`#00E5FF`), adaptada a pantallas AMOLED.
-- **🤖 Asistente de IA Integrado (Nova AI)**: Copiloto nativo para resumir páginas web, resolver dudas y asistir durante sesiones de navegación.
-- **🛡️ Escudo de Protección Nova (Nova Shield)**: Bloqueo activo en tiempo real contra rastreadores publicitarios, analíticas invasivas y scripts de telemetría.
-- **📖 Modo Lectura (Reader Mode)**: Vista purificada de artículos sin anuncios ni distracciones con tiempo de lectura estimado y control de tamaño tipográfico.
-- **🔍 Búsqueda en la Página (Find in Page)**: Búsqueda de texto interactiva con contador de coincidencias en vivo (`X/Y`) y navegación entre resultados.
-- **🖥️ Modo de Escritorio (Desktop Site)**: Alternancia ágil de *User-Agent* para solicitar la versión para ordenadores de cualquier sitio web.
-- **🔤 Control de Zoom de Texto**: Escala de lectura configurable (80%, 100%, 125%, 150%) para mayor accesibilidad visual.
-- **📑 Multitarea con Múltiples Pestañas**: Cambio instantáneo entre pestañas, vista en cuadrícula de tarjetas y pestañas de incógnito aisladas.
-- **📲 Compartir con Código QR**: Generación de códigos QR instantáneos para transferir URLs a teléfonos móviles u otros dispositivos sin necesidad de cables.
-- **💾 Gestor de Descargas e Historial**: Registro ordenado de descargas con soporte para `DownloadManager` y administración selectiva de caché y cookies.
+- **🎨 Interfaz Inmersiva Nova**: Diseño de alto contraste optimizado para pantallas OLED/AMOLED con paleta de color zafiro y cian brillante.
+- **🤖 Copiloto de IA (Nova AI)**: Asistente conversacional flotante para síntesis de artículos, traducciones inmediatas y aclaración de dudas.
+- **🛡️ Nova Shield (Anti-Rastreo)**: Bloqueo de dominios de telemetría y anuncios mediante intercepción nativa en `WebViewClient`.
+- **📖 Modo Lectura (Reader View)**: Extracción limpia del texto y las imágenes principales del artículo, eliminando scripts, barras flotantes y publicidad.
+- **🔍 Búsqueda en Página (Find in Page)**: Búsqueda interactiva con resaltado en tiempo real y contador dinámico de ocurrencias (`1 de 12`).
+- **🖥️ Vista de Escritorio (Desktop Mode)**: Conmutador de *User-Agent* para solicitar la versión para ordenadores de cualquier página web.
+- **🔤 Ajuste de Tamaño de Fuente**: Personalización del tamaño tipográfico (80%, 100%, 125%, 150%) para máxima legibilidad.
+- **📲 Compartir mediante Código QR**: Generador instantáneo de código QR para transferir la URL activa a otros dispositivos móviles sin cables.
+- **📑 Pestañas Ilimitadas e Incógnito**: Administrador visual de tarjetas con pestañas normales y sesiones de incógnito efímeras.
+- **💾 Almacenamiento Local Seguro**: Todos los marcadores, historial y preferencias se guardan de forma local en SQLite con **Room**.
 
 ---
 
