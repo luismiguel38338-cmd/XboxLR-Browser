@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/xboxlr-logo.png" alt="Nova Browser Logo" width="160" style="border-radius: 28px;" />
+  <img src="public/nova-browser-logo.png" alt="Nova Browser Logo" width="160" style="border-radius: 28px;" />
 </p>
 
 <h1 align="center">Nova Browser</h1>
@@ -82,7 +82,7 @@ El navegador integra un **Copiloto de Inteligencia Artificial contextual** impul
     </td>
     <td align="center" width="33%">
       <b>Identidad Visual</b><br/><br/>
-      <img src="public/xboxlr-logo.png" alt="Logo Nova Browser" width="200" />
+      <img src="public/nova-browser-logo.png" alt="Logo Nova Browser" width="200" />
       <br/><em>Emblema oficial de Nova Browser</em>
     </td>
   </tr>
@@ -268,6 +268,28 @@ El proyecto incluye un flujo de trabajo listo en `.github/workflows/build.yml`. 
 1. GitHub Actions compilará el proyecto con JDK 21.
 2. Ejecutará las pruebas unitarias.
 3. Generará el archivo APK listo para descargar directamente desde la pestaña **Actions > Artifacts**.
+4. Publicará una **Release automática** con el instalador `Nova-Browser-v1.0-debug.apk` adjunto.
+
+---
+
+## 🌐 Publicación y Canales de Distribución Gratuitos
+
+> 📌 **Política Oficial de Distribución**:
+> **Nova Browser** se publica y distribuye **exclusivamente en plataformas 100% GRATUITAS** sin costos para los usuarios ni para el desarrollador.
+> 
+> ⛔ **Restricciones Claras**:
+> - **Prohibida la publicación en PlayStation** (ni PlayStation Store ni consolas Sony).
+> - **Prohibida la publicación en plataformas con cuotas o licencias de pago** (como tarifas de desarrollador comerciales).
+>
+> 📖 Para una guía detallada paso a paso sobre cómo subir el proyecto a cada canal sin costo, consulta la **[Guía Oficial de Distribución (DISTRIBUTION.md)](DISTRIBUTION.md)**.
+
+### Canales Gratuitos Soportados:
+- 🚀 **[GitHub Releases](https://github.com/luismiguel38338-cmd/Nova-Browser/releases)**: Descarga directa del APK generado automáticamente por CI/CD.
+- 📱 **[IzzyOnDroid / F-Droid](https://gitlab.com/IzzyOnDroid/repo)**: Repositorio libre para Android sin costes.
+- 🌐 **[Uptodown](https://developer.uptodown.com/)**: Plataforma global gratuita para subir APKs.
+- 📂 **[APKMirror](https://www.apkmirror.com/apk-submissions/)**: Portal verificado y gratuito de instaladores Android.
+- 🎮 **[itch.io](https://itch.io/developers)**: Distribución libre de software y APKs.
+- 📦 **[Amazon Appstore](https://developer.amazon.com/)**: Cuenta de desarrollador sin costo.
 
 ---
 
@@ -311,7 +333,7 @@ Nova-Browser/
 │   │   ├── ai.png
 │   │   ├── tabs.png
 │   │   └── settings.png
-│   └── xboxlr-logo.png             # Logo oficial
+│   └── nova-browser-logo.png       # Logo oficial
 ├── .gitignore                      # Reglas de exclusión de Git
 ├── build.gradle.kts                # Configuración Gradle raíz
 ├── gradlew                         # Script ejecutable de Gradle (Linux/macOS)
