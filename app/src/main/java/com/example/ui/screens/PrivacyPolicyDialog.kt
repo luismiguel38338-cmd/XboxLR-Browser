@@ -46,7 +46,7 @@ fun PrivacyPolicyDialog(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Text(
-                    text = "En Xbox L.R. la privacidad, la soberanía del usuario y la seguridad son principios fundamentales.",
+                    text = "En Nova Browser la privacidad, la soberanía del usuario y la seguridad son principios fundamentales.",
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.primary
@@ -60,13 +60,13 @@ fun PrivacyPolicyDialog(
                 )
 
                 PolicyBullet(
-                    title = "2. Protección de Inteligencia Artificial (Xbox IA)",
-                    description = "Xbox IA no recopila información personal identificable. El asistente únicamente analiza el texto de la página web actual si mantienes activada la opción 'Permitir análisis de página web'. Tienes el control total para activar o desactivar este permiso en cualquier momento."
+                    title = "2. Protección de Inteligencia Artificial (Nova AI)",
+                    description = "Nova AI no recopila información personal identificable. El asistente únicamente analiza el texto de la página web actual si mantienes activada la opción 'Permitir análisis de página web'. Tienes el control total para activar o desactivar este permiso en cualquier momento."
                 )
 
                 PolicyBullet(
                     title = "3. Sin Almacenamiento de Datos Sensibles",
-                    description = "Xbox L.R. nunca almacena contraseñas, números de tarjeta ni credenciales bancarias. Las consultas se realizan mediante conexiones HTTPS cifradas de extremo a extremo."
+                    description = "Nova Browser nunca almacena contraseñas, números de tarjeta ni credenciales bancarias. Las consultas se realizan mediante conexiones HTTPS cifradas de extremo a extremo."
                 )
 
                 PolicyBullet(

@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,18 +21,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.R
-import com.example.ui.theme.XboxBrightGreen
-import com.example.ui.theme.XboxGreen
-import com.example.ui.theme.XboxNeonGreen
+import com.example.ui.theme.NovaBrightCyan
+import com.example.ui.theme.NovaCyan
+import com.example.ui.theme.NovaElectricBlue
 
 @Composable
-fun XboxLogo(
+fun NovaLogo(
     modifier: Modifier = Modifier,
     isCompact: Boolean = false
 ) {
@@ -48,14 +45,14 @@ fun XboxLogo(
                     .clip(CircleShape)
                     .background(
                         Brush.radialGradient(
-                            colors = listOf(XboxNeonGreen, XboxGreen, Color(0xFF07210E))
+                            colors = listOf(NovaBrightCyan, NovaElectricBlue, Color(0xFF071B2B))
                         )
                     )
-                    .border(1.5.dp, XboxNeonGreen, CircleShape),
+                    .border(1.5.dp, NovaCyan, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "X",
+                    text = "N",
                     color = Color.White,
                     fontWeight = FontWeight.Black,
                     fontSize = 20.sp,
@@ -65,11 +62,11 @@ fun XboxLogo(
             Spacer(modifier = Modifier.width(10.dp))
             Column {
                 Text(
-                    text = "Xbox L.R.",
+                    text = "Nova Browser",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.ExtraBold,
                     color = MaterialTheme.colorScheme.primary,
-                    letterSpacing = 1.sp
+                    letterSpacing = 0.5.sp
                 )
             }
         }
@@ -78,35 +75,35 @@ fun XboxLogo(
             modifier = modifier,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Futuristic glowing crest badge
+            // Futuristic glowing celestial nova badge
             Box(
                 modifier = Modifier
                     .size(92.dp)
-                    .shadow(16.dp, CircleShape, spotColor = XboxNeonGreen, ambientColor = XboxBrightGreen)
+                    .shadow(16.dp, CircleShape, spotColor = NovaCyan, ambientColor = NovaBrightCyan)
                     .clip(CircleShape)
                     .background(
                         Brush.verticalGradient(
-                            colors = listOf(Color(0xFF0F2617), Color(0xFF08120B))
+                            colors = listOf(Color(0xFF0E2238), Color(0xFF091321))
                         )
                     )
-                    .border(2.5.dp, Brush.sweepGradient(listOf(XboxNeonGreen, XboxBrightGreen, Color(0xFF107C10), XboxNeonGreen)), CircleShape),
+                    .border(2.5.dp, Brush.sweepGradient(listOf(NovaCyan, NovaBrightCyan, NovaElectricBlue, NovaCyan)), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                // Inner stylized X ring
+                // Inner stylized Nova ring
                 Box(
                     modifier = Modifier
                         .size(72.dp)
                         .clip(CircleShape)
                         .background(
                             Brush.radialGradient(
-                                colors = listOf(XboxNeonGreen.copy(alpha = 0.35f), Color.Transparent)
+                                colors = listOf(NovaCyan.copy(alpha = 0.35f), Color.Transparent)
                             )
                         ),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "X",
-                        color = XboxNeonGreen,
+                        text = "N",
+                        color = NovaCyan,
                         fontWeight = FontWeight.Black,
                         fontSize = 44.sp,
                         letterSpacing = (-1).sp
@@ -118,16 +115,16 @@ fun XboxLogo(
 
             // Official App Title
             Text(
-                text = "Xbox L.R.",
+                text = "Nova Browser",
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Black,
                 color = MaterialTheme.colorScheme.onBackground,
-                letterSpacing = 1.5.sp
+                letterSpacing = 1.2.sp
             )
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            // Futuristic Subtitle Badge
+            // Subtitle Badge
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(20.dp))
@@ -145,4 +142,12 @@ fun XboxLogo(
             }
         }
     }
+}
+
+@Composable
+fun XboxLogo(
+    modifier: Modifier = Modifier,
+    isCompact: Boolean = false
+) {
+    NovaLogo(modifier = modifier, isCompact = isCompact)
 }

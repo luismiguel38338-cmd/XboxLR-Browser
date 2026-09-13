@@ -94,7 +94,7 @@ fun BrowserMenuSheet(
                 .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
             Text(
-                text = "Menú de Xbox L.R.",
+                text = "Menú de Nova Browser",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Black,
                 color = MaterialTheme.colorScheme.onSurface,
@@ -157,7 +157,7 @@ fun BrowserMenuSheet(
 
                 MenuItemRowWithToggle(
                     icon = Icons.AutoMirrored.Filled.MenuBook,
-                    label = "Modo Lectura Xbox",
+                    label = "Modo Lectura",
                     isChecked = isReaderMode,
                     onClick = {
                         onDismiss()
@@ -168,7 +168,7 @@ fun BrowserMenuSheet(
 
                 MenuItemRow(
                     icon = Icons.Default.Shield,
-                    label = "Escudo de Protección Xbox",
+                    label = "Escudo de Protección Nova",
                     onClick = {
                         onDismiss()
                         onOpenShield()
@@ -195,7 +195,7 @@ fun BrowserMenuSheet(
                             putExtra(Intent.EXTRA_TEXT, currentUrl)
                             type = "text/plain"
                         }
-                        val shareIntent = Intent.createChooser(sendIntent, "Compartir con Xbox L.R.")
+                        val shareIntent = Intent.createChooser(sendIntent, "Compartir con Nova Browser")
                         context.startActivity(shareIntent)
                     },
                     testTag = "menu_share"

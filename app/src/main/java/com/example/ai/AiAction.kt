@@ -1,7 +1,7 @@
 package com.example.ai
 
 enum class AiAction(val title: String, val promptPrefix: String) {
-    CHAT("Conversación", "Eres Xbox IA, el asistente inteligente integrado en el navegador web Xbox L.R. Responde de forma clara, moderna, precisa y profesional."),
+    CHAT("Conversación", "Eres Nova AI, el copiloto inteligente integrado en el navegador web Nova Browser. Responde de forma clara, moderna, precisa y profesional."),
     SUMMARIZE_PAGE("Resumir Página", "Por favor proporciona un resumen ejecutivo, claro y estructurado con viñetas de la siguiente página web:"),
     EXPLAIN_TEXT("Explicar", "Explica en términos sencillos, didácticos y comprensibles el siguiente contenido:"),
     TRANSLATE_PAGE("Traducir", "Traduce el siguiente contenido web al español de forma natural y fluida:"),

@@ -1,6 +1,6 @@
 {
-  "name": "Xbox L.R.",
-  "description": "Navegador inteligente con inteligencia artificial.",
+  "name": "Nova Browser",
+  "description": "Navegador web moderno, ultrarrápido y privado con inteligencia artificial integrada.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

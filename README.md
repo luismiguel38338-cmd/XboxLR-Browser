@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="public/xboxlr-logo.png" alt="XboxLR Browser Logo" width="160" style="border-radius: 28px;" />
+  <img src="public/xboxlr-logo.png" alt="Nova Browser Logo" width="160" style="border-radius: 28px;" />
 </p>
 
-<h1 align="center">XboxLR Browser</h1>
+<h1 align="center">Nova Browser</h1>
 
 <p align="center">
-  <b>Navegador web moderno, ultrarrápido y seguro para Android, con estética gaming inspirada en el ecosistema Xbox y potenciado por Inteligencia Artificial con Google Gemini.</b>
+  <b>Navegador web moderno, ultrarrápido y seguro para Android, diseñado con Material Design 3 y potenciado por Inteligencia Artificial con Google Gemini.</b>
 </p>
 
 <p align="center">
-  <a href="https://github.com/luismiguel38338-cmd"><img src="https://img.shields.io/badge/Desarrollador-Luis%20Miguel-107C10?style=for-the-badge&logo=github&logoColor=white" alt="Developer" /></a>
+  <a href="https://github.com/luismiguel38338-cmd"><img src="https://img.shields.io/badge/Desarrollador-Luis%20Miguel-00D2FF?style=for-the-badge&logo=github&logoColor=white" alt="Developer" /></a>
   <img src="https://img.shields.io/badge/Platform-Android%207.0%2B-brightgreen?style=for-the-badge&logo=android&logoColor=white" alt="Platform" />
   <img src="https://img.shields.io/badge/Kotlin-2.0.21-purple?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
   <img src="https://img.shields.io/badge/UI-Jetpack%20Compose%20M3-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="Jetpack Compose" />
@@ -25,7 +25,7 @@
 2. [Capturas de Pantalla](#-capturas-de-pantalla)
 3. [Características Principales](#-características-principales)
 4. [Funciones de Navegación](#-funciones-de-navegación)
-5. [Inteligencia Artificial (Xbox IA Copilot)](#-inteligencia-artificial-xbox-ia-copilot)
+5. [Inteligencia Artificial (Nova AI Copilot)](#-inteligencia-artificial-nova-ai-copilot)
 6. [Privacidad y Seguridad](#-privacidad-y-seguridad)
 7. [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 8. [Requisitos del Sistema](#-requisitos-del-sistema)
@@ -41,31 +41,31 @@
 
 ## 📖 Descripción General
 
-**XboxLR Browser** es una aplicación de navegación web nativa para Android diseñada desde cero con **Jetpack Compose** y **Material Design 3**. Combina una estética futurista inspirada en la identidad visual de la consola Xbox (verde esmeralda `#107C10`, modos oscuros profundos y tipografías de alto impacto) con una experiencia de navegación ágil, privada y libre de distracciones.
+**Nova Browser** es una aplicación de navegación web nativa para Android diseñada desde cero con **Jetpack Compose** y **Material Design 3**. Combina una estética moderna, limpia y futurista (con acentos en cian eléctrico `#00E5FF`, zafiro cósmico y modos oscuros profundos) con una experiencia de navegación ágil, privada y libre de distracciones.
 
-El navegador integra un **Asistente de Inteligencia Artificial contextual** impulsado por la API de **Google Gemini**, capaz de resumir páginas web completas en segundos, explicar conceptos y brindar guías o sugerencias de videojuegos directamente desde la barra de herramientas.
+El navegador integra un **Copiloto de Inteligencia Artificial contextual** impulsado por la API de **Google Gemini**, capaz de resumir páginas web completas en segundos, explicar conceptos y brindar síntesis inteligentes directamente desde la barra de herramientas.
 
 ---
 
 ## 📱 Capturas de Pantalla
 
-> *Nota: Capturas de demostración de la interfaz visual de XboxLR Browser en dispositivos móviles.*
+> *Nota: Capturas de demostración de la interfaz visual de Nova Browser en dispositivos móviles.*
 
 <table align="center">
   <tr>
     <td align="center" width="33%">
       <b>Pantalla de Inicio</b><br/><br/>
-      <img src="public/screenshots/home.png" alt="Pantalla de Inicio XboxLR" width="240" />
-      <br/><em>Accesos rápidos gaming y multibuscador</em>
+      <img src="public/screenshots/home.png" alt="Pantalla de Inicio Nova Browser" width="240" />
+      <br/><em>Accesos rápidos y multibuscador</em>
     </td>
     <td align="center" width="33%">
       <b>Navegación Web</b><br/><br/>
-      <img src="public/screenshots/browser.png" alt="Navegador Web XboxLR" width="240" />
+      <img src="public/screenshots/browser.png" alt="Navegador Web Nova Browser" width="240" />
       <br/><em>Barra superior con escudo y navegación fluida</em>
     </td>
     <td align="center" width="33%">
-      <b>Xbox IA Copilot</b><br/><br/>
-      <img src="public/screenshots/ai.png" alt="Copiloto de IA XboxLR" width="240" />
+      <b>Nova AI Copilot</b><br/><br/>
+      <img src="public/screenshots/ai.png" alt="Copiloto de IA Nova Browser" width="240" />
       <br/><em>Resumen de contenido y ayuda inteligente</em>
     </td>
   </tr>
@@ -82,8 +82,8 @@ El navegador integra un **Asistente de Inteligencia Artificial contextual** impu
     </td>
     <td align="center" width="33%">
       <b>Identidad Visual</b><br/><br/>
-      <img src="public/xboxlr-logo.png" alt="Logo XboxLR" width="200" />
-      <br/><em>Emblema oficial de XboxLR</em>
+      <img src="public/xboxlr-logo.png" alt="Logo Nova Browser" width="200" />
+      <br/><em>Emblema oficial de Nova Browser</em>
     </td>
   </tr>
 </table>
@@ -92,15 +92,15 @@ El navegador integra un **Asistente de Inteligencia Artificial contextual** impu
 
 ## ⚡ Características Principales
 
-- **🎮 Estética Gaming Xbox**: Interfaz moderna de alto contraste con tonos oscuros y acentos en verde esmeralda neón (`#107C10`), adaptada a pantallas AMOLED.
-- **🤖 Asistente de IA Integrado (Xbox IA)**: Copiloto nativo para resumir páginas web, resolver dudas y asistir durante sesiones de navegación.
-- **🛡️ Escudo de Protección Xbox (Xbox Shield)**: Bloqueo activo en tiempo real contra rastreadores publicitarios, analíticas invasivas y scripts de telemetría.
+- **✨ Diseño Moderno Nova**: Interfaz de alto contraste con tonos oscuros y acentos en cian eléctrico (`#00E5FF`), adaptada a pantallas AMOLED.
+- **🤖 Asistente de IA Integrado (Nova AI)**: Copiloto nativo para resumir páginas web, resolver dudas y asistir durante sesiones de navegación.
+- **🛡️ Escudo de Protección Nova (Nova Shield)**: Bloqueo activo en tiempo real contra rastreadores publicitarios, analíticas invasivas y scripts de telemetría.
 - **📖 Modo Lectura (Reader Mode)**: Vista purificada de artículos sin anuncios ni distracciones con tiempo de lectura estimado y control de tamaño tipográfico.
 - **🔍 Búsqueda en la Página (Find in Page)**: Búsqueda de texto interactiva con contador de coincidencias en vivo (`X/Y`) y navegación entre resultados.
 - **🖥️ Modo de Escritorio (Desktop Site)**: Alternancia ágil de *User-Agent* para solicitar la versión para ordenadores de cualquier sitio web.
 - **🔤 Control de Zoom de Texto**: Escala de lectura configurable (80%, 100%, 125%, 150%) para mayor accesibilidad visual.
 - **📑 Multitarea con Múltiples Pestañas**: Cambio instantáneo entre pestañas, vista en cuadrícula de tarjetas y pestañas de incógnito aisladas.
-- **📲 Compartir con Código QR**: Generación de códigos QR instantáneos para transferir URLs a teléfonos móviles o consolas sin necesidad de cables.
+- **📲 Compartir con Código QR**: Generación de códigos QR instantáneos para transferir URLs a teléfonos móviles u otros dispositivos sin necesidad de cables.
 - **💾 Gestor de Descargas e Historial**: Registro ordenado de descargas con soporte para `DownloadManager` y administración selectiva de caché y cookies.
 
 ---
@@ -109,18 +109,19 @@ El navegador integra un **Asistente de Inteligencia Artificial contextual** impu
 
 ### Barra de Navegación Superior Inteligente (Omnibox)
 - Indicador visual de seguridad y cifrado SSL (`https://`).
-- Botón directo de acceso al **Escudo de Protección**.
+- Botón directo de acceso al **Escudo de Protección Nova**.
 - Acceso con un toque para añadir o eliminar la página actual de **Marcadores**.
 - Recarga rápida y selector visual de pestañas activas.
 
 ### Pantalla de Inicio (Home Hub)
 - Selector rápido del motor de búsqueda preferido: **Google**, **Bing**, **DuckDuckGo**, **Yahoo** o **Ecosia**.
-- Mosaico de accesos directos personalizables a plataformas gaming y servicios populares:
-  - *Xbox Cloud Gaming*
-  - *Xbox Game Pass*
-  - *Twitch*
+- Mosaico de accesos directos personalizables a plataformas y servicios populares:
+  - *Google*
   - *YouTube*
-  - *Discord*
+  - *Wikipedia*
+  - *GitHub*
+  - *Reddit*
+  - *The Verge*
   - Posibilidad de agregar cualquier URL favorita como acceso directo personalizado.
 
 ### Gestor de Pestañas y Modo Incógnito
@@ -129,15 +130,15 @@ El navegador integra un **Asistente de Inteligencia Artificial contextual** impu
 
 ---
 
-## 🧠 Inteligencia Artificial (Xbox IA Copilot)
+## 🧠 Inteligencia Artificial (Nova AI Copilot)
 
-XboxLR Browser incorpora un panel deslizable inferior de Inteligencia Artificial que se comunica con los modelos **Gemini 2.5 Flash / Flash Lite** de Google mediante el SDK oficial:
+Nova Browser incorpora un panel deslizable inferior de Inteligencia Artificial que se comunica con los modelos **Gemini 3.5 Flash** de Google mediante el SDK oficial:
 
 | Acción de IA | Descripción |
 | :--- | :--- |
 | 📄 **Resumir Página** | Extrae el contenido clave de la página web actual y genera un resumen estructurado en segundos. |
 | 💡 **Explicar Concepto** | Analiza términos complejos o temas especializados y los explica con lenguaje claro y accesible. |
-| 🎮 **Guías y Trucos Gaming** | Asistencia especializada para superar niveles, optimizar configuraciones o encontrar secretos en videojuegos. |
+| 🌐 **Traducir Página** | Traduce fluidamente secciones y contenidos web al idioma deseado. |
 | 🔎 **Búsqueda Inteligente** | Respuestas sintetizadas y recomendaciones directas sin necesidad de navegar por múltiples enlaces. |
 | 💬 **Chat Conversacional** | Chat libre con memoria contextual para hacer preguntas adicionales sobre la navegación. |
 
@@ -165,7 +166,7 @@ XboxLR Browser incorpora un panel deslizable inferior de Inteligencia Artificial
 | **Diseño** | Material Design 3 (M3) | Componentes visuales, paleta dinámica y animaciones |
 | **Arquitectura** | MVVM + Clean Architecture | Separación de lógica, ViewModel y StateFlow |
 | **Base de Datos** | Room 2.6.1 + KSP | Persistencia local offline-first con SQLite |
-| **Inteligencia Artificial** | Google Generative AI SDK (Gemini) | Asistente de IA Copilot en el cliente |
+| **Inteligencia Artificial** | Google Gemini API (gemini-3.5-flash) | Asistente de IA Copilot integrado |
 | **Motor Web** | Android WebKit WebView | Renderizado web acelerado por GPU |
 | **Automatización / CI** | GitHub Actions | Compilación continua y generación de APKs |
 | **Construcción** | Gradle 8.11.1 (Kotlin DSL) | Gestión de dependencias y Version Catalog |
@@ -187,8 +188,8 @@ XboxLR Browser incorpora un panel deslizable inferior de Inteligencia Artificial
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/luismiguel38338-cmd/XboxLR-Browser.git
-cd XboxLR-Browser
+git clone https://github.com/luismiguel38338-cmd/Nova-Browser.git
+cd Nova-Browser
 ```
 
 ### 2. Configurar la clave de Google Gemini (Opcional)
@@ -264,7 +265,7 @@ app/build/outputs/apk/release/app-release-unsigned.apk
 
 ### Compilación Automatizada en GitHub Actions
 El proyecto incluye un flujo de trabajo listo en `.github/workflows/build.yml`. Cada vez que subas cambios (`git push`) a tu repositorio de GitHub:
-1. GitHub Actions compilará el proyecto con JDK 17.
+1. GitHub Actions compilará el proyecto con JDK 21.
 2. Ejecutará las pruebas unitarias.
 3. Generará el archivo APK listo para descargar directamente desde la pestaña **Actions > Artifacts**.
 
@@ -273,7 +274,7 @@ El proyecto incluye un flujo de trabajo listo en `.github/workflows/build.yml`. 
 ## 📂 Estructura del Proyecto
 
 ```text
-XboxLR-Browser/
+Nova-Browser/
 ├── .github/
 │   └── workflows/
 │       └── build.yml               # Pipeline de CI/CD para GitHub Actions
@@ -294,9 +295,9 @@ XboxLR-Browser/
 │       │   │   │   ├── model/      # Clases de datos del dominio
 │       │   │   │   └── repository/ # Repositorios de datos
 │       │   │   ├── ui/             # Interfaz de usuario con Jetpack Compose
-│       │   │   │   ├── components/ # Componentes (TopBar, BottomBar, Sheets, Modales)
+│       │   │   │   ├── components/ # Componentes (NovaTopBar, NovaBottomBar, Sheets, Modales)
 │       │   │   │   ├── screens/    # Pantallas (Home, Browser, Tabs, Settings, etc.)
-│       │   │   │   └── theme/      # Paleta de colores Xbox, tipografías y formas M3
+│       │   │   │   └── theme/      # Paleta Nova, tipografías y formas M3
 │       │   │   └── viewmodel/      # ViewModel y gestión de estado reactivo
 │       │   └── res/                # Recursos gráficos, iconos y cadenas XML
 │       └── test/                   # Pruebas unitarias con JUnit y Robolectric
@@ -310,7 +311,7 @@ XboxLR-Browser/
 │   │   ├── ai.png
 │   │   ├── tabs.png
 │   │   └── settings.png
-│   └── xboxlr-logo.png             # Logo oficial de XboxLR Browser
+│   └── xboxlr-logo.png             # Logo oficial
 ├── .gitignore                      # Reglas de exclusión de Git
 ├── build.gradle.kts                # Configuración Gradle raíz
 ├── gradlew                         # Script ejecutable de Gradle (Linux/macOS)
@@ -324,7 +325,7 @@ XboxLR-Browser/
 
 ## 🤝 Cómo Contribuir
 
-¡Las contribuciones son bienvenidas para seguir mejorando XboxLR Browser!
+¡Las contribuciones son bienvenidas para seguir mejorando Nova Browser!
 
 1. **Haz un Fork** del proyecto en GitHub.
 2. **Crea una rama** para tu funcionalidad o corrección:
@@ -355,11 +356,11 @@ Desarrollado con dedicación y pasión por la tecnología por:
 
 - **Desarrollador**: Luis Miguel
 - **Perfil de GitHub**: [@luismiguel38338-cmd](https://github.com/luismiguel38338-cmd)
-- **Repositorio Oficial**: [https://github.com/luismiguel38338-cmd/XboxLR-Browser](https://github.com/luismiguel38338-cmd)
+- **Repositorio Oficial**: [https://github.com/luismiguel38338-cmd/Nova-Browser](https://github.com/luismiguel38338-cmd)
 
 ---
 
 <p align="center">
   <sub>Construido con Jetpack Compose, Kotlin y la tecnología de Google Gemini.</sub><br/>
-  <b>XboxLR Browser &copy; 2026</b>
+  <b>Nova Browser &copy; 2026</b>
 </p>

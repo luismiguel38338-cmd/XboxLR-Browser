@@ -74,7 +74,7 @@ class GeminiAiService : AiService {
 
                 val systemInstruction = JSONObject().apply {
                     val parts = JSONArray().apply {
-                        put(JSONObject().put("text", "Eres Xbox IA, el asistente inteligente integrado en el navegador web 'Xbox L.R.'. Responde en español (o en el idioma solicitado), con formato Markdown limpio, profesional, veloz y con alta precisión analítica."))
+                        put(JSONObject().put("text", "Eres Nova AI, el copiloto inteligente integrado en el navegador web 'Nova Browser'. Responde en español (o en el idioma solicitado), con formato Markdown limpio, profesional, veloz y con alta precisión analítica."))
                     }
                     put("parts", parts)
                 }
@@ -118,7 +118,7 @@ class GeminiAiService : AiService {
                 }
             }
 
-            Result.failure(Exception("No se recibió texto en la respuesta de Xbox IA."))
+            Result.failure(Exception("No se recibió texto en la respuesta de Nova AI."))
         } catch (e: Exception) {
             // Graceful network error handling
             val localFallback = generateLocalResponse(action, prompt, pageTitle, pageContent)
@@ -135,23 +135,23 @@ class GeminiAiService : AiService {
         val target = pageTitle ?: "la página actual"
         return when (action) {
             AiAction.SUMMARIZE_PAGE -> {
-                "### 📑 Resumen de Xbox IA para: $target\n\n" +
+                "### 📑 Resumen de Nova AI para: $target\n\n" +
                         "1. **Tema principal:** ${pageTitle ?: "Exploración web activa"}.\n" +
                         "2. **Puntos clave detectados:** El contenido aborda navegación interactiva, recursos optimizados y herramientas de consulta rápida.\n" +
                         "3. **Conclusión:** Página lista para lectura y análisis completo.\n\n" +
-                        "*(Xbox IA está operando en modo local. Puedes ingresar tu clave de API Gemini en Ajustes para análisis profundo en la nube)*"
+                        "*(Nova AI está operando en modo local. Puedes ingresar tu clave de API Gemini en Ajustes para análisis profundo en la nube)*"
             }
             AiAction.EXPLAIN_TEXT -> {
-                "### 💡 Explicación de Xbox IA\n\n" +
+                "### 💡 Explicación de Nova AI\n\n" +
                         "El concepto consultado **\"$prompt\"** se refiere a una tecnología o término clave de navegación e internet orientado a facilitar el acceso a información estructurada y rápida.\n\n" +
                         "*(Configura tu clave Gemini en Ajustes para obtener explicaciones semánticas detalladas)*"
             }
             AiAction.TRANSLATE_PAGE -> {
                 "### 🌐 Traducción Inteligente\n\n" +
-                        "El contenido de **$target** ha sido analizado para traducción al español. Conecta tu clave Gemini en los ajustes de Xbox L.R. para activar la traducción automática en tiempo real de párrafos completos."
+                        "El contenido de **$target** ha sido analizado para traducción al español. Conecta tu clave Gemini en los ajustes de Nova Browser para activar la traducción automática en tiempo real de párrafos completos."
             }
             AiAction.ANALYZE_PAGE -> {
-                "### 🔍 Análisis de Página por Xbox IA\n\n" +
+                "### 🔍 Análisis de Página por Nova AI\n\n" +
                         "- **Sitio:** ${pageTitle ?: "Web navegada"}\n" +
                         "- **Protocolo:** Seguro (HTTPS)\n" +
                         "- **Estructura:** Contenido legible con ${pageContent?.length ?: 0} caracteres analizados.\n" +
@@ -164,18 +164,18 @@ class GeminiAiService : AiService {
                         "- **Resumen:** Información lista para ser compartida o guardada en marcadores."
             }
             AiAction.HELP_WRITE -> {
-                "### ✍️ Borrador redactado por Xbox IA\n\n" +
+                "### ✍️ Borrador redactado por Nova AI\n\n" +
                         "Estimado(a),\n\n" +
                         "En relación a tu consulta sobre *\"$prompt\"*, te comparto este texto redactado de forma profesional y clara para su uso inmediato en tus mensajes o notas.\n\n" +
-                        "Saludos cordiales,\nXbox L.R. Asistente"
+                        "Saludos cordiales,\nNova Browser Asistente"
             }
             AiAction.SMART_SEARCH -> {
-                "### ⚡ Síntesis de Búsqueda Inteligente Xbox L.R.\n\n" +
+                "### ⚡ Síntesis de Búsqueda Inteligente Nova Browser\n\n" +
                         "Resultados destacados para: **\"$prompt\"**\n\n" +
-                        "Se encontraron múltiples fuentes relacionadas en la web. Puedes acceder directamente a los enlaces sugeridos o profundizar la consulta con preguntas específicas a Xbox IA."
+                        "Se encontraron múltiples fuentes relacionadas en la web. Puedes acceder directamente a los enlaces sugeridos o profundizar la consulta con preguntas específicas a Nova AI."
             }
             AiAction.CHAT -> {
-                "Hola, soy **Xbox IA**, tu copiloto inteligente en Xbox L.R. Puedo ayudarte a responder dudas, resumir esta web, extraer datos, traducir o redactar textos. ¿Qué deseas consultar hoy?"
+                "Hola, soy **Nova AI**, tu copiloto inteligente en Nova Browser. Puedo ayudarte a responder dudas, resumir esta web, extraer datos, traducir o redactar textos. ¿Qué deseas consultar hoy?"
             }
         }
     }

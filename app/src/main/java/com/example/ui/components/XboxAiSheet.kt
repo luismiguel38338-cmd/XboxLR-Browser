@@ -84,14 +84,14 @@ import androidx.compose.ui.unit.sp
 import com.example.ai.AiAction
 import com.example.ai.AiMessage
 import com.example.data.model.TabItem
-import com.example.ui.theme.XboxBrightGreen
-import com.example.ui.theme.XboxGreen
-import com.example.ui.theme.XboxNeonGreen
+import com.example.ui.theme.NovaBrightCyan
+import com.example.ui.theme.NovaCyan
+import com.example.ui.theme.NovaElectricBlue
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun XboxAiSheet(
+fun NovaAiSheet(
     isVisible: Boolean,
     currentTab: TabItem,
     messages: List<AiMessage>,
@@ -143,11 +143,11 @@ fun XboxAiSheet(
                     Box(
                         modifier = Modifier
                             .size(38.dp)
-                            .shadow(6.dp, CircleShape, spotColor = XboxNeonGreen)
+                            .shadow(6.dp, CircleShape, spotColor = NovaCyan)
                             .clip(CircleShape)
                             .background(
                                 Brush.radialGradient(
-                                    listOf(XboxNeonGreen, XboxGreen, Color(0xFF07210E))
+                                    listOf(NovaCyan, NovaElectricBlue, Color(0xFF081C30))
                                 )
                             ),
                         contentAlignment = Alignment.Center
@@ -165,7 +165,7 @@ fun XboxAiSheet(
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "Xbox IA",
+                                text = "Nova AI Copilot",
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Black,
                                 color = MaterialTheme.colorScheme.onSurface,
@@ -176,7 +176,7 @@ fun XboxAiSheet(
                                 modifier = Modifier
                                     .size(8.dp)
                                     .clip(CircleShape)
-                                    .background(XboxBrightGreen)
+                                    .background(NovaBrightCyan)
                             )
                         }
                         Text(
@@ -235,7 +235,7 @@ fun XboxAiSheet(
                             Icon(
                                 imageVector = Icons.Default.Security,
                                 contentDescription = null,
-                                tint = XboxBrightGreen,
+                                tint = NovaBrightCyan,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -251,7 +251,7 @@ fun XboxAiSheet(
                                 Text(
                                     text = if (allowAiContext) "Autorizado para analizar esta web" else "Contexto desactivado (privacidad)",
                                     fontSize = 10.sp,
-                                    color = if (allowAiContext) XboxBrightGreen else MaterialTheme.colorScheme.error
+                                    color = if (allowAiContext) NovaBrightCyan else MaterialTheme.colorScheme.error
                                 )
                             }
                         }
@@ -261,7 +261,7 @@ fun XboxAiSheet(
                             onCheckedChange = onToggleAiContext,
                             colors = SwitchDefaults.colors(
                                 checkedThumbColor = Color.White,
-                                checkedTrackColor = XboxBrightGreen
+                                checkedTrackColor = NovaBrightCyan
                             ),
                             modifier = Modifier.size(width = 44.dp, height = 24.dp)
                         )
@@ -347,11 +347,11 @@ fun XboxAiSheet(
                             CircularProgressIndicator(
                                 modifier = Modifier.size(16.dp),
                                 strokeWidth = 2.dp,
-                                color = XboxBrightGreen
+                                color = MaterialTheme.colorScheme.primary
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
-                                text = "Xbox IA está analizando...",
+                                text = "Nova AI está analizando...",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -387,7 +387,7 @@ fun XboxAiSheet(
                     ) {
                         if (inputText.isEmpty()) {
                             Text(
-                                text = "Pregúntale a Xbox IA...",
+                                text = "Pregúntale a Nova AI...",
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                             )
@@ -433,14 +433,14 @@ fun XboxAiSheet(
                             .size(44.dp)
                             .clip(CircleShape)
                             .background(
-                                if (inputText.isNotBlank() && !isLoading) XboxBrightGreen else MaterialTheme.colorScheme.surfaceVariant
+                                if (inputText.isNotBlank() && !isLoading) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant
                             )
                             .testTag("ai_send_button")
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.Send,
-                            contentDescription = "Enviar a Xbox IA",
-                            tint = if (inputText.isNotBlank() && !isLoading) Color.Black else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                            contentDescription = "Enviar a Nova AI",
+                            tint = if (inputText.isNotBlank() && !isLoading) Color.White else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
                             modifier = Modifier.size(18.dp)
                         )
                     }
@@ -523,7 +523,7 @@ private fun AiMessageBubble(
                     )
                 )
                 .background(
-                    if (isUser) Brush.horizontalGradient(listOf(XboxGreen, Color(0xFF0F5A1A)))
+                    if (isUser) Brush.horizontalGradient(listOf(NovaElectricBlue, Color(0xFF075985)))
                     else Brush.verticalGradient(
                         listOf(
                             MaterialTheme.colorScheme.surfaceVariant,
@@ -533,7 +533,7 @@ private fun AiMessageBubble(
                 )
                 .border(
                     1.dp,
-                    if (isUser) XboxNeonGreen.copy(alpha = 0.3f) else MaterialTheme.colorScheme.outline.copy(alpha = 0.25f),
+                    if (isUser) NovaCyan.copy(alpha = 0.3f) else MaterialTheme.colorScheme.outline.copy(alpha = 0.25f),
                     RoundedCornerShape(
                         topStart = 18.dp,
                         topEnd = 18.dp,
@@ -552,4 +552,56 @@ private fun AiMessageBubble(
             )
         }
     }
+}
+
+@Composable
+fun XboxAiSheet(
+    isVisible: Boolean,
+    currentTab: TabItem,
+    messages: List<AiMessage>,
+    isLoading: Boolean,
+    allowAiContext: Boolean,
+    onDismiss: () -> Unit,
+    onSendMessage: (String, AiAction, Boolean) -> Unit,
+    onClearChat: () -> Unit,
+    onToggleAiContext: (Boolean) -> Unit
+) {
+    NovaAiSheet(
+        isVisible = isVisible,
+        currentTab = currentTab,
+        messages = messages,
+        isLoading = isLoading,
+        allowAiContext = allowAiContext,
+        onDismiss = onDismiss,
+        onSendMessage = onSendMessage,
+        onClearChat = onClearChat,
+        onToggleAiContext = onToggleAiContext
+    )
+}
+
+@Composable
+fun NovaAiSheet(
+    isVisible: Boolean,
+    onDismiss: () -> Unit,
+    messages: List<AiMessage>,
+    isLoading: Boolean,
+    allowAiContext: Boolean,
+    onToggleAiContext: (Boolean) -> Unit,
+    onSendMessage: (String, AiAction, Boolean) -> Unit,
+    onClearChat: () -> Unit,
+    currentUrl: String,
+    currentTitle: String,
+    modifier: Modifier = Modifier
+) {
+    NovaAiSheet(
+        isVisible = isVisible,
+        currentTab = TabItem(url = currentUrl, title = currentTitle),
+        messages = messages,
+        isLoading = isLoading,
+        allowAiContext = allowAiContext,
+        onDismiss = onDismiss,
+        onSendMessage = onSendMessage,
+        onClearChat = onClearChat,
+        onToggleAiContext = onToggleAiContext
+    )
 }

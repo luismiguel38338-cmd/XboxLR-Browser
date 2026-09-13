@@ -56,8 +56,8 @@ import androidx.compose.ui.unit.sp
 import com.example.data.model.TabItem
 import com.example.ui.theme.IncognitoDarkSurface
 import com.example.ui.theme.IncognitoPurple
-import com.example.ui.theme.XboxBrightGreen
-import com.example.ui.theme.XboxGreen
+import com.example.ui.theme.NovaBrightCyan
+import com.example.ui.theme.NovaElectricBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -204,7 +204,7 @@ fun TabsSheet(
                             .border(
                                 width = if (isSelected) 2.5.dp else 1.dp,
                                 color = if (isSelected) {
-                                    if (tab.isIncognito) IncognitoPurple else XboxBrightGreen
+                                    if (tab.isIncognito) IncognitoPurple else NovaBrightCyan
                                 } else {
                                     MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
                                 },
@@ -274,7 +274,7 @@ fun TabsSheet(
                             ) {
                                 if (tab.isHome) {
                                     Text(
-                                        text = "Xbox L.R. Inicio",
+                                        text = "Nova Browser Inicio",
                                         fontSize = 11.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = MaterialTheme.colorScheme.primary
@@ -295,14 +295,14 @@ fun TabsSheet(
                                 Box(
                                     modifier = Modifier
                                         .clip(RoundedCornerShape(4.dp))
-                                        .background(if (tab.isIncognito) IncognitoPurple.copy(alpha = 0.2f) else XboxGreen.copy(alpha = 0.2f))
+                                        .background(if (tab.isIncognito) IncognitoPurple.copy(alpha = 0.2f) else NovaElectricBlue.copy(alpha = 0.2f))
                                         .padding(horizontal = 6.dp, vertical = 2.dp)
                                 ) {
                                     Text(
                                         text = "ACTIVA",
                                         fontSize = 9.sp,
                                         fontWeight = FontWeight.ExtraBold,
-                                        color = if (tab.isIncognito) IncognitoPurple else XboxBrightGreen
+                                        color = if (tab.isIncognito) IncognitoPurple else NovaBrightCyan
                                     )
                                 }
                             }

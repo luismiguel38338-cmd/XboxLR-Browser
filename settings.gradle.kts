@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "Xbox LR"
+rootProject.name = "Nova Browser"
 
 include(":app")

@@ -21,13 +21,13 @@ import com.example.ai.AiAction
 import com.example.ui.components.BrowserMenuSheet
 import com.example.ui.components.ClearDataDialog
 import com.example.ui.components.FindInPageBar
+import com.example.ui.components.NovaAiSheet
+import com.example.ui.components.NovaBottomBar
+import com.example.ui.components.NovaTopBar
 import com.example.ui.components.QrCodeDialog
 import com.example.ui.components.ReaderModeView
 import com.example.ui.components.ShieldDialog
 import com.example.ui.components.TabsSheet
-import com.example.ui.components.XboxAiSheet
-import com.example.ui.components.XboxBottomBar
-import com.example.ui.components.XboxTopBar
 import com.example.ui.screens.BookmarksScreen
 import com.example.ui.screens.BrowserScreen
 import com.example.ui.screens.DownloadsScreen
@@ -35,7 +35,7 @@ import com.example.ui.screens.HistoryScreen
 import com.example.ui.screens.HomeScreen
 import com.example.ui.screens.PrivacyPolicyDialog
 import com.example.ui.screens.SettingsScreen
-import com.example.ui.theme.XboxLRTheme
+import com.example.ui.theme.NovaTheme
 import com.example.viewmodel.BrowserViewModel
 import com.example.viewmodel.OverlayScreen
 
@@ -50,18 +50,21 @@ class MainActivity : ComponentActivity() {
             val currentTabId by viewModel.currentTabId.collectAsState()
             val currentTab = viewModel.currentTab
 
-            XboxLRTheme(
+            NovaTheme(
                 themeMode = settings.themeMode,
                 isIncognito = currentTab.isIncognito
             ) {
-                XboxLRApp(viewModel = viewModel)
+                NovaBrowserApp(viewModel = viewModel)
             }
         }
     }
 }
 
 @Composable
-fun XboxLRApp(viewModel: BrowserViewModel) {
+fun XboxLRApp(viewModel: BrowserViewModel) = NovaBrowserApp(viewModel = viewModel)
+
+@Composable
+fun NovaBrowserApp(viewModel: BrowserViewModel) {
     val settings by viewModel.settings.collectAsState()
     val tabs by viewModel.tabs.collectAsState()
     val currentTabId by viewModel.currentTabId.collectAsState()
@@ -116,7 +119,7 @@ fun XboxLRApp(viewModel: BrowserViewModel) {
     Scaffold(
         topBar = {
             if (activeOverlay == null) {
-                XboxTopBar(
+                NovaTopBar(
                     tab = currentTab,
                     tabCount = tabs.size,
                     isBookmarked = isBookmarked,
@@ -131,7 +134,7 @@ fun XboxLRApp(viewModel: BrowserViewModel) {
         },
         bottomBar = {
             if (activeOverlay == null) {
-                XboxBottomBar(
+                NovaBottomBar(
                     canGoBack = currentTab.canGoBack,
                     canGoForward = currentTab.canGoForward,
                     tabCount = tabs.size,
@@ -214,7 +217,7 @@ fun XboxLRApp(viewModel: BrowserViewModel) {
                             shortcuts = shortcuts,
                             onSearchWeb = { query -> viewModel.searchDirectly(query) },
                             onAskAi = { prompt ->
-                                viewModel.askXboxAi(prompt, AiAction.CHAT, usePageContext = false)
+                                viewModel.askNovaAi(prompt, AiAction.CHAT, usePageContext = false)
                                 viewModel.setAiSheetVisible(true)
                             },
                             onSmartSearch = { query -> viewModel.searchWithAiSummary(query) },
@@ -227,7 +230,7 @@ fun XboxLRApp(viewModel: BrowserViewModel) {
                             tab = currentTab,
                             onCloseReader = { viewModel.toggleReaderMode() },
                             onSummarizeWithAi = {
-                                viewModel.askXboxAi(
+                                viewModel.askNovaAi(
                                     "Resume este artículo de forma clara y destacando los puntos más importantes.",
                                     AiAction.SUMMARIZE_PAGE,
                                     usePageContext = true
@@ -272,8 +275,8 @@ fun XboxLRApp(viewModel: BrowserViewModel) {
         }
     }
 
-    // Modal Sheet: Xbox IA Assistant
-    XboxAiSheet(
+    // Modal Sheet: Nova AI Copilot
+    NovaAiSheet(
         isVisible = isAiSheetVisible,
         currentTab = currentTab,
         messages = aiMessages,
@@ -281,7 +284,7 @@ fun XboxLRApp(viewModel: BrowserViewModel) {
         allowAiContext = settings.allowAiPageContext,
         onDismiss = { viewModel.setAiSheetVisible(false) },
         onSendMessage = { prompt, action, useContext ->
-            viewModel.askXboxAi(prompt, action, useContext)
+            viewModel.askNovaAi(prompt, action, useContext)
         },
         onClearChat = { viewModel.clearAiConversation() },
         onToggleAiContext = { enabled -> viewModel.updateAllowAiPageContext(enabled) }
@@ -327,7 +330,7 @@ fun XboxLRApp(viewModel: BrowserViewModel) {
         }
     )
 
-    // Dialog: Xbox Shield Protection
+    // Dialog: Nova Shield Protection
     ShieldDialog(
         isVisible = isShieldDialogVisible,
         isEnabled = settings.shieldProtection,

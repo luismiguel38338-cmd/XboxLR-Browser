@@ -2,8 +2,8 @@ package com.example
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
-import com.example.ui.components.XboxLogo
-import com.example.ui.theme.XboxLRTheme
+import com.example.ui.components.NovaLogo
+import com.example.ui.theme.NovaTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
 import java.io.File
@@ -25,8 +25,8 @@ class GreetingScreenshotTest {
     @Test
     fun greeting_screenshot() {
         composeTestRule.setContent {
-            XboxLRTheme {
-                XboxLogo()
+            NovaTheme {
+                NovaLogo()
             }
         }
 

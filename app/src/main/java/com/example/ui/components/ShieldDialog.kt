@@ -94,7 +94,7 @@ fun ShieldDialog(
         },
         title = {
             Text(
-                text = "Escudo de Protección Xbox",
+                text = "Escudo de Protección Nova",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Black,
                 color = MaterialTheme.colorScheme.onSurface,

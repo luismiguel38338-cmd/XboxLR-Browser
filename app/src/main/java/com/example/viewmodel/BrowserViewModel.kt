@@ -80,7 +80,7 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
         listOf(
             AiMessage(
                 isUser = false,
-                text = "¡Hola! Soy **Xbox IA**, tu asistente inteligente en Xbox L.R.\n\nPuedo responder cualquier duda, resumir páginas webs, explicar términos difíciles, traducir contenidos o ayudarte a redactar.",
+                text = "¡Hola! Soy **Nova AI**, tu copiloto inteligente en Nova Browser.\n\nPuedo responder cualquier duda, resumir páginas webs, explicar términos difíciles, traducir contenidos o ayudarte a redactar.",
                 action = AiAction.CHAT
             )
         )
@@ -135,7 +135,7 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
             QuickShortcut("3", "Wikipedia", "https://es.wikipedia.org", "W", 0xFF555555),
             QuickShortcut("4", "GitHub", "https://github.com", "GH", 0xFF24292E),
             QuickShortcut("5", "Reddit", "https://www.reddit.com", "R", 0xFFFF4500),
-            QuickShortcut("6", "Xbox", "https://www.xbox.com", "X", 0xFF107C10),
+            QuickShortcut("6", "The Verge", "https://www.theverge.com", "V", 0xFF6366F1),
             QuickShortcut("7", "Noticias", "https://news.google.com", "N", 0xFF00A86B)
         )
     )
@@ -222,7 +222,7 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
     fun searchWithAiSummary(query: String) {
         // Perform search and open AI assistant with instant summary
         searchDirectly(query)
-        askXboxAi(
+        askNovaAi(
             prompt = "Proporciona una síntesis completa y estructurada con información clave para la búsqueda: $query",
             action = AiAction.SMART_SEARCH,
             usePageContext = false
@@ -393,8 +393,8 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    // --- Xbox IA Assistant ---
-    fun askXboxAi(
+    // --- Nova AI Assistant ---
+    fun askNovaAi(
         prompt: String,
         action: AiAction = AiAction.CHAT,
         usePageContext: Boolean = true
@@ -426,7 +426,7 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
             )
 
             val replyText = result.getOrElse { e ->
-                "Hubo un inconveniente al consultar con Xbox IA: ${e.localizedMessage ?: "Error desconocido"}. Verifica tu conexión a internet o la configuración de IA."
+                "Hubo un inconveniente al consultar con Nova AI: ${e.localizedMessage ?: "Error desconocido"}. Verifica tu conexión a internet o la configuración de IA."
             }
 
             val aiMessage = AiMessage(
@@ -440,11 +440,17 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    fun askXboxAi(
+        prompt: String,
+        action: AiAction = AiAction.CHAT,
+        usePageContext: Boolean = true
+    ) = askNovaAi(prompt, action, usePageContext)
+
     fun clearAiConversation() {
         _aiMessages.value = listOf(
             AiMessage(
                 isUser = false,
-                text = "Conversación reiniciada. ¿En qué más puedo ayudarte hoy con Xbox IA?",
+                text = "Conversación reiniciada. ¿En qué más puedo ayudarte hoy con Nova AI?",
                 action = AiAction.CHAT
             )
         )

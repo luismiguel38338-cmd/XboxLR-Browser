@@ -66,7 +66,7 @@ import androidx.compose.ui.unit.sp
 import com.example.data.local.BrowserSettings
 import com.example.data.local.ThemeMode
 import com.example.data.model.SearchEngine
-import com.example.ui.theme.XboxBrightGreen
+import com.example.ui.theme.NovaBrightCyan
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -95,7 +95,7 @@ fun SettingsScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Ajustes de Xbox L.R.",
+                        text = "Ajustes de Nova Browser",
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
                     )
@@ -142,7 +142,7 @@ fun SettingsScreen(
                         title = "Tema de la aplicación",
                         subtitle = when (settings.themeMode) {
                             ThemeMode.SYSTEM -> "Predeterminado del sistema"
-                            ThemeMode.DARK -> "Modo Oscuro (Obsidian & Emerald)"
+                            ThemeMode.DARK -> "Modo Oscuro (Obsidian & Cyan)"
                             ThemeMode.LIGHT -> "Modo Claro"
                         },
                         onClick = { showThemeDialog = true }
@@ -151,7 +151,7 @@ fun SettingsScreen(
                     SettingsClickableRow(
                         icon = Icons.Default.Home,
                         title = "Página de inicio",
-                        subtitle = if (settings.homePageUrl.isBlank()) "Xbox L.R. Inicio" else settings.homePageUrl,
+                        subtitle = if (settings.homePageUrl.isBlank()) "Nova Browser Inicio" else settings.homePageUrl,
                         onClick = { showHomeDialog = true }
                     )
                     HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
@@ -204,8 +204,8 @@ fun SettingsScreen(
                 }
             }
 
-            // Sección Inteligencia Artificial (Xbox IA)
-            SettingsSectionHeader(title = "Inteligencia Artificial (Xbox IA)")
+            // Sección Inteligencia Artificial (Nova AI)
+            SettingsSectionHeader(title = "Inteligencia Artificial (Nova AI)")
             Card(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 shape = RoundedCornerShape(16.dp)
@@ -214,7 +214,7 @@ fun SettingsScreen(
                     SettingsToggleRow(
                         icon = Icons.Default.Psychology,
                         title = "Permitir análisis de página web",
-                        subtitle = "Autoriza a Xbox IA a leer el texto de la página que estás viendo para resumir o responder preguntas",
+                        subtitle = "Autoriza a Nova AI a leer el texto de la página que estás viendo para resumir o responder preguntas",
                         checked = settings.allowAiPageContext,
                         onCheckedChange = onUpdateAllowAiContext
                     )
@@ -324,7 +324,7 @@ fun SettingsScreen(
                             Text(
                                 text = when (mode) {
                                     ThemeMode.SYSTEM -> "Sistema (Automático)"
-                                    ThemeMode.DARK -> "Oscuro (Xbox Emerald)"
+                                    ThemeMode.DARK -> "Oscuro (Nova Cyan)"
                                     ThemeMode.LIGHT -> "Claro"
                                 },
                                 fontSize = 15.sp
@@ -351,7 +351,7 @@ fun SettingsScreen(
             text = {
                 Column {
                     Text(
-                        "Deja el campo vacío para usar la pantalla de inicio oficial de Xbox L.R.",
+                        "Deja el campo vacío para usar la pantalla de inicio oficial de Nova Browser.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -390,7 +390,7 @@ fun SettingsScreen(
             text = {
                 Column {
                     Text(
-                        "Xbox L.R. utiliza de forma nativa la API de Gemini (gemini-3.5-flash) inyectada de forma segura por el backend. Puedes ingresar una clave API personalizada o endpoint propio si deseas utilizar otro proveedor.",
+                        "Nova Browser utiliza de forma nativa la API de Gemini (gemini-3.5-flash) inyectada de forma segura por el backend. Puedes ingresar una clave API personalizada o endpoint propio si deseas utilizar otro proveedor.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -516,7 +516,7 @@ private fun SettingsToggleRow(
             onCheckedChange = onCheckedChange,
             colors = SwitchDefaults.colors(
                 checkedThumbColor = androidx.compose.ui.graphics.Color.White,
-                checkedTrackColor = XboxBrightGreen
+                checkedTrackColor = NovaBrightCyan
             )
         )
     }

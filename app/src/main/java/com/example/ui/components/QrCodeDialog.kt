@@ -56,7 +56,7 @@ fun QrCodeDialog(
     if (!isVisible) return
 
     val context = LocalContext.current
-    val cleanUrl = if (url.isBlank()) "https://www.xbox.com" else url
+    val cleanUrl = if (url.isBlank()) "https://www.google.com" else url
 
     // Deterministic matrix generator for stylized QR pattern
     val qrGridSize = 25
@@ -234,7 +234,7 @@ fun QrCodeDialog(
                                 putExtra(Intent.EXTRA_TEXT, cleanUrl)
                                 type = "text/plain"
                             }
-                            val shareIntent = Intent.createChooser(sendIntent, "Compartir con Xbox L.R.")
+                            val shareIntent = Intent.createChooser(sendIntent, "Compartir con Nova Browser")
                             context.startActivity(shareIntent)
                         },
                         modifier = Modifier.weight(1f),

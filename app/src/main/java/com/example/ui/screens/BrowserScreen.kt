@@ -220,7 +220,7 @@ fun BrowserScreen(
                                         view?.canGoForward() == true
                                     )
 
-                                    // Extract clean text snippet for Xbox IA context
+                                    // Extract clean text snippet for Nova AI context
                                     view?.evaluateJavascript(
                                         "(function() { return document.body ? document.body.innerText.substring(0, 4000) : ''; })();"
                                     ) { result ->

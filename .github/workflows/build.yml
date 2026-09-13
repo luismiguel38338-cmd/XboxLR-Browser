@@ -1,4 +1,4 @@
-name: Build & Release XboxLR Browser
+name: Build & Release Nova Browser
 
 on:
   push:
@@ -71,13 +71,13 @@ jobs:
       - name: Prepare Release Artifact
         run: |
           mkdir -p release-output
-          cp app/build/outputs/apk/debug/app-debug.apk release-output/XboxLR-Browser-v1.0-debug.apk
+          cp app/build/outputs/apk/debug/app-debug.apk release-output/Nova-Browser-v1.0-debug.apk
           ls -la release-output/
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: XboxLR-Browser-v1.0-APK
+          name: Nova-Browser-v1.0-APK
           path: release-output/*.apk
           retention-days: 30
           if-no-files-found: error
@@ -87,34 +87,34 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || 'v1.0.0' }}
-          name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || 'XboxLR Browser v1.0.0' }}
+          name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || 'Nova Browser v1.0.0' }}
           draft: false
           prerelease: false
           make_latest: true
           generate_release_notes: true
           body: |
-            ## 🎮 Lanzamiento Oficial de XboxLR Browser v1.0.0
+            ## 🚀 Lanzamiento Oficial de Nova Browser v1.0.0
 
-            ¡Bienvenido a la versión oficial de **XboxLR Browser** para Android!
-            Navegador web de alto rendimiento con interfaz inspirada en la consola Xbox y potenciado por Inteligencia Artificial con Google Gemini.
+            ¡Bienvenido a la versión oficial de **Nova Browser** para Android!
+            Navegador web moderno, ultrarrápido y seguro, potenciado por Inteligencia Artificial con Google Gemini.
 
             ### 🚀 Novedades y Funcionalidades Incluidas:
-            - **🎮 Estética Gaming Xbox**: Diseño en verde neón esmeralda (`#107C10`), modo oscuro profundo optimizado para pantallas AMOLED y componentes Material Design 3.
-            - **🤖 Xbox IA Copilot**: Asistente inteligente integrado con modelos Google Gemini para resumir páginas web completas, explicar conceptos y ofrecer guías de videojuegos.
-            - **🛡️ Escudo de Protección Xbox (Xbox Shield)**: Bloqueador activo de rastreadores, anuncios y telemetría invasiva en tiempo real con contador dinámico.
+            - **✨ Diseño Moderno Nova**: Interfaz en cian eléctrico y zafiro cósmico, optimizada para pantallas AMOLED con Material Design 3.
+            - **🤖 Nova AI Copilot**: Asistente inteligente integrado con modelos Google Gemini para resumir páginas web completas, explicar conceptos y responder preguntas en tiempo real.
+            - **🛡️ Escudo de Protección Nova (Nova Shield)**: Bloqueador activo de rastreadores, anuncios y telemetría invasiva en tiempo real con contador dinámico.
             - **📖 Modo Lectura (Reader Mode)**: Vista purificada de artículos sin distracciones ni anuncios, cálculo de tiempo de lectura y ajuste tipográfico.
             - **🔍 Búsqueda en la Página (Find in Page)**: Barra flotante interactiva con contador de coincidencias en vivo (`X/Y`) y controles de navegación.
             - **🖥️ Modo Escritorio (Desktop Site)**: Alternancia ágil de User-Agent para solicitar versiones completas de escritorio de cualquier sitio.
             - **🔤 Zoom de Texto Dinámico**: Niveles de escala configurables (80%, 100%, 125%, 150%) para máxima accesibilidad visual.
-            - **📲 Compartir con Código QR**: Generador instantáneo de código QR para compartir cualquier URL con tu consola u otros dispositivos.
+            - **📲 Compartir con Código QR**: Generador instantáneo de código QR para compartir cualquier URL con otros dispositivos.
             - **📑 Multitarea con Pestañas e Incógnito**: Administrador de pestañas en cuadrícula y modo de incógnito aislado que no registra historial ni cookies.
             - **💾 Almacenamiento Local Seguro**: Historial, marcadores y descargas gestionados localmente con SQLite y Room Database.
 
             ### 📥 Descarga e Instalación:
-            1. Descarga el archivo adjunto **`XboxLR-Browser-v1.0-debug.apk`** en tu smartphone o tablet Android (Android 7.0 o superior).
+            1. Descarga el archivo adjunto **`Nova-Browser-v1.0-debug.apk`** en tu smartphone o tablet Android (Android 7.0 o superior).
             2. Abre el archivo descargado para instalarlo (habilita la opción de "Instalar aplicaciones de fuentes desconocidas" si el sistema lo solicita).
-            3. ¡Inicia **XboxLR** y disfruta de la mejor navegación gamer con IA!
+            3. ¡Inicia **Nova Browser** y disfruta de una navegación moderna y fluida con IA!
           files: |
-            release-output/XboxLR-Browser-v1.0-debug.apk
+            release-output/Nova-Browser-v1.0-debug.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

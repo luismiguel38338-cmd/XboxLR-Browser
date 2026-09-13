@@ -66,10 +66,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ai.AiAction
 import com.example.data.model.QuickShortcut
-import com.example.ui.components.XboxLogo
-import com.example.ui.theme.XboxBrightGreen
-import com.example.ui.theme.XboxGreen
-import com.example.ui.theme.XboxNeonGreen
+import com.example.ui.components.NovaLogo
+import com.example.ui.theme.NovaBrightCyan
+import com.example.ui.theme.NovaCyan
+import com.example.ui.theme.NovaElectricBlue
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -98,8 +98,8 @@ fun HomeScreen(
     ) {
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 1. Mostrar el nombre Xbox L.R. y Logo
-        XboxLogo(modifier = Modifier.testTag("home_xbox_logo"))
+        // 1. Mostrar el nombre Nova Browser y Logo
+        NovaLogo(modifier = Modifier.testTag("home_nova_logo"))
 
         Spacer(modifier = Modifier.height(28.dp))
 
@@ -107,10 +107,10 @@ fun HomeScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .shadow(12.dp, RoundedCornerShape(26.dp), spotColor = XboxNeonGreen.copy(alpha = 0.4f))
+                .shadow(12.dp, RoundedCornerShape(26.dp), spotColor = NovaCyan.copy(alpha = 0.4f))
                 .clip(RoundedCornerShape(26.dp))
                 .background(MaterialTheme.colorScheme.surface)
-                .border(1.5.dp, Brush.horizontalGradient(listOf(XboxNeonGreen, XboxBrightGreen)), RoundedCornerShape(26.dp))
+                .border(1.5.dp, Brush.horizontalGradient(listOf(NovaCyan, NovaBrightCyan)), RoundedCornerShape(26.dp))
                 .padding(horizontal = 16.dp, vertical = 14.dp),
             contentAlignment = Alignment.CenterStart
         ) {
@@ -214,10 +214,10 @@ fun HomeScreen(
                     Text(text = "Buscar en Web", fontWeight = FontWeight.Bold, fontSize = 13.sp)
                 }
 
-                // Botón Preguntar a Xbox IA
+                // Botón Preguntar a Nova AI
                 Button(
                     onClick = {
-                        val prompt = if (searchInput.isNotBlank()) searchInput else "Hola Xbox IA, ¿qué puedes hacer por mí?"
+                        val prompt = if (searchInput.isNotBlank()) searchInput else "Hola Nova AI, ¿qué puedes hacer por mí?"
                         focusManager.clearFocus()
                         onAskAi(prompt)
                     },
@@ -226,11 +226,11 @@ fun HomeScreen(
                         .height(48.dp)
                         .testTag("home_ask_ai_button"),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF0F2B1A),
-                        contentColor = XboxNeonGreen
+                        containerColor = Color(0xFF0C243B),
+                        contentColor = NovaCyan
                     ),
                     border = ButtonDefaults.outlinedButtonBorder.copy(
-                        brush = Brush.horizontalGradient(listOf(XboxNeonGreen, XboxBrightGreen))
+                        brush = Brush.horizontalGradient(listOf(NovaCyan, NovaBrightCyan))
                     ),
                     shape = RoundedCornerShape(14.dp)
                 ) {
@@ -277,7 +277,7 @@ fun HomeScreen(
                     Icon(
                         imageVector = Icons.Default.AutoAwesome,
                         contentDescription = null,
-                        tint = XboxBrightGreen,
+                        tint = NovaBrightCyan,
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
@@ -335,7 +335,7 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        // Banner informativo sobre Xbox IA
+        // Banner informativo sobre Nova AI
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
@@ -344,7 +344,7 @@ fun HomeScreen(
             shape = RoundedCornerShape(16.dp),
             border = CardDefaults.outlinedCardBorder().copy(
                 brush = Brush.horizontalGradient(
-                    listOf(XboxBrightGreen.copy(alpha = 0.3f), Color.Transparent)
+                    listOf(NovaBrightCyan.copy(alpha = 0.3f), Color.Transparent)
                 )
             )
         ) {
@@ -373,14 +373,14 @@ fun HomeScreen(
 
                 Column {
                     Text(
-                        text = "Xbox IA Integrado",
+                        text = "Nova AI Integrado",
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Spacer(modifier = Modifier.height(2.dp))
                     Text(
-                        text = "Toca el botón 'Xbox IA' en la barra inferior para resumir cualquier página web o hacer preguntas en tiempo real.",
+                        text = "Toca el botón 'Nova AI' en la barra inferior para resumir cualquier página web o hacer preguntas en tiempo real.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 12.sp,

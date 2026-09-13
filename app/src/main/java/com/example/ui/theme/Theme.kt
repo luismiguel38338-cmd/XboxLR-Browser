@@ -8,16 +8,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorScheme = darkColorScheme(
-    primary = XboxBrightGreen,
-    onPrimary = Color(0xFF003914),
-    primaryContainer = XboxDarkGreen,
-    onPrimaryContainer = XboxNeonGreen,
-    secondary = XboxAccentLime,
-    onSecondary = Color(0xFF003914),
-    secondaryContainer = Color(0xFF194025),
-    onSecondaryContainer = Color(0xFFA5F7B8),
-    tertiary = Color(0xFF4EE2C0),
-    onTertiary = Color(0xFF00382B),
+    primary = NovaBrightCyan,
+    onPrimary = Color(0xFF00324B),
+    primaryContainer = Color(0xFF075985),
+    onPrimaryContainer = NovaCyan,
+    secondary = NovaAccentIndigo,
+    onSecondary = Color.White,
+    secondaryContainer = Color(0xFF312E81),
+    onSecondaryContainer = Color(0xFFC7D2FE),
+    tertiary = Color(0xFF38BDF8),
+    onTertiary = Color(0xFF003544),
     background = DarkBackground,
     onBackground = DarkOnSurface,
     surface = DarkSurface,
@@ -30,15 +30,15 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = XboxGreen,
+    primary = NovaElectricBlue,
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFC7F3D0),
-    onPrimaryContainer = Color(0xFF002107),
-    secondary = Color(0xFF1E6E38),
+    primaryContainer = Color(0xFFE0F2FE),
+    onPrimaryContainer = Color(0xFF0369A1),
+    secondary = NovaAccentIndigo,
     onSecondary = Color.White,
-    secondaryContainer = Color(0xFFD4EED8),
-    onSecondaryContainer = Color(0xFF07210E),
-    tertiary = Color(0xFF0D7A64),
+    secondaryContainer = Color(0xFFEEF2FF),
+    onSecondaryContainer = Color(0xFF3730A3),
+    tertiary = Color(0xFF0284C7),
     onTertiary = Color.White,
     background = LightBackground,
     onBackground = LightOnSurface,
@@ -70,7 +70,7 @@ private val IncognitoColorScheme = darkColorScheme(
 )
 
 @Composable
-fun XboxLRTheme(
+fun NovaTheme(
     themeMode: com.example.data.local.ThemeMode = com.example.data.local.ThemeMode.SYSTEM,
     darkTheme: Boolean = isSystemInDarkTheme(),
     isIncognito: Boolean = false,
@@ -91,6 +91,21 @@ fun XboxLRTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        content = content
+    )
+}
+
+@Composable
+fun XboxLRTheme(
+    themeMode: com.example.data.local.ThemeMode = com.example.data.local.ThemeMode.SYSTEM,
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    isIncognito: Boolean = false,
+    content: @Composable () -> Unit
+) {
+    NovaTheme(
+        themeMode = themeMode,
+        darkTheme = darkTheme,
+        isIncognito = isIncognito,
         content = content
     )
 }

@@ -40,12 +40,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ui.theme.XboxBrightGreen
-import com.example.ui.theme.XboxGreen
-import com.example.ui.theme.XboxNeonGreen
+import com.example.ui.theme.NovaBrightCyan
+import com.example.ui.theme.NovaCyan
+import com.example.ui.theme.NovaElectricBlue
 
 @Composable
-fun XboxBottomBar(
+fun NovaBottomBar(
     canGoBack: Boolean,
     canGoForward: Boolean,
     tabCount: Int,
@@ -102,20 +102,20 @@ fun XboxBottomBar(
                 )
             }
 
-            // CENTRAL PROMINENT GLOWING "XBOX IA" BUTTON (Always visible and easy to find)
+            // CENTRAL PROMINENT GLOWING "NOVA AI" BUTTON
             Box(
                 modifier = Modifier
-                    .shadow(10.dp, RoundedCornerShape(26.dp), spotColor = XboxNeonGreen, ambientColor = XboxBrightGreen)
+                    .shadow(10.dp, RoundedCornerShape(26.dp), spotColor = NovaCyan, ambientColor = NovaBrightCyan)
                     .clip(RoundedCornerShape(26.dp))
                     .background(
                         Brush.horizontalGradient(
-                            listOf(Color(0xFF0F2B1A), Color(0xFF07190F))
+                            listOf(Color(0xFF0C243B), Color(0xFF091626))
                         )
                     )
-                    .border(1.5.dp, Brush.horizontalGradient(listOf(XboxNeonGreen, XboxBrightGreen)), RoundedCornerShape(26.dp))
+                    .border(1.5.dp, Brush.horizontalGradient(listOf(NovaCyan, NovaBrightCyan)), RoundedCornerShape(26.dp))
                     .clickable { onOpenAi() }
                     .padding(horizontal = 16.dp, vertical = 8.dp)
-                    .testTag("bottombar_xbox_ia_button"),
+                    .testTag("bottombar_nova_ia_button"),
                 contentAlignment = Alignment.Center
             ) {
                 Row(
@@ -128,7 +128,7 @@ fun XboxBottomBar(
                             .clip(CircleShape)
                             .background(
                                 Brush.radialGradient(
-                                    listOf(XboxNeonGreen, XboxGreen)
+                                    listOf(NovaCyan, NovaElectricBlue)
                                 )
                             ),
                         contentAlignment = Alignment.Center
@@ -143,10 +143,10 @@ fun XboxBottomBar(
 
                     Box(modifier = Modifier.padding(start = 8.dp)) {
                         Text(
-                            text = "Xbox IA",
+                            text = "Nova AI",
                             fontWeight = FontWeight.Black,
                             fontSize = 13.sp,
-                            color = XboxNeonGreen,
+                            color = NovaCyan,
                             letterSpacing = 0.5.sp
                         )
                     }
@@ -184,4 +184,29 @@ fun XboxBottomBar(
             }
         }
     }
+}
+
+@Composable
+fun XboxBottomBar(
+    canGoBack: Boolean,
+    canGoForward: Boolean,
+    tabCount: Int,
+    onBack: () -> Unit,
+    onForward: () -> Unit,
+    onHome: () -> Unit,
+    onOpenAi: () -> Unit,
+    onOpenTabs: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    NovaBottomBar(
+        canGoBack = canGoBack,
+        canGoForward = canGoForward,
+        tabCount = tabCount,
+        onBack = onBack,
+        onForward = onForward,
+        onHome = onHome,
+        onOpenAi = onOpenAi,
+        onOpenTabs = onOpenTabs,
+        modifier = modifier
+    )
 }

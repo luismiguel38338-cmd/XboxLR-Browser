@@ -97,7 +97,7 @@ fun ReaderModeView(
 
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "Modo Lectura Xbox",
+                            text = "Modo Lectura Nova",
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface
@@ -225,7 +225,7 @@ fun ReaderModeView(
                             shape = RoundedCornerShape(10.dp)
                         ) {
                             Text(
-                                text = "Xbox IA",
+                                text = "Nova AI",
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 12.sp,
                                 color = MaterialTheme.colorScheme.onPrimary

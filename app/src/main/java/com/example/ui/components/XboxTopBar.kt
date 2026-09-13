@@ -57,10 +57,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.model.TabItem
 import com.example.ui.theme.IncognitoPurple
-import com.example.ui.theme.XboxBrightGreen
+import com.example.ui.theme.NovaBrightCyan
 
 @Composable
-fun XboxTopBar(
+fun NovaTopBar(
     tab: TabItem,
     tabCount: Int,
     isBookmarked: Boolean,
@@ -146,8 +146,8 @@ fun XboxTopBar(
                         ) {
                             Icon(
                                 imageVector = if (tab.url.startsWith("https://")) Icons.Default.Shield else Icons.Default.Lock,
-                                contentDescription = "Escudo de seguridad Xbox",
-                                tint = if (tab.url.startsWith("https://")) XboxBrightGreen else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                                contentDescription = "Escudo de seguridad Nova",
+                                tint = if (tab.url.startsWith("https://")) NovaBrightCyan else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
                                 modifier = Modifier.size(16.dp)
                             )
                         }
@@ -289,4 +289,31 @@ fun XboxTopBar(
             }
         }
     }
+}
+
+@Composable
+fun XboxTopBar(
+    tab: TabItem,
+    tabCount: Int,
+    isBookmarked: Boolean,
+    onNavigate: (String) -> Unit,
+    onReload: () -> Unit,
+    onToggleBookmark: () -> Unit,
+    onOpenTabs: () -> Unit,
+    onOpenMenu: () -> Unit,
+    onOpenShield: () -> Unit = {},
+    modifier: Modifier = Modifier
+) {
+    NovaTopBar(
+        tab = tab,
+        tabCount = tabCount,
+        isBookmarked = isBookmarked,
+        onNavigate = onNavigate,
+        onReload = onReload,
+        onToggleBookmark = onToggleBookmark,
+        onOpenTabs = onOpenTabs,
+        onOpenMenu = onOpenMenu,
+        onOpenShield = onOpenShield,
+        modifier = modifier
+    )
 }

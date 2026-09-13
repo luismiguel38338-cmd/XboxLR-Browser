@@ -27,7 +27,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ui.theme.XboxBrightGreen
+import com.example.ui.theme.NovaBrightCyan
 
 @Composable
 fun ClearDataDialog(
@@ -54,7 +54,7 @@ fun ClearDataDialog(
         text = {
             Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
-                    text = "Selecciona los elementos que deseas eliminar de Xbox L.R.:",
+                    text = "Selecciona los elementos que deseas eliminar de Nova Browser:",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -68,7 +68,7 @@ fun ClearDataDialog(
                     Checkbox(
                         checked = clearHistory,
                         onCheckedChange = { clearHistory = it },
-                        colors = CheckboxDefaults.colors(checkedColor = XboxBrightGreen)
+                        colors = CheckboxDefaults.colors(checkedColor = NovaBrightCyan)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(text = "Historial de navegación", fontSize = 14.sp)
@@ -81,7 +81,7 @@ fun ClearDataDialog(
                     Checkbox(
                         checked = clearCookies,
                         onCheckedChange = { clearCookies = it },
-                        colors = CheckboxDefaults.colors(checkedColor = XboxBrightGreen)
+                        colors = CheckboxDefaults.colors(checkedColor = NovaBrightCyan)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(text = "Cookies y datos de páginas web", fontSize = 14.sp)
@@ -94,7 +94,7 @@ fun ClearDataDialog(
                     Checkbox(
                         checked = clearCache,
                         onCheckedChange = { clearCache = it },
-                        colors = CheckboxDefaults.colors(checkedColor = XboxBrightGreen)
+                        colors = CheckboxDefaults.colors(checkedColor = NovaBrightCyan)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(text = "Archivos e imágenes en caché", fontSize = 14.sp)
