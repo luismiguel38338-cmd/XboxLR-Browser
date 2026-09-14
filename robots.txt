@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luismiguel38338-cmd.github.io/Nova-Browser/sitemap.xml

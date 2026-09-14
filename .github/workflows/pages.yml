@@ -3,35 +3,45 @@ name: Deploy Nova Browser Web to GitHub Pages
 on:
   push:
     branches: [ "main", "master" ]
-    paths:
-      - 'docs/**'
-      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
-# Permisos requeridos para desplegar en GitHub Pages mediante OIDC
+# Permisos requeridos para desplegar en GitHub Pages y branch gh-pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
-# Permite un despliegue concurrente a la vez
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Build & Deploy Web
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  deploy-branch:
+    name: Publicar en rama gh-pages (Automático)
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          keep_files: false
+
+  deploy-pages-env:
+    name: Publicar en GitHub Pages Environment
+    needs: deploy-branch
+    runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        continue-on-error: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -41,3 +51,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true

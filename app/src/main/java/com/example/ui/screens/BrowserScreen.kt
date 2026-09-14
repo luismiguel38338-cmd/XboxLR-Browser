@@ -81,7 +81,7 @@ fun BrowserScreen(
     var errorMessage by remember { mutableStateOf("") }
 
     // Handle incoming navigation commands
-    LaunchedEffect(navigationCommand) {
+    LaunchedEffect(navigationCommand, webViewRef) {
         val webView = webViewRef ?: return@LaunchedEffect
         when (navigationCommand) {
             is NavigationCommand.LoadUrl -> {
@@ -155,6 +155,8 @@ fun BrowserScreen(
                             loadWithOverviewMode = true
                             allowFileAccess = true
                             allowContentAccess = true
+                            allowFileAccessFromFileURLs = true
+                            allowUniversalAccessFromFileURLs = true
                             setSupportZoom(true)
                             builtInZoomControls = true
                             displayZoomControls = false
@@ -181,6 +183,22 @@ fun BrowserScreen(
                         }
 
                         webViewClient = object : WebViewClient() {
+                            override fun shouldOverrideUrlLoading(
+                                view: WebView?,
+                                request: WebResourceRequest?
+                            ): Boolean {
+                                val reqUrl = request?.url?.toString() ?: return false
+                                return if (reqUrl.startsWith("http://") || reqUrl.startsWith("https://") || reqUrl.startsWith("file://") || reqUrl.startsWith("about:")) {
+                                    false
+                                } else {
+                                    try {
+                                        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(reqUrl))
+                                        ctx.startActivity(intent)
+                                    } catch (_: Exception) {}
+                                    true
+                                }
+                            }
+
                             override fun shouldInterceptRequest(
                                 view: WebView?,
                                 request: WebResourceRequest?
