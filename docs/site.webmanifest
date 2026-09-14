@@ -1,0 +1,17 @@
+{
+  "name": "Nova Browser",
+  "short_name": "Nova",
+  "description": "Navegador Web con Inteligencia Artificial Gemini y Privacidad Local para Android",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070B14",
+  "theme_color": "#00E5FF",
+  "icons": [
+    {
+      "src": "assets/nova-browser-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

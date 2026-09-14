@@ -9,7 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/releases"><img src="https://img.shields.io/badge/Descargar%20APK-v1.0.0-00E5FF?style=for-the-badge&logo=android&logoColor=black" alt="Descargar APK" /></a>
+  <a href="https://luismiguel38338-cmd.github.io/Nova-Browser/"><img src="https://img.shields.io/badge/Sitio%20Web-Oficial-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=black" alt="Sitio Web Oficial" /></a>
+  <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/releases"><img src="https://img.shields.io/badge/Descargar%20APK-v1.0.0-3B82F6?style=for-the-badge&logo=android&logoColor=white" alt="Descargar APK" /></a>
   <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/actions"><img src="https://img.shields.io/badge/CI%2FCD-Build%20Passing-success?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build Status" /></a>
   <img src="https://img.shields.io/badge/Android-7.0%2B%20(API%2024%2B)-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android Version" />
   <img src="https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
