@@ -153,6 +153,8 @@ fun BrowserScreen(
                             domStorageEnabled = true
                             useWideViewPort = true
                             loadWithOverviewMode = true
+                            allowFileAccess = true
+                            allowContentAccess = true
                             setSupportZoom(true)
                             builtInZoomControls = true
                             displayZoomControls = false

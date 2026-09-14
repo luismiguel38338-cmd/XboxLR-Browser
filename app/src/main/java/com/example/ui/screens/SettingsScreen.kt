@@ -83,6 +83,7 @@ fun SettingsScreen(
     onClearHistory: () -> Unit,
     onOpenDownloads: () -> Unit,
     onOpenPrivacyPolicy: () -> Unit,
+    onOpenOfficialWebsite: () -> Unit = {},
     onBack: () -> Unit
 ) {
     var showEngineDialog by remember { mutableStateOf(false) }
@@ -247,6 +248,13 @@ fun SettingsScreen(
                         title = "Política de Privacidad",
                         subtitle = "Información sobre tus datos y seguridad",
                         onClick = onOpenPrivacyPolicy
+                    )
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
+                    SettingsClickableRow(
+                        icon = Icons.Default.Language,
+                        title = "Página Oficial de Nova Browser",
+                        subtitle = "Conoce las características, arquitectura y descargas",
+                        onClick = onOpenOfficialWebsite
                     )
                 }
             }

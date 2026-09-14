@@ -201,6 +201,10 @@ fun NovaBrowserApp(viewModel: BrowserViewModel) {
                         onClearHistory = { viewModel.clearHistory() },
                         onOpenDownloads = { viewModel.openOverlay(OverlayScreen.DOWNLOADS) },
                         onOpenPrivacyPolicy = { viewModel.openOverlay(OverlayScreen.PRIVACY_POLICY) },
+                        onOpenOfficialWebsite = {
+                            viewModel.closeOverlay()
+                            viewModel.navigateTo("file:///android_asset/welcome.html")
+                        },
                         onBack = { viewModel.closeOverlay() }
                     )
                 }

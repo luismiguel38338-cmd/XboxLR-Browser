@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Browser - Navegador Web con IA y Privacidad para Android</title>
+  
+  <!-- Metadatos SEO y Redes Sociales -->
+  <meta name="description" content="Nova Browser es un navegador web moderno, ultrarrápido y seguro para Android, diseñado con Jetpack Compose, Material Design 3 y copiloto de Inteligencia Artificial con Google Gemini.">
+  <meta name="keywords" content="Nova Browser, navegador Android, Gemini AI, Jetpack Compose, navegador privado, APK gratis, navegador seguro, open source">
+  <meta name="author" content="Luis Miguel">
+  <meta name="theme-color" content="#070B14">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nova Browser - Navegación Web con IA y Privacidad para Android">
+  <meta property="og:description" content="Navegador ultrarrápido con Material Design 3, bloqueo anti-rastreo Nova Shield y copiloto Google Gemini. 100% Gratis.">
+  <meta property="og:image" content="assets/nova-browser-logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Nova Browser para Android">
+  <meta property="twitter:description" content="Navegador nativo para Android con IA Gemini integrada y escudo de privacidad. Descarga el APK gratis.">
+  <meta property="twitter:image" content="assets/nova-browser-logo.png">
+
+  <link rel="icon" type="image/png" href="assets/nova-browser-logo.png">
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #070B14;
+      --bg-secondary: #0D1527;
+      --bg-card: #121E36;
+      --bg-card-hover: #192848;
+      --cyan-electric: #00E5FF;
+      --cyan-glow: rgba(0, 229, 255, 0.4);
+      --cyan-subtle: rgba(0, 229, 255, 0.12);
+      --blue-sapphire: #1E3A8A;
+      --blue-accent: #3B82F6;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --border-color: #1E293B;
+      --border-focus: #00E5FF;
+      --green-secure: #10B981;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+      background: radial-gradient(circle at 50% 0%, #0F2042 0%, #070B14 70%);
+      min-height: 100vh;
+    }
+
+    /* Tipografía de Títulos */
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Contenedores */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Barra de Navegación */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .nav-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .nav-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF 30%, var(--cyan-electric) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--cyan-electric);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00E5FF 0%, #0091EA 100%);
+      color: #050B14;
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(0, 229, 255, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan-electric);
+      color: var(--cyan-electric);
+      transform: translateY(-2px);
+    }
+
+    .btn-large {
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      border-radius: 18px;
+    }
+
+    /* Sección Hero */
+    .hero {
+      padding: 80px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow-bg {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, rgba(14, 165, 233, 0.05) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--cyan-subtle);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--cyan-electric);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #00E5FF 0%, #38BDF8 50%, #818CF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 740px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hero-info-tags {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .info-tag-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-tag-item svg {
+      color: var(--cyan-electric);
+    }
+
+    /* Mockup Interactivo de Teléfono */
+    .hero-showcase {
+      margin-top: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .showcase-wrapper {
+      background: linear-gradient(180deg, rgba(18, 30, 54, 0.8) 0%, rgba(7, 11, 20, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-xl);
+      padding: 32px 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 229, 255, 0.1);
+      backdrop-filter: blur(16px);
+    }
+
+    .screen-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .screen-tab-btn {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .screen-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+    }
+
+    .screen-tab-btn.active {
+      background: var(--cyan-subtle);
+      border-color: var(--cyan-electric);
+      color: var(--cyan-electric);
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.3);
+    }
+
+    .mockup-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 480px;
+    }
+
+    .phone-container {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 36px;
+      padding: 10px;
+      background: #020617;
+      border: 3px solid #1E293B;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.2);
+      position: relative;
+    }
+
+    .phone-screen {
+      width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      display: block;
+      background: #000;
+      aspect-ratio: 9 / 19.5;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+
+    .phone-caption {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 1rem;
+      color: var(--cyan-electric);
+      font-weight: 500;
+    }
+
+    /* Sección de Características */
+    .features-section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 64px;
+    }
+
+    .section-tag {
+      color: var(--cyan-electric);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--cyan-electric), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: rgba(0, 229, 255, 0.3);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.15);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: var(--cyan-subtle);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan-electric);
+      margin-bottom: 24px;
+    }
+
+    .feature-title {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    /* Sección de Privacidad Nova Shield */
+    .shield-banner {
+      background: radial-gradient(circle at 100% 0%, rgba(0, 229, 255, 0.15) 0%, rgba(18, 30, 54, 0.8) 50%, var(--bg-card) 100%);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      border-radius: var(--radius-xl);
+      padding: 56px 48px;
+      margin: 40px 0 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .shield-content h3 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .shield-list {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .shield-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .shield-item svg {
+      color: var(--green-secure);
+      flex-shrink: 0;
+    }
+
+    .shield-stat-box {
+      background: rgba(7, 11, 20, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .shield-stat-num {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--cyan-electric);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    /* Sección de Distribución Gratuita */
+    .download-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(13, 21, 39, 0.7) 100%);
+    }
+
+    .distribution-notice {
+      background: rgba(0, 229, 255, 0.05);
+      border: 1px dashed rgba(0, 229, 255, 0.3);
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 48px;
+      color: #38BDF8;
+      font-size: 0.95rem;
+    }
+
+    .download-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .download-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .download-card:hover {
+      border-color: var(--cyan-electric);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .download-card-featured {
+      border: 2px solid var(--cyan-electric);
+      background: linear-gradient(180deg, rgba(0, 229, 255, 0.08) 0%, var(--bg-card) 100%);
+      position: relative;
+    }
+
+    .featured-tag {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--cyan-electric);
+      color: #070B14;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .download-platform-name {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .download-platform-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    /* Guía de Instalación */
+    .install-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      position: relative;
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--cyan-electric);
+      color: #070B14;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Preguntas Frecuentes (FAQ) */
+    .faq-section {
+      padding: 80px 0 120px;
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .faq-question {
+      padding: 22px 24px;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s ease;
+      color: var(--cyan-electric);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Footer */
+    .footer {
+      background: #03060B;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 60px 0 40px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan-electric);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .shield-banner {
+        grid-template-columns: 1fr;
+        padding: 36px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-large {
+        width: 100%;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <img src="assets/nova-browser-logo.png" alt="Nova Browser Logo" class="nav-logo">
+        <span class="nav-title">Nova Browser</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#caracteristicas" class="nav-link">Características</a></li>
+        <li><a href="#capturas" class="nav-link">Capturas</a></li>
+        <li><a href="#privacidad" class="nav-link">Privacidad</a></li>
+        <li><a href="#descarga" class="nav-link">Descargas</a></li>
+        <li><a href="#faq" class="nav-link">Preguntas</a></li>
+      </ul>
+      <div>
+        <a href="#descarga" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Descargar APK
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sección Hero -->
+  <section class="hero">
+    <div class="hero-glow-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Nova Browser v1.0.0 Oficial
+        </div>
+        <h1 class="hero-title">
+          Navegación Web con <span>Inteligencia Artificial</span> y Privacidad Total
+        </h1>
+        <p class="hero-subtitle">
+          El navegador nativo para Android diseñado con <b>Jetpack Compose</b> y <b>Material Design 3</b>. Integra el poder de <b>Google Gemini</b> para sintetizar artículos y el escudo <b>Nova Shield</b> contra rastreadores y publicidad invasiva.
+        </p>
+        <div class="hero-actions">
+          <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/releases" class="btn btn-primary btn-large">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Descargar APK Gratis
+          </a>
+          <a href="https://github.com/luismiguel38338-cmd/Nova-Browser" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            Código en GitHub
+          </a>
+        </div>
+        <div class="hero-info-tags">
+          <div class="info-tag-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            100% Gratis y Libre
+          </div>
+          <div class="info-tag-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Android 7.0+ (API 24+)
+          </div>
+          <div class="info-tag-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Google Gemini 3.5 Flash
+          </div>
+          <div class="info-tag-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Licencia MIT
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup Interactivo -->
+      <div class="hero-showcase" id="capturas">
+        <div class="showcase-wrapper">
+          <div class="screen-tabs">
+            <button class="screen-tab-btn active" onclick="switchScreen('home', 'Pantalla de Inicio con Buscador y Accesos Rápidos')">
+              🏠 Inicio
+            </button>
+            <button class="screen-tab-btn" onclick="switchScreen('browser', 'Navegación Activa con SSL y Escudo')">
+              🌐 Navegador
+            </button>
+            <button class="screen-tab-btn" onclick="switchScreen('ai', 'Nova AI Copilot impulsado por Gemini')">
+              🤖 Copiloto IA
+            </button>
+            <button class="screen-tab-btn" onclick="switchScreen('tabs', 'Gestor de Pestañas e Incógnito')">
+              📑 Pestañas
+            </button>
+            <button class="screen-tab-btn" onclick="switchScreen('settings', 'Ajustes y Escudo Nova Shield')">
+              🛡️ Nova Shield
+            </button>
+          </div>
+
+          <div class="mockup-display">
+            <div class="phone-container">
+              <img id="active-phone-img" class="phone-screen" src="assets/screenshots/home.png" alt="Captura de pantalla de Nova Browser">
+              <div id="active-phone-caption" class="phone-caption">Pantalla de Inicio con Buscador y Accesos Rápidos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Características Destacadas -->
+  <section class="features-section" id="caracteristicas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Capacidades de Vanguardia</span>
+        <h2 class="section-title">Diseñado para la Nueva Era de la Web Móvil</h2>
+        <p class="section-description">
+          Nova Browser combina el rendimiento nativo del sistema operativo Android con la asistencia inteligente de modelos generativos de Google.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Tarjeta 1: Nova AI -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Nova AI Copilot (Gemini)</h3>
+          <p class="feature-desc">
+            Sintetiza artículos extensos en 3 segundos, explica tecnicismos con lenguaje amigable y traduce fragmentos instantáneamente con el modelo Google Gemini 3.5 Flash.
+          </p>
+        </div>
+
+        <!-- Tarjeta 2: Nova Shield -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Nova Shield Anti-Rastreo</h3>
+          <p class="feature-desc">
+            Intercepción nativa de solicitudes web que neutraliza rastreadores de telemetría invasiva, analíticas de terceros y publicidad no deseada en tiempo real.
+          </p>
+        </div>
+
+        <!-- Tarjeta 3: Modo Lectura -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Modo Lectura (Reader View)</h3>
+          <p class="feature-desc">
+            Elimina barras flotantes, anuncios y scripts ruidosos para ofrecer una lectura pura y tipográfica con cálculo de tiempo estimado de lectura y escala de fuente.
+          </p>
+        </div>
+
+        <!-- Tarjeta 4: Búsqueda en Página -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3 class="feature-title">Búsqueda en Página en Vivo</h3>
+          <p class="feature-desc">
+            Localiza palabras clave al instante con resaltado visual animado, navegación rápida entre coincidencias y conteo dinámico del número total de resultados.
+          </p>
+        </div>
+
+        <!-- Tarjeta 5: Multitarea e Incógnito -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </div>
+          <h3 class="feature-title">Gestión Visual de Pestañas</h3>
+          <p class="feature-desc">
+            Tarjetas dinámicas con previsualización en miniatura, soporte de pestañas normales y sesiones de incógnito que aíslan cookies e historial para máxima privacidad.
+          </p>
+        </div>
+
+        <!-- Tarjeta 6: Compartir con QR -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <line x1="14" y1="14" x2="14" y2="14.01"></line>
+              <line x1="17" y1="17" x2="17" y2="17.01"></line>
+              <line x1="20" y1="20" x2="20" y2="20.01"></line>
+            </svg>
+          </div>
+          <h3 class="feature-title">Compartir mediante Código QR</h3>
+          <p class="feature-desc">
+            Transfiere cualquier página web a otro smartphone, tablet u ordenador de manera instantánea generando un código QR legible sin necesidad de emparejamiento previo.
+          </p>
+        </div>
+      </div>
+
+      <!-- Banner de Privacidad -->
+      <div class="shield-banner" id="privacidad">
+        <div class="shield-content">
+          <span class="section-tag">Cero Telemetría Externa</span>
+          <h3>Tus datos nunca salen de tu dispositivo</h3>
+          <p class="feature-desc">
+            A diferencia de los navegadores comerciales, Nova Browser no recopila historiales, búsquedas ni perfiles publicitarios. Toda tu información se guarda en una base de datos local SQLite mediante <b>Room</b> cifrada en el almacenamiento privado de tu teléfono.
+          </p>
+          <ul class="shield-list">
+            <li class="shield-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Sin servidores intermedios ni registro de actividad
+            </li>
+            <li class="shield-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Borrado selectivo de cookies, historial y caché en un clic
+            </li>
+            <li class="shield-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Forzado de conexiones seguras HTTPS con certificado SSL
+            </li>
+          </ul>
+        </div>
+
+        <div class="shield-stat-box">
+          <div class="shield-stat-num">100%</div>
+          <p style="font-size: 1.2rem; font-weight: 700; color: #FFFFFF; margin-bottom: 8px;">Privacidad Local</p>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Diseñado para usuarios que valoran su libertad y autonomía digital.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sección de Descarga y Distribución -->
+  <section class="download-section" id="descarga">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Distribución 100% Gratuita</span>
+        <h2 class="section-title">Descarga Nova Browser para tu Android</h2>
+        <p class="section-description">
+          Disponible en canales de software libre y tiendas de aplicaciones gratuitas. Sin tarifas de suscripción, sin micropagos y sin plataformas comerciales cerradas.
+        </p>
+      </div>
+
+      <div class="distribution-notice">
+        <b>Política de Distribución Oficial:</b> Nova Browser se distribuye únicamente en plataformas gratuitas y abiertas. No está disponible ni se publicará en PlayStation ni en tiendas que requieran suscripciones de pago.
+      </div>
+
+      <div class="download-cards">
+        <!-- Tarjeta 1: GitHub Releases (Principal) -->
+        <div class="download-card download-card-featured">
+          <div class="featured-tag">Recomendado</div>
+          <div>
+            <div class="download-platform-name">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              GitHub Releases
+            </div>
+            <p class="download-platform-desc">
+              Descarga directa del archivo APK compilado automáticamente por el flujo de CI/CD con las últimas mejoras.
+            </p>
+          </div>
+          <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/releases" class="btn btn-primary" style="width: 100%;">
+            Descargar APK (v1.0.0)
+          </a>
+        </div>
+
+        <!-- Tarjeta 2: IzzyOnDroid / F-Droid -->
+        <div class="download-card">
+          <div>
+            <div class="download-platform-name">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              F-Droid / IzzyOnDroid
+            </div>
+            <p class="download-platform-desc">
+              El repositorio de software libre y de código abierto más confiable para el ecosistema Android.
+            </p>
+          </div>
+          <a href="https://gitlab.com/IzzyOnDroid/repo" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">
+            Ver Repositorio
+          </a>
+        </div>
+
+        <!-- Tarjeta 3: Uptodown -->
+        <div class="download-card">
+          <div>
+            <div class="download-platform-name">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Uptodown
+            </div>
+            <p class="download-platform-desc">
+              Tienda de aplicaciones Android internacional con escaneo antivirus certificado y descarga directa de APKs.
+            </p>
+          </div>
+          <a href="https://developer.uptodown.com/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">
+            Plataforma Uptodown
+          </a>
+        </div>
+
+        <!-- Tarjeta 4: APKMirror & itch.io -->
+        <div class="download-card">
+          <div>
+            <div class="download-platform-name">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              APKMirror / itch.io
+            </div>
+            <p class="download-platform-desc">
+              Descarga segura desde comunidades de software independiente y portales de respaldo certificados.
+            </p>
+          </div>
+          <a href="https://www.apkmirror.com/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">
+            Explorar Opciones
+          </a>
+        </div>
+      </div>
+
+      <!-- Pasos de Instalación Rápida -->
+      <div style="margin-top: 80px;">
+        <div class="section-header" style="margin-bottom: 32px;">
+          <h3 style="font-size: 1.8rem;">Instalación en 3 Pasos Sencillos</h3>
+          <p class="section-description">Cómo instalar el archivo APK en cualquier teléfono o tablet Android</p>
+        </div>
+
+        <div class="install-steps">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h4 class="step-title">Descarga el APK</h4>
+            <p class="step-desc">Pulsa el botón de descarga para guardar el archivo <code>Nova-Browser-v1.0-debug.apk</code> en tu teléfono.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h4 class="step-title">Autoriza la Instalación</h4>
+            <p class="step-desc">Si tu sistema lo solicita, activa la opción <i>"Permitir la instalación desde esta fuente"</i> en los Ajustes de Android.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h4 class="step-title">¡Navega con IA!</h4>
+            <p class="step-desc">Abre Nova Browser desde tu cajón de aplicaciones y disfruta de una navegación ultrarrápida y privada con Gemini.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Preguntas Frecuentes -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Dudas y Respuestas</span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            ¿Nova Browser es realmente 100% gratuito?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Sí. Nova Browser es un proyecto de código abierto publicado bajo la licencia permisiva <b>MIT</b>. No contiene compras integradas, suscripciones ni cargos ocultos.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            ¿Cómo funciona el Copiloto de Inteligencia Artificial (Gemini)?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Nova Browser se comunica con la API de Google Gemini utilizando el modelo ultrarrápido <code>gemini-3.5-flash</code>. Puedes usar la clave preconfigurada o ingresar tu propia clave gratuita de Google AI Studio desde la pantalla de Ajustes de la aplicación.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            ¿Qué versiones de Android son compatibles?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Nova Browser es compatible con cualquier dispositivo que ejecute <b>Android 7.0 (Nougat, API 24) o superior</b>, hasta las versiones más recientes de Android 15 y Android 16 (API 36).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            ¿Por qué Nova Browser no se publica en PlayStation?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Por política estricta de desarrollo del proyecto: Nova Browser está diseñado exclusivamente para el ecosistema móvil y se distribuye únicamente en plataformas 100% gratuitas, sin costos de licencias ni plataformas cerradas como PlayStation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            ¿Mis contraseñas y marcadores están seguros?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Absolutamente. Toda la información se almacena localmente mediante una base de datos SQLite con Room protegida en el espacio de almacenamiento aislado del sistema operativo Android.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/nova-browser-logo.png" alt="Nova Browser Logo" width="36" height="36" style="border-radius: 8px;">
+          <div>
+            <span style="font-weight: 800; font-size: 1.1rem; color: #FFFFFF;">Nova Browser</span>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">El navegador web libre e inteligente para Android</p>
+          </div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="https://github.com/luismiguel38338-cmd/Nova-Browser" target="_blank" rel="noopener noreferrer">Repositorio</a></li>
+          <li><a href="https://github.com/luismiguel38338-cmd/Nova-Browser/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
+          <li><a href="https://github.com/luismiguel38338-cmd/Nova-Browser/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Licencia MIT</a></li>
+          <li><a href="https://github.com/luismiguel38338-cmd" target="_blank" rel="noopener noreferrer">Autor: Luis Miguel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <b>Nova Browser</b>. Creado y mantenido por <b>Luis Miguel</b>.
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-dim);">
+          Construido con Jetpack Compose, Kotlin y Google Gemini.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script interactivo -->
+  <script>
+    const captions = {
+      'home': 'Pantalla de Inicio con Buscador y Accesos Rápidos',
+      'browser': 'Navegación Activa con SSL y Escudo',
+      'ai': 'Nova AI Copilot impulsado por Gemini',
+      'tabs': 'Gestor de Pestañas e Incógnito',
+      'settings': 'Ajustes y Escudo Nova Shield'
+    };
+
+    function switchScreen(screenKey, defaultCaption) {
+      const img = document.getElementById('active-phone-img');
+      const caption = document.getElementById('active-phone-caption');
+      
+      // Transición suave
+      img.style.opacity = '0.3';
+      
+      setTimeout(() => {
+        img.src = `assets/screenshots/${screenKey}.png`;
+        caption.textContent = captions[screenKey] || defaultCaption;
+        img.style.opacity = '1';
+      }, 150);
+
+      // Actualizar botón activo
+      const buttons = document.querySelectorAll('.screen-tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Cerrar otros
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>

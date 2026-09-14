@@ -130,6 +130,7 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
     // Quick Shortcuts
     private val _shortcuts = MutableStateFlow<List<QuickShortcut>>(
         listOf(
+            QuickShortcut("0", "Nova Web", "file:///android_asset/welcome.html", "✨", 0xFF00E5FF),
             QuickShortcut("1", "Google", "https://www.google.com", "G", 0xFF4285F4),
             QuickShortcut("2", "YouTube", "https://www.youtube.com", "Y", 0xFFFF0000),
             QuickShortcut("3", "Wikipedia", "https://es.wikipedia.org", "W", 0xFF555555),
@@ -204,7 +205,7 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
         if (trimmed.isEmpty()) return
 
         val targetUrl = when {
-            trimmed.startsWith("http://") || trimmed.startsWith("https://") -> trimmed
+            trimmed.startsWith("http://") || trimmed.startsWith("https://") || trimmed.startsWith("file://") || trimmed.startsWith("about:") -> trimmed
             trimmed.contains(".") && !trimmed.contains(" ") -> "https://$trimmed"
             else -> settings.value.searchEngine.buildQuery(trimmed)
         }
