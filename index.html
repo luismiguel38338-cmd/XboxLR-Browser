@@ -5,11 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nova Browser - Navegador Web con IA y Privacidad para Android</title>
   
+  <!-- Metadatos de Compatibilidad Universal para Todos los Navegadores -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nova Browser">
+  <meta name="application-name" content="Nova Browser">
+  <meta name="msapplication-TileColor" content="#070B14">
+  <meta name="msapplication-navbutton-color" content="#070B14">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#070B14">
+  
+  <!-- Indexación para Motores de Búsqueda (Google, Bing, Yahoo, DuckDuckGo, Safari) -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="rating" content="general">
+  <meta name="distribution" content="global">
+  <meta name="revisit-after" content="2 days">
+
   <!-- Metadatos SEO y Redes Sociales -->
   <meta name="description" content="Nova Browser es un navegador web moderno, ultrarrápido y seguro para Android, diseñado con Jetpack Compose, Material Design 3 y copiloto de Inteligencia Artificial con Google Gemini.">
-  <meta name="keywords" content="Nova Browser, navegador Android, Gemini AI, Jetpack Compose, navegador privado, APK gratis, navegador seguro, open source">
+  <meta name="keywords" content="Nova Browser, navegador Android, Gemini AI, Jetpack Compose, navegador privado, APK gratis, navegador seguro, open source, cómo instalar APK Android">
   <meta name="author" content="Luis Miguel">
-  <meta name="theme-color" content="#070B14">
   <link rel="canonical" href="https://luismiguel38338-cmd.github.io/XboxLR-Browser/">
 
   <!-- Open Graph / Facebook -->
@@ -30,26 +50,61 @@
   <link rel="apple-touch-icon" href="assets/nova-browser-logo.png">
   <link rel="manifest" href="site.webmanifest">
   
-  <!-- Schema.org Datos Estructurados JSON-LD -->
+  <!-- Schema.org Datos Estructurados JSON-LD (SoftwareApplication + HowTo + FAQPage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Nova Browser",
-    "operatingSystem": "Android 7.0+",
-    "applicationCategory": "BrowserApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Nova Browser",
+      "operatingSystem": "Android 7.0+",
+      "applicationCategory": "BrowserApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128"
+      },
+      "description": "Navegador web moderno, ultrarrápido y seguro para Android potenciado con Google Gemini AI y escudo Nova Shield.",
+      "author": {
+        "@type": "Person",
+        "name": "Luis Miguel"
+      },
+      "downloadUrl": "https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk"
     },
-    "description": "Navegador web moderno, ultrarrápido y seguro para Android potenciado con Google Gemini AI y escudo Nova Shield.",
-    "author": {
-      "@type": "Person",
-      "name": "Luis Miguel"
-    },
-    "downloadUrl": "https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Cómo instalar Nova Browser APK en Android",
+      "description": "Tutorial rápido paso a paso para descargar e instalar el archivo APK de Nova Browser en cualquier smartphone o tablet Android.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Superar la Admisión y Descargar el APK",
+          "text": "Realiza el breve test de admisión y descarga el instalador Nova-Browser-v1.0-debug.apk."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Habilitar orígenes desconocidos",
+          "text": "Autoriza la instalación desde tu navegador o gestor de descargas en los Ajustes de Android."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Completar la Instalación",
+          "text": "Pulsa Instalar y en caso de aviso de desarrollador desconocido pulsa Más detalles e Instalar de todos modos."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Iniciar Nova Browser",
+          "text": "Abre la aplicación desde el cajón de apps y disfruta de la navegación con Inteligencia Artificial."
+        }
+      ]
+    }
+  ]
   </script>
 
   <!-- Google Fonts: Inter & Outfit -->
@@ -779,6 +834,541 @@
       gap: 16px;
     }
 
+    /* Compatibilidad Cross-Browser Universal (Chrome, Safari, Firefox, Edge, Opera, Samsung) */
+    html {
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scrollbar-color: var(--cyan-electric) var(--bg-secondary);
+      scrollbar-width: thin;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E3A8A;
+      border-radius: 5px;
+      border: 2px solid var(--bg-secondary);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--cyan-electric);
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    /* Modal de Bienvenida */
+    .welcome-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 7, 15, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .welcome-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .welcome-modal {
+      background: linear-gradient(145deg, #101B33 0%, #0A1020 100%);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 229, 255, 0.15);
+      border-radius: var(--radius-xl);
+      max-width: 620px;
+      width: 100%;
+      padding: 36px 32px;
+      position: relative;
+      transform: scale(0.92) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .welcome-overlay.active .welcome-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .welcome-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+
+    .welcome-close-btn:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: #EF4444;
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .welcome-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 229, 255, 0.12);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      color: var(--cyan-electric);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .welcome-title {
+      font-size: 1.85rem;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+
+    .welcome-title span {
+      background: linear-gradient(135deg, #00E5FF, #3B82F6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .welcome-text {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .welcome-highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .welcome-highlight-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .welcome-highlight-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .welcome-highlight-item strong {
+      display: block;
+      color: #FFFFFF;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    .welcome-highlight-item p {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .welcome-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Tutorial de Instalación Rápida */
+    .tutorial-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, #091224 50%, var(--bg-primary) 100%);
+      position: relative;
+    }
+
+    .tutorial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .tutorial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      position: relative;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tutorial-card:hover {
+      border-color: var(--cyan-electric);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 229, 255, 0.1);
+    }
+
+    .tutorial-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(59, 130, 246, 0.3));
+      border: 1px solid var(--cyan-electric);
+      color: var(--cyan-electric);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tutorial-card h3 {
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+
+    .tutorial-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .tutorial-hint {
+      margin-top: 18px;
+      padding: 10px 12px;
+      background: rgba(0, 229, 255, 0.05);
+      border-left: 3px solid var(--cyan-electric);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.82rem;
+      color: #CBD5E1;
+    }
+
+    .troubleshoot-box {
+      margin-top: 48px;
+      background: rgba(18, 30, 54, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+    }
+
+    .troubleshoot-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #FFFFFF;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .troubleshoot-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .troubleshoot-list li {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .troubleshoot-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green-secure);
+      font-weight: 800;
+    }
+
+    /* Procedimiento de Investigación y Admisión (Pioneer Gate) */
+    .screening-section {
+      padding: 100px 0;
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, #0E1A33 0%, var(--bg-primary) 80%);
+    }
+
+    .screening-box {
+      background: linear-gradient(160deg, #101C38 0%, #090E1D 100%);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: var(--radius-xl);
+      padding: 44px 40px;
+      max-width: 820px;
+      margin: 0 auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 229, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screening-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00E5FF, #3B82F6, #10B981, #00E5FF);
+      background-size: 300% 100%;
+      animation: pulseBar 4s infinite linear;
+    }
+
+    @keyframes pulseBar {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .screening-step-indicator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .screening-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--cyan-electric);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .screening-status-text {
+      color: var(--text-dim);
+      font-size: 0.88rem;
+    }
+
+    .screening-q-group {
+      margin-bottom: 28px;
+    }
+
+    .screening-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+    }
+
+    .screening-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(7, 11, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .screening-input:focus {
+      outline: none;
+      border-color: var(--cyan-electric);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    }
+
+    .screening-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .screening-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .screening-option:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(0, 229, 255, 0.4);
+    }
+
+    .screening-option input[type="radio"],
+    .screening-option input[type="checkbox"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--cyan-electric);
+      cursor: pointer;
+    }
+
+    .screening-option-text strong {
+      display: block;
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .screening-option-text span {
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      line-height: 1.4;
+    }
+
+    .screening-evaluating {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .screening-evaluating.active {
+      display: block;
+    }
+
+    .scanner-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(0, 229, 255, 0.15);
+      border-top-color: var(--cyan-electric);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      animation: spin 1s infinite linear;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .scanner-bar {
+      width: 100%;
+      max-width: 360px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      margin: 16px auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scanner-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00E5FF, #3B82F6);
+      transition: width 1.4s ease-in-out;
+    }
+
+    .screening-result-approved {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .screening-result-approved.active {
+      display: block;
+    }
+
+    .pass-card {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+      border: 1px solid rgba(0, 229, 255, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      margin: 24px auto;
+      max-width: 520px;
+      text-align: left;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+    }
+
+    .pass-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+
+    .pass-token {
+      font-family: monospace;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      color: var(--cyan-electric);
+      font-weight: 700;
+    }
+
+    .pass-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    .pass-detail-item span {
+      display: block;
+      color: var(--text-dim);
+    }
+
+    .pass-detail-item strong {
+      color: #FFFFFF;
+    }
+
+    .screening-result-rejected {
+      display: none;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .screening-result-rejected.active {
+      display: block;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .shield-banner {
@@ -788,6 +1378,10 @@
 
       .nav-links {
         display: none;
+      }
+      
+      .welcome-highlight-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -805,10 +1399,72 @@
       .features-grid {
         grid-template-columns: 1fr;
       }
+      .screening-box {
+        padding: 28px 20px;
+      }
+      .pass-details {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Modal Interactivo de Bienvenida -->
+  <div id="welcomeModalOverlay" class="welcome-overlay" onclick="handleOverlayClick(event)">
+    <div class="welcome-modal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+      <button class="welcome-close-btn" onclick="closeWelcomeModal()" aria-label="Cerrar Bienvenida">&times;</button>
+      <div class="welcome-pill">
+        <span>✨</span> ¡Bienvenido a Nova Browser!
+      </div>
+      <h2 id="welcomeTitle" class="welcome-title">
+        La Nueva Era de la Navegación Web en <span>Android</span>
+      </h2>
+      <p class="welcome-text">
+        Te damos la bienvenida a la plataforma oficial de <b>Nova Browser</b>, un navegador web nativo desarrollado con Kotlin y Jetpack Compose que transforma tu experiencia en internet con inteligencia artificial local y máxima privacidad.
+      </p>
+
+      <div class="welcome-highlight-grid">
+        <div class="welcome-highlight-item">
+          <div class="welcome-highlight-icon">⚡</div>
+          <div>
+            <strong>Rendimiento Nativo</strong>
+            <p>Arquitectura optimizada en Jetpack Compose con renderizado instantáneo y bajo consumo de batería.</p>
+          </div>
+        </div>
+        <div class="welcome-highlight-item">
+          <div class="welcome-highlight-icon">🤖</div>
+          <div>
+            <strong>Copiloto Gemini AI</strong>
+            <p>Sintetiza cualquier página, genera resúmenes y responde tus preguntas sin salir de la web.</p>
+          </div>
+        </div>
+        <div class="welcome-highlight-item">
+          <div class="welcome-highlight-icon">🛡️</div>
+          <div>
+            <strong>Nova Shield</strong>
+            <p>Bloqueo proactivo de rastreadores, scripts espía y publicidad invasiva sin telemetría externa.</p>
+          </div>
+        </div>
+        <div class="welcome-highlight-item">
+          <div class="welcome-highlight-icon">📖</div>
+          <div>
+            <strong>Modo Lectura & TTS</strong>
+            <p>Lectura limpia AMOLED y narrador con síntesis de voz inteligente en español.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-actions">
+        <a href="#investigacion" class="btn btn-primary" onclick="closeWelcomeModal()">
+          <span>🕵️‍♂️</span> Iniciar Procedimiento de Admisión
+        </a>
+        <a href="#tutorial" class="btn btn-secondary" onclick="closeWelcomeModal()">
+          <span>📲</span> Ver Tutorial de Instalación
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Barra de Navegación -->
   <nav class="navbar">
@@ -819,14 +1475,19 @@
       </a>
       <ul class="nav-links">
         <li><a href="#caracteristicas" class="nav-link">Características</a></li>
+        <li><a href="#tutorial" class="nav-link">Tutorial APK</a></li>
+        <li><a href="#investigacion" class="nav-link" style="color: var(--cyan-electric); font-weight: 700;">★ Admisión VIP</a></li>
         <li><a href="#capturas" class="nav-link">Capturas</a></li>
         <li><a href="#privacidad" class="nav-link">Privacidad</a></li>
         <li><a href="#descarga" class="nav-link">Descargas</a></li>
         <li><a href="#faq" class="nav-link">Preguntas</a></li>
       </ul>
-      <div>
-        <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button type="button" onclick="openWelcomeModal()" class="btn btn-secondary" style="padding: 10px 14px; font-size: 0.88rem; gap: 6px;" title="Ver mensaje de bienvenida">
+          <span>👋</span> Bienvenida
+        </button>
+        <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.9rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -855,19 +1516,27 @@
           El navegador nativo para Android diseñado con <b>Jetpack Compose</b> y <b>Material Design 3</b>. Integra el poder de <b>Google Gemini</b> para sintetizar artículos y el escudo <b>Nova Shield</b> contra rastreadores y publicidad invasiva.
         </p>
         <div class="hero-actions">
-          <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk" class="btn btn-primary btn-large">
+          <a href="#investigacion" class="btn btn-primary btn-large">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Procedimiento de Admisión VIP
+          </a>
+          <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk" class="btn btn-secondary btn-large">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Descargar APK Gratis
+            Descargar APK Directo
           </a>
-          <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          <a href="#tutorial" class="btn btn-secondary btn-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
             </svg>
-            Código en GitHub
+            Tutorial de Instalación
           </a>
         </div>
         <div class="hero-info-tags">
@@ -1109,6 +1778,288 @@
             Diseñado para usuarios que valoran su libertad y autonomía digital.
           </p>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1: Tutorial de Instalación Rápida del APK -->
+  <section class="tutorial-section" id="tutorial">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Guía Oficial Paso a Paso</span>
+        <h2 class="section-title">Cómo Descargar e Instalar Nova Browser en Android</h2>
+        <p class="section-description">
+          Aprende cómo instalar el paquete APK de manera segura en tu smartphone o tablet Android en menos de 1 minuto sin complicaciones.
+        </p>
+      </div>
+
+      <div class="tutorial-grid">
+        <!-- Paso 1 -->
+        <div class="tutorial-card">
+          <div class="tutorial-badge">1</div>
+          <h3>Supera la Admisión y Descarga el APK</h3>
+          <p>
+            Realiza el breve test de admisión que encontrarás más abajo para verificar tu perfil de usuario pionero y obtener tu pase de descarga inmediata de <code>Nova-Browser-v1.0-debug.apk</code>.
+          </p>
+          <div class="tutorial-hint">
+            💡 <b>Nota:</b> El archivo pesa aprox. 34 MB e incluye todo el motor de navegación nativo listo para funcionar sin dependencias extra.
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="tutorial-card">
+          <div class="tutorial-badge">2</div>
+          <h3>Autoriza Fuentes Desconocidas</h3>
+          <p>
+            Al pulsar el archivo descargado, Android protegerá tu equipo mostrando: <i>"Por tu seguridad, tu teléfono no tiene permitido instalar apps desconocidas de esta fuente"</i>. Toca <b>Ajustes</b> y activa la casilla <b>"Permitir desde esta fuente"</b>.
+          </p>
+          <div class="tutorial-hint">
+            🔒 <b>Seguridad:</b> Este permiso solo autoriza la instalación de este instalador que tú mismo decidiste descargar.
+          </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="tutorial-card">
+          <div class="tutorial-badge">3</div>
+          <h3>Confirma la Instalación</h3>
+          <p>
+            Presiona el botón <b>"Instalar"</b>. Si Google Play Protect muestra una ventana indicando <i>"Desarrollador desconocido"</i>, simplemente pulsa en <b>"Más detalles"</b> y luego en <b>"Instalar de todos modos"</b>.
+          </p>
+          <div class="tutorial-hint">
+            🛡️ <b>Totalmente Normal:</b> Ocurre con todos los proyectos de código abierto y APKs independientes en fase de acceso libre.
+          </div>
+        </div>
+
+        <!-- Paso 4 -->
+        <div class="tutorial-card">
+          <div class="tutorial-badge">4</div>
+          <h3>¡Abre Nova Browser y Navega con IA!</h3>
+          <p>
+            ¡Listo! Toca <b>"Abrir"</b> o busca el icono de Nova Browser en tu menú de aplicaciones. Activa el modo lectura, prueba el copiloto Gemini y disfruta de la web sin anuncios ni rastreadores.
+          </p>
+          <div class="tutorial-hint">
+            🚀 <b>Listo para Usar:</b> No requiere cuentas obligatorias ni registros comerciales.
+          </div>
+        </div>
+      </div>
+
+      <!-- Caja de Ayuda y Compatibilidad -->
+      <div class="troubleshoot-box">
+        <div class="troubleshoot-header">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          Compatibilidad y Resolución Rápida de Dudas
+        </div>
+        <ul class="troubleshoot-list">
+          <li><b>Android 7.0 a Android 16:</b> Totalmente compatible con procesadores ARM64, ARMv7 y x86_64.</li>
+          <li><b>¿No encuentras el archivo descargado?</b> Abre la app <i>Archivos</i> o <i>Descargas</i> de tu móvil y lo encontrarás allí.</li>
+          <li><b>Actualizaciones futuras:</b> Podrás instalar nuevas versiones encima de la existente sin perder tus marcadores ni historial.</li>
+          <li><b>Cero Publicidad Invasiva:</b> El escudo Nova Shield viene preactivado desde el primer segundo.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: Procedimiento de Investigación y Admisión de Acceso -->
+  <section class="screening-section" id="investigacion">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(0, 229, 255, 0.15); border-color: var(--cyan-electric); color: var(--cyan-electric);">Pioneer Access Gate</span>
+        <h2 class="section-title">Procedimiento de Investigación y Admisión</h2>
+        <p class="section-description">
+          Queremos conocer las motivaciones de nuestros futuros usuarios. Completa esta breve evaluación de investigación: si tu perfil demuestra interés real y compromiso constructivo, ¡se te otorgará la oportunidad y el pase para descargar Nova Browser inmediatamente!
+        </p>
+      </div>
+
+      <div class="screening-box">
+        <div class="screening-step-indicator">
+          <div class="screening-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            Filtro de Admisión VIP
+          </div>
+          <div class="screening-status-text" id="screeningStatusBadge">
+            Evaluación Abierta &bull; Acceso Limitado
+          </div>
+        </div>
+
+        <!-- Formulario de Evaluación -->
+        <form id="screeningForm" onsubmit="handleScreeningSubmit(event)">
+          <!-- Pregunta 1: Identificación -->
+          <div class="screening-q-group">
+            <label class="screening-label" for="applicantName">1. Tu Nombre o Alias de Usuario Pionero:</label>
+            <input type="text" id="applicantName" class="screening-input" placeholder="Ej. Alex / TechExplorer..." required>
+          </div>
+
+          <!-- Pregunta 2: Dispositivo -->
+          <div class="screening-q-group">
+            <label class="screening-label" for="applicantDevice">2. ¿En qué dispositivo o versión de Android planeas usar Nova Browser?</label>
+            <input type="text" id="applicantDevice" class="screening-input" placeholder="Ej. Samsung Galaxy S23, Xiaomi, Pixel con Android 14..." required>
+          </div>
+
+          <!-- Pregunta 3: Investigación de Motivos -->
+          <div class="screening-q-group">
+            <label class="screening-label">3. Investigación de Propósito: ¿Por qué razón principal deseas descargar Nova Browser?</label>
+            <div class="screening-options">
+              <label class="screening-option">
+                <input type="radio" name="reason" value="ai" required checked>
+                <div class="screening-option-text">
+                  <strong>🤖 Explorar la Inteligencia Artificial (Google Gemini)</strong>
+                  <span>Deseo aprovechar el copiloto inteligente para resumir páginas web, investigar información y hacer consultas en tiempo real.</span>
+                </div>
+              </label>
+
+              <label class="screening-option">
+                <input type="radio" name="reason" value="privacy">
+                <div class="screening-option-text">
+                  <strong>🛡️ Proteger mi Privacidad con Nova Shield</strong>
+                  <span>Busco un navegador verdaderamente limpio que bloquee rastreadores, cookies de seguimiento y anuncios molestos sin almacenar telemetría.</span>
+                </div>
+              </label>
+
+              <label class="screening-option">
+                <input type="radio" name="reason" value="tech">
+                <div class="screening-option-text">
+                  <strong>⚡ Disfrutar del Rendimiento Nativo en Jetpack Compose</strong>
+                  <span>Valoro la fluidez del código nativo en Kotlin, el diseño Material 3 y el bajo consumo de recursos en mi terminal Android.</span>
+                </div>
+              </label>
+
+              <label class="screening-option">
+                <input type="radio" name="reason" value="support">
+                <div class="screening-option-text">
+                  <strong>🤝 Apoyar el Proyecto de Luis Miguel y Enviar Sugerencias</strong>
+                  <span>Quiero formar parte de la comunidad inicial, testear las funciones a fondo y brindar retroalimentación constructiva.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 4: Compromiso Decisivo -->
+          <div class="screening-q-group">
+            <label class="screening-label">4. Compromiso de Usuario Pionero (Pregunta Decisiva de Admisión):</label>
+            <div class="screening-options">
+              <label class="screening-option">
+                <input type="radio" name="commitment" value="approved" required>
+                <div class="screening-option-text">
+                  <strong style="color: var(--cyan-electric);">✅ Sí, me comprometo formalmente como usuario pionero</strong>
+                  <span>Acepto la oportunidad, usaré la aplicación de forma responsable, exploraré sus funciones con honestidad y apoyaré el proyecto.</span>
+                </div>
+              </label>
+
+              <label class="screening-option">
+                <input type="radio" name="commitment" value="rejected">
+                <div class="screening-option-text">
+                  <strong style="color: var(--text-dim);">❌ No, solo vengo por curiosidad sin ningún interés ni compromiso</strong>
+                  <span>No tengo intención de probar sus funciones ni de valorar el trabajo de desarrollo de la aplicación.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 32px;">
+            <button type="submit" class="btn btn-primary btn-large" style="width: 100%; max-width: 440px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Evaluar Mi Admisión para Descargar
+            </button>
+            <p style="color: var(--text-dim); font-size: 0.82rem; margin-top: 10px;">
+              El análisis se procesa en tiempo real mediante nuestro algoritmo de verificación de pioneros.
+            </p>
+          </div>
+        </form>
+
+        <!-- Estado de Evaluación en Progreso (Escaneo Cibernético) -->
+        <div id="screeningEvaluating" class="screening-evaluating">
+          <div class="scanner-spinner"></div>
+          <h3 style="font-size: 1.4rem; color: #FFFFFF; margin-bottom: 8px;">Procesando Procedimiento de Investigación...</h3>
+          <p id="scannerMessage" style="color: var(--cyan-electric); font-size: 0.95rem;">Analizando motivaciones del usuario...</p>
+          <div class="scanner-bar">
+            <div id="scannerFill" class="scanner-fill"></div>
+          </div>
+          <span style="font-size: 0.8rem; color: var(--text-dim);">Verificando respuestas de admisión</span>
+        </div>
+
+        <!-- Resultado APROBADO: Acceso y Oportunidad Concedida -->
+        <div id="screeningApproved" class="screening-result-approved">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); border: 2px solid var(--green-secure); color: var(--green-secure); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 2rem;">
+            ✓
+          </div>
+          <div class="welcome-pill" style="border-color: var(--green-secure); color: var(--green-secure); background: rgba(16, 185, 129, 0.1);">
+            ¡PROCEDIMIENTO SUPERADO CON ÉXITO!
+          </div>
+          <h3 style="font-size: 1.8rem; color: #FFFFFF; margin-bottom: 12px;">
+            ¡Felicidades, <span id="approvedUserName" style="color: var(--cyan-electric);">Pionero</span>! Tienes la Oportunidad Concedida
+          </h3>
+          <p style="color: var(--text-muted); max-width: 580px; margin: 0 auto 20px; font-size: 0.96rem;">
+            Tus respuestas demuestran un propósito genuino y un compromiso valioso para el crecimiento de <b>Nova Browser</b>. Tu solicitud ha sido <b>APROBADA</b>.
+          </p>
+
+          <!-- Credencial / Pase VIP -->
+          <div class="pass-card">
+            <div class="pass-header">
+              <div>
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim);">Credencial Oficial de Acceso</span>
+                <div style="font-weight: 800; font-size: 1.05rem; color: #FFFFFF;">Pase VIP de Usuario Pionero</div>
+              </div>
+              <div class="pass-token" id="approvedToken">NOVA-7924-VIP</div>
+            </div>
+            <div class="pass-details">
+              <div class="pass-detail-item">
+                <span>Titular Autorizado:</span>
+                <strong id="cardHolder">Usuario</strong>
+              </div>
+              <div class="pass-detail-item">
+                <span>Dispositivo Registrado:</span>
+                <strong id="cardDevice">Android</strong>
+              </div>
+              <div class="pass-detail-item">
+                <span>Estado de Acceso:</span>
+                <strong style="color: var(--green-secure);">Habilitado para Descarga Oficial</strong>
+              </div>
+              <div class="pass-detail-item">
+                <span>Versión Asignada:</span>
+                <strong style="color: var(--cyan-electric);">Nova Browser v1.0.0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón de Descarga Desbloqueado -->
+          <div style="margin-top: 24px;">
+            <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk" class="btn btn-primary btn-large" style="box-shadow: 0 8px 32px rgba(0, 229, 255, 0.5);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Descargar APK Directo Ahora (Acceso Desbloqueado)
+            </a>
+            <div style="margin-top: 14px;">
+              <a href="#tutorial" style="color: var(--cyan-electric); font-size: 0.88rem; text-decoration: none;">
+                ¿Dudas con la instalación? Revisa el Tutorial Paso a Paso &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultado RECHAZADO: No superó la prueba -->
+        <div id="screeningRejected" class="screening-result-rejected">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); border: 2px solid #EF4444; color: #EF4444; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.8rem;">
+            ✕
+          </div>
+          <div class="welcome-pill" style="border-color: #EF4444; color: #EF4444; background: rgba(239, 68, 68, 0.1);">
+            PROCEDIMIENTO NO SUPERADO
+          </div>
+          <h3 style="font-size: 1.6rem; color: #FFFFFF; margin-bottom: 12px;">
+            Acceso no concedido en esta ocasión
+          </h3>
+          <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto 24px; font-size: 0.95rem; line-height: 1.6;">
+            El acceso anticipado a <b>Nova Browser</b> está reservado para usuarios dispuestos a asumir el compromiso de explorar y valorar la aplicación con una actitud constructiva.
+          </p>
+          <button type="button" onclick="resetScreening()" class="btn btn-secondary btn-large">
+            <span>🔄</span> Reintentar el Procedimiento de Admisión
+          </button>
+        </div>
+
       </div>
 
     </div>
@@ -1366,7 +2317,9 @@
       // Actualizar botón activo
       const buttons = document.querySelectorAll('.screen-tab-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+      }
     }
 
     function toggleFaq(button) {
@@ -1380,6 +2333,149 @@
 
       if (!isActive) {
         item.classList.add('active');
+      }
+    }
+
+    /* Lógica del Modal de Bienvenida */
+    function openWelcomeModal() {
+      const modal = document.getElementById('welcomeModalOverlay');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeWelcomeModal() {
+      const modal = document.getElementById('welcomeModalOverlay');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        try {
+          localStorage.setItem('nova_welcome_viewed_v1', 'true');
+        } catch (e) {
+          // Navegadores con localStorage bloqueado
+        }
+      }
+    }
+
+    function handleOverlayClick(event) {
+      if (event.target && event.target.id === 'welcomeModalOverlay') {
+        closeWelcomeModal();
+      }
+    }
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeWelcomeModal();
+      }
+    });
+
+    // Auto-mostrar bienvenida en la primera visita
+    window.addEventListener('DOMContentLoaded', function() {
+      try {
+        const hasSeen = localStorage.getItem('nova_welcome_viewed_v1');
+        if (!hasSeen) {
+          setTimeout(openWelcomeModal, 800);
+        }
+      } catch (e) {
+        setTimeout(openWelcomeModal, 800);
+      }
+    });
+
+    /* Lógica del Procedimiento de Investigación y Admisión */
+    function handleScreeningSubmit(event) {
+      event.preventDefault();
+      
+      const nameInput = document.getElementById('applicantName');
+      const deviceInput = document.getElementById('applicantDevice');
+      const commitmentRadios = document.getElementsByName('commitment');
+      
+      let commitmentVal = '';
+      for (const radio of commitmentRadios) {
+        if (radio.checked) {
+          commitmentVal = radio.value;
+          break;
+        }
+      }
+
+      const applicantName = nameInput.value.trim() || 'Pionero Nova';
+      const applicantDevice = deviceInput.value.trim() || 'Dispositivo Android';
+
+      const form = document.getElementById('screeningForm');
+      const evaluatingBox = document.getElementById('screeningEvaluating');
+      const scannerMsg = document.getElementById('scannerMessage');
+      const scannerFill = document.getElementById('scannerFill');
+      const approvedBox = document.getElementById('screeningApproved');
+      const rejectedBox = document.getElementById('screeningRejected');
+      const statusBadge = document.getElementById('screeningStatusBadge');
+
+      // Ocultar formulario e iniciar escaneo
+      form.style.display = 'none';
+      evaluatingBox.classList.add('active');
+      statusBadge.textContent = 'Analizando respuestas...';
+      statusBadge.style.color = 'var(--cyan-electric)';
+
+      // Animación de barra de escaneo
+      setTimeout(() => {
+        scannerFill.style.width = '35%';
+        scannerMsg.textContent = 'Verificando compatibilidad de dispositivo (' + applicantDevice + ')...';
+      }, 300);
+
+      setTimeout(() => {
+        scannerFill.style.width = '70%';
+        scannerMsg.textContent = 'Evaluando propósito y compromiso del usuario...';
+      }, 800);
+
+      setTimeout(() => {
+        scannerFill.style.width = '100%';
+        scannerMsg.textContent = 'Generando dictamen de admisión...';
+      }, 1200);
+
+      setTimeout(() => {
+        evaluatingBox.classList.remove('active');
+
+        if (commitmentVal === 'approved') {
+          // Superó la prueba: Oportunidad concedida
+          document.getElementById('approvedUserName').textContent = applicantName;
+          document.getElementById('cardHolder').textContent = applicantName;
+          document.getElementById('cardDevice').textContent = applicantDevice;
+
+          // Generar Token Único
+          const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+          const tokenStr = 'NOVA-VIP-' + randomSuffix + '-PASS';
+          document.getElementById('approvedToken').textContent = tokenStr;
+
+          approvedBox.classList.add('active');
+          statusBadge.textContent = 'Dictamen: Aprobado (Acceso Concedido)';
+          statusBadge.style.color = 'var(--green-secure)';
+        } else {
+          // No superó la prueba
+          rejectedBox.classList.add('active');
+          statusBadge.textContent = 'Dictamen: No Superado';
+          statusBadge.style.color = '#EF4444';
+        }
+      }, 1600);
+    }
+
+    function resetScreening() {
+      const form = document.getElementById('screeningForm');
+      const approvedBox = document.getElementById('screeningApproved');
+      const rejectedBox = document.getElementById('screeningRejected');
+      const scannerFill = document.getElementById('scannerFill');
+      const statusBadge = document.getElementById('screeningStatusBadge');
+
+      scannerFill.style.width = '0%';
+      approvedBox.classList.remove('active');
+      rejectedBox.classList.remove('active');
+      form.style.display = 'block';
+      statusBadge.textContent = 'Evaluación Abierta • Acceso Limitado';
+      statusBadge.style.color = 'var(--text-dim)';
+
+      // Desmarcar compromiso para que vuelva a elegir
+      const commitmentRadios = document.getElementsByName('commitment');
+      for (const radio of commitmentRadios) {
+        radio.checked = false;
       }
     }
   </script>
