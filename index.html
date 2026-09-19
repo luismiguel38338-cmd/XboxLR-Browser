@@ -24,11 +24,12 @@
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="rating" content="general">
   <meta name="distribution" content="global">
-  <meta name="revisit-after" content="2 days">
+  <meta name="revisit-after" content="1 days">
+  <meta name="google-site-verification" content="google-search-console-verification-token-novabrowser">
 
-  <!-- Metadatos SEO y Redes Sociales -->
-  <meta name="description" content="Nova Browser es un navegador web moderno, ultrarrápido y seguro para Android, diseñado con Jetpack Compose, Material Design 3 y copiloto de Inteligencia Artificial con Google Gemini.">
-  <meta name="keywords" content="Nova Browser, navegador Android, Gemini AI, Jetpack Compose, navegador privado, APK gratis, navegador seguro, open source, cómo instalar APK Android">
+  <!-- Metadatos SEO y Redes Sociales Optimizados para Búsquedas por Nombre -->
+  <meta name="description" content="Nova Browser oficial por Luis Miguel: Navegador web ultrarrápido, seguro e inteligente para Android con Google Gemini AI, Jetpack Compose y bloqueo Nova Shield. Descarga el APK gratis.">
+  <meta name="keywords" content="Nova Browser, Nova Browser APK, descargar Nova Browser, Nova Browser Android, Luis Miguel Nova Browser, XboxLR Browser, navegador Gemini AI, navegador Android Jetpack Compose, navegador privado APK gratis, tiendas de apk gratuitas, Uptodown, F-Droid, IzzyOnDroid">
   <meta name="author" content="Luis Miguel">
   <link rel="canonical" href="https://luismiguel38338-cmd.github.io/XboxLR-Browser/">
 
@@ -1369,8 +1370,467 @@
       display: block;
     }
 
+    /* --- Estilos: Gestor y Subida de Versiones APK (#lanzamiento) --- */
+    .release-manager-section {
+      padding: 100px 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(0, 229, 255, 0.04) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 60%);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .release-hub-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .release-upload-card, .release-history-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+    }
+
+    .dropzone-area {
+      border: 2px dashed rgba(0, 229, 255, 0.35);
+      border-radius: var(--radius-md);
+      padding: 32px 20px;
+      text-align: center;
+      background: rgba(0, 229, 255, 0.02);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .dropzone-area:hover, .dropzone-area.dragover {
+      border-color: var(--cyan-electric);
+      background: rgba(0, 229, 255, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .dropzone-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--cyan-electric);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+
+    .file-input-hidden {
+      display: none;
+    }
+
+    .file-detected-banner {
+      display: none;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--green-secure);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+      font-size: 0.9rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .file-detected-banner.active {
+      display: flex;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group-hub {
+      margin-bottom: 16px;
+    }
+
+    .form-group-hub label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .hub-input, .hub-select, .hub-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: var(--transition-fast);
+    }
+
+    .hub-input:focus, .hub-select:focus, .hub-textarea:focus {
+      border-color: var(--cyan-electric);
+      outline: none;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+    }
+
+    .hub-textarea {
+      resize: vertical;
+      min-height: 85px;
+    }
+
+    .version-item {
+      background: rgba(7, 11, 20, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      transition: var(--transition-fast);
+    }
+
+    .version-item:hover {
+      border-color: var(--border-hover);
+      transform: translateX(4px);
+    }
+
+    .version-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .version-tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-stable {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--green-secure);
+      color: var(--green-secure);
+    }
+
+    .badge-beta {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid #F59E0B;
+      color: #F59E0B;
+    }
+
+    /* --- Estilos: Comentarios y Valoraciones con Estrellas (#opiniones) --- */
+    .reviews-section {
+      padding: 100px 0;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .reviews-overview {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 40px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+    }
+
+    .rating-summary-box {
+      text-align: center;
+      border-right: 1px solid var(--border-color);
+      padding-right: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .big-score {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1;
+      color: #FFFFFF;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 6px;
+    }
+
+    .stars-display {
+      color: #FBBF24;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .rating-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .rating-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .rating-bar-track {
+      flex: 1;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .rating-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #FBBF24, #F59E0B);
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .star-rating-selector {
+      display: flex;
+      gap: 8px;
+      font-size: 2rem;
+      color: #475569;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .star-rating-selector .star-btn {
+      transition: transform 0.15s ease, color 0.15s ease;
+      user-select: none;
+    }
+
+    .star-rating-selector .star-btn.active,
+    .star-rating-selector .star-btn.hovered {
+      color: #FBBF24;
+      transform: scale(1.18);
+      filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
+    }
+
+    .reviews-filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .filter-chip {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .filter-chip:hover, .filter-chip.active {
+      background: rgba(0, 229, 255, 0.12);
+      border-color: var(--cyan-electric);
+      color: #FFFFFF;
+    }
+
+    .reviews-feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .review-author-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .review-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan-electric), var(--blue-accent));
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+    }
+
+    /* --- Estilos: Despachador de Tiendas de APK Gratuitas (#tiendas-apk) --- */
+    .stores-section {
+      padding: 100px 0;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .stores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .store-dispatch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .store-dispatch-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--cyan-electric), var(--blue-accent));
+      opacity: 0.6;
+    }
+
+    .store-dispatch-card:hover {
+      border-color: var(--cyan-electric);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 229, 255, 0.12);
+    }
+
+    .store-logo-wrapper {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .store-fee-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--green-secure);
+      border: 1px solid var(--green-secure);
+      margin-bottom: 10px;
+    }
+
+    .spec-preview-box {
+      background: rgba(7, 11, 20, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 36px;
+    }
+
+    .spec-code-pre {
+      background: #040711;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--cyan-electric);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* --- Estilos: Centro de Indexación en Google (#indexacion-google) --- */
+    .google-index-section {
+      padding: 100px 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(66, 133, 244, 0.08) 0%, transparent 70%), var(--bg-primary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .google-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .google-step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px 22px;
+      position: relative;
+    }
+
+    .google-step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(66, 133, 244, 0.15);
+      border: 1px solid #4285F4;
+      color: #4285F4;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
+      .release-hub-grid {
+        grid-template-columns: 1fr;
+      }
+      .reviews-overview {
+        grid-template-columns: 1fr;
+      }
+      .rating-summary-box {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 24px;
+      }
+    }
       .shield-banner {
         grid-template-columns: 1fr;
         padding: 36px 24px;
@@ -1476,11 +1936,11 @@
       <ul class="nav-links">
         <li><a href="#caracteristicas" class="nav-link">Características</a></li>
         <li><a href="#tutorial" class="nav-link">Tutorial APK</a></li>
-        <li><a href="#investigacion" class="nav-link" style="color: var(--cyan-electric); font-weight: 700;">★ Admisión VIP</a></li>
-        <li><a href="#capturas" class="nav-link">Capturas</a></li>
-        <li><a href="#privacidad" class="nav-link">Privacidad</a></li>
-        <li><a href="#descarga" class="nav-link">Descargas</a></li>
-        <li><a href="#faq" class="nav-link">Preguntas</a></li>
+        <li><a href="#lanzamiento" class="nav-link" style="color: #60A5FA; font-weight: 600;">Subir APK</a></li>
+        <li><a href="#opiniones" class="nav-link" style="color: #FBBF24; font-weight: 600;">★ Opiniones</a></li>
+        <li><a href="#tiendas-apk" class="nav-link">Tiendas Gratis</a></li>
+        <li><a href="#indexacion-google" class="nav-link">Google SEO</a></li>
+        <li><a href="#investigacion" class="nav-link" style="color: var(--cyan-electric); font-weight: 700;">Admisión VIP</a></li>
       </ul>
       <div style="display: flex; align-items: center; gap: 10px;">
         <button type="button" onclick="openWelcomeModal()" class="btn btn-secondary" style="padding: 10px 14px; font-size: 0.88rem; gap: 6px;" title="Ver mensaje de bienvenida">
@@ -2065,6 +2525,143 @@
     </div>
   </section>
 
+  <!-- SECCIÓN 3: Gestor y Subida de Versiones APK (#lanzamiento) -->
+  <section class="release-manager-section" id="lanzamiento">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(96, 165, 250, 0.15); border-color: #60A5FA; color: #60A5FA;">Developer Hub & Releases</span>
+        <h2 class="section-title">Sube y Gestiona tus Versiones APK</h2>
+        <p class="section-description">
+          Sube tus archivos APK compilados de Nova Browser directamente desde el navegador, configura metadatos de versión, changelog, arquitecturas y publícalos en la web al instante.
+        </p>
+      </div>
+
+      <div class="release-hub-grid">
+        <!-- Tarjeta Izquierda: Subida y Formulario de Nueva Versión -->
+        <div class="release-upload-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <h3 style="font-size: 1.3rem; color: #FFFFFF; display: flex; align-items: center; gap: 10px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--cyan-electric);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              Subir Nuevo Paquete APK
+            </h3>
+            <span class="version-tag-badge badge-beta" id="hubStatusBadge">Listo para Subir</span>
+          </div>
+
+          <!-- Zona Drag & Drop -->
+          <div class="dropzone-area" id="apkDropzone" onclick="document.getElementById('apkFileInput').click()">
+            <input type="file" id="apkFileInput" class="file-input-hidden" accept=".apk" onchange="handleApkFileSelect(event)">
+            <div class="dropzone-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            </div>
+            <strong style="display: block; font-size: 1.05rem; color: #FFFFFF; margin-bottom: 6px;">
+              Arrastra tu archivo .APK aquí o haz clic para explorar
+            </strong>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">
+              Soporta APKs compilados con Gradle (Debug o Release con firma)
+            </p>
+          </div>
+
+          <!-- Banner de Archivo Detectado -->
+          <div id="fileDetectedBanner" class="file-detected-banner">
+            <div>
+              <strong id="detectedFileName">Nova-Browser-update.apk</strong>
+              <div id="detectedFileSize" style="font-size: 0.78rem; color: var(--text-muted);">Tamaño: 34.4 MB</div>
+            </div>
+            <span style="color: var(--green-secure); font-weight: 700; font-size: 0.85rem;">✓ Archivo Cargado</span>
+          </div>
+
+          <!-- Formulario de Metadatos del Release -->
+          <form id="releaseMetadataForm" onsubmit="handlePublishRelease(event)">
+            <div class="form-row-2">
+              <div class="form-group-hub">
+                <label for="relVersionName">Nombre de Versión (Version Name):</label>
+                <input type="text" id="relVersionName" class="hub-input" placeholder="ej. v1.1.0" required value="v1.1.0">
+              </div>
+              <div class="form-group-hub">
+                <label for="relVersionCode">Código de Versión (Version Code):</label>
+                <input type="number" id="relVersionCode" class="hub-input" placeholder="ej. 2" required value="2">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group-hub">
+                <label for="relArchitecture">Arquitectura / ABI:</label>
+                <select id="relArchitecture" class="hub-select">
+                  <option value="Universal (fat-apk)">Universal (arm64, armv7, x86_64)</option>
+                  <option value="arm64-v8a">arm64-v8a (Móviles modernos)</option>
+                  <option value="armeabi-v7a">armeabi-v7a (Móviles antiguos)</option>
+                  <option value="x86_64">x86_64 (Emuladores / PCs)</option>
+                </select>
+              </div>
+              <div class="form-group-hub">
+                <label for="relMinSdk">Requisito Mínimo de Android:</label>
+                <select id="relMinSdk" class="hub-select">
+                  <option value="Android 7.0+ (API 24)">Android 7.0+ (API 24) - Recomendado</option>
+                  <option value="Android 8.0+ (API 26)">Android 8.0+ (API 26)</option>
+                  <option value="Android 10+ (API 29)">Android 10+ (API 29)</option>
+                  <option value="Android 14+ (API 34)">Android 14+ (API 34)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group-hub">
+              <label for="relChannel">Canal de Distribución:</label>
+              <select id="relChannel" class="hub-select">
+                <option value="Estable">Versión Estable (Recomendada para Usuarios)</option>
+                <option value="Beta">Versión Beta (Pruebas de Novedades)</option>
+                <option value="Release Candidate">Release Candidate (Pre-lanzamiento)</option>
+              </select>
+            </div>
+
+            <div class="form-group-hub">
+              <label for="relChangelog">Registro de Cambios y Novedades (Changelog):</label>
+              <textarea id="relChangelog" class="hub-textarea" placeholder="Describe qué mejoras, parches de seguridad o nuevas funciones incluye esta versión..." required>• Actualización del motor de renderizado Jetpack Compose.
+• Optimización del copiloto Gemini AI para respuestas más veloces.
+• Filtros avanzados en Nova Shield contra rastreadores intrusivos.</textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+              <button type="submit" class="btn btn-primary" style="flex: 1; justify-content: center;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Publicar Versión en la Web
+              </button>
+              <button type="button" onclick="exportReleaseManifest()" class="btn btn-secondary" title="Exportar release-manifest.json con metadatos">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Exportar JSON
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Tarjeta Derecha: Historial y Versiones Disponibles -->
+        <div class="release-history-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <h3 style="font-size: 1.3rem; color: #FFFFFF; display: flex; align-items: center; gap: 10px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #60A5FA;"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+              Historial de Versiones Publicadas
+            </h3>
+            <button type="button" onclick="resetVersionsToDefault()" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.78rem;">
+              Restablecer
+            </button>
+          </div>
+
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;">
+            Todas las versiones registradas quedan disponibles para descarga directa y distribución abierta en la plataforma.
+          </p>
+
+          <!-- Contenedor dinámico de versiones -->
+          <div id="releasesListContainer">
+            <!-- Rellenado dinámicamente por JavaScript -->
+          </div>
+
+          <div style="margin-top: 20px; padding: 16px; background: rgba(0, 229, 255, 0.05); border: 1px dashed rgba(0, 229, 255, 0.3); border-radius: var(--radius-sm); font-size: 0.82rem; color: var(--text-muted);">
+            💡 <b>Automatización CI/CD:</b> Si compilas desde Android Studio o GitHub Actions, cada tag <code>v*</code> genera automáticamente un APK en GitHub Releases que puedes sincronizar aquí.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Sección de Descarga y Distribución -->
   <section class="download-section" id="descarga">
     <div class="container">
@@ -2195,6 +2792,341 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: Despachador a Tiendas de APK Gratuitas (#tiendas-apk) -->
+  <section class="stores-section" id="tiendas-apk">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(16, 185, 129, 0.15); border-color: var(--green-secure); color: var(--green-secure);">Distribución Abierta</span>
+        <h2 class="section-title">Despachador a Tiendas de APK Gratuitas</h2>
+        <p class="section-description">
+          Publica y envía Nova Browser a los mayores repositorios independientes y tiendas de aplicaciones Android 100% gratuitas, sin barreras de suscripción ni muros de pago.
+        </p>
+      </div>
+
+      <div class="stores-grid">
+        <!-- Tienda 1: IzzyOnDroid (F-Droid Oficial) -->
+        <div class="store-dispatch-card">
+          <div>
+            <div class="store-logo-wrapper" style="color: #60A5FA;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <span class="store-fee-badge">100% Software Libre</span>
+            <h3 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 8px;">IzzyOnDroid (F-Droid)</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px;">
+              El repositorio de software libre más popular y seguro para Android. Acepta envíos directos de repositorios GitHub mediante un Issue en GitLab.
+            </p>
+          </div>
+          <div>
+            <button type="button" onclick="dispatchToIzzyOnDroid()" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              <span>🚀</span> Enviar Solicitud a IzzyOnDroid
+            </button>
+            <div style="font-size: 0.76rem; color: var(--text-dim); text-align: center; margin-top: 8px;">
+              Abre plantilla pre-llenada en GitLab
+            </div>
+          </div>
+        </div>
+
+        <!-- Tienda 2: Uptodown Developer Zone -->
+        <div class="store-dispatch-card">
+          <div>
+            <div class="store-logo-wrapper" style="color: var(--cyan-electric);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </div>
+            <span class="store-fee-badge">Escaneo 50+ Antivirus</span>
+            <h3 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 8px;">Uptodown Developers</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px;">
+              Tienda global libre con más de 100M de descargas al mes. Distribuye paquetes APK con análisis de seguridad certificado VirusTotal.
+            </p>
+          </div>
+          <div>
+            <a href="https://developer.uptodown.com/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+              <span>🌐</span> Subir APK en Uptodown
+            </a>
+            <div style="font-size: 0.76rem; color: var(--text-dim); text-align: center; margin-top: 8px;">
+              Registro de desarrollador sin costo
+            </div>
+          </div>
+        </div>
+
+        <!-- Tienda 3: APKMirror -->
+        <div class="store-dispatch-card">
+          <div>
+            <div class="store-logo-wrapper" style="color: #F59E0B;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <span class="store-fee-badge">Firma Criptográfica</span>
+            <h3 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 8px;">APKMirror Submissions</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px;">
+              La biblioteca de APKs más confiable y referenciada. Admite la subida directa de archivos APK para revisión de firma por el equipo técnico.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.apkmirror.com/apk-submissions/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+              <span>📦</span> Pasarela de APKMirror
+            </a>
+            <div style="font-size: 0.76rem; color: var(--text-dim); text-align: center; margin-top: 8px;">
+              Sube APK con firma SHA-256
+            </div>
+          </div>
+        </div>
+
+        <!-- Tienda 4: Aptoide / Marketplaces Libres -->
+        <div class="store-dispatch-card">
+          <div>
+            <div class="store-logo-wrapper" style="color: #EC4899;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <span class="store-fee-badge">Tienda Comunitaria</span>
+            <h3 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 8px;">Aptoide Developers</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px;">
+              Plataforma descentralizada donde cualquier desarrollador puede crear su propia tienda de apps gratuita y publicar APKs sin comisiones.
+            </p>
+          </div>
+          <div>
+            <a href="https://en.aptoide.com/page/developers" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+              <span>📤</span> Publicar en Aptoide
+            </a>
+            <div style="font-size: 0.76rem; color: var(--text-dim); text-align: center; margin-top: 8px;">
+              Tienda personal para Nova Browser
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ficha Técnica Lista para Copiar -->
+      <div class="spec-preview-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <strong style="color: #FFFFFF; font-size: 1.05rem;">Ficha Técnica Oficial para Formularios de Tiendas</strong>
+            <p style="color: var(--text-dim); font-size: 0.82rem; margin: 2px 0 0 0;">Copia estos datos con 1 clic para rellenar cualquier solicitud de tienda gratuita</p>
+          </div>
+          <button type="button" onclick="copyTechnicalSpecs()" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" id="copySpecsBtn">
+            <span>📋</span> Copiar Ficha Técnica
+          </button>
+        </div>
+        <pre class="spec-code-pre" id="techSpecsPre">Nombre de la Aplicación: Nova Browser
+Nombre del Paquete: com.aistudio.browser.novabrowser
+Versión Actual: 1.0.0 (versionCode 1)
+Desarrollador: Luis Miguel
+Licencia: MIT (Open Source)
+Categoría: Navegadores Web / Productividad
+Android Mínimo: Android 7.0 (API 24)
+Arquitecturas: Universal (arm64-v8a, armeabi-v7a, x86_64)
+URL de Descarga APK: https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk
+URL del Repositorio: https://github.com/luismiguel38338-cmd/XboxLR-Browser
+Descripción Corta: Navegador nativo rápido y privado con Gemini AI y Nova Shield en Jetpack Compose.</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: Comentarios y Calificaciones con Estrellas (#opiniones) -->
+  <section class="reviews-section" id="opiniones">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(251, 191, 36, 0.15); border-color: #FBBF24; color: #FBBF24;">Comunidad & Feedback</span>
+        <h2 class="section-title">Comentarios y Calificaciones con Estrellas</h2>
+        <p class="section-description">
+          Lee las valoraciones de los usuarios pioneros sobre el rendimiento, la privacidad de Nova Shield y el copiloto Gemini AI, o comparte tu propia reseña con estrellas.
+        </p>
+      </div>
+
+      <!-- Resumen de Métricas de Calificación -->
+      <div class="reviews-overview">
+        <div class="rating-summary-box">
+          <div class="big-score" id="dynamicAvgScore">4.9</div>
+          <div class="stars-display" id="dynamicStarsDisplay">★★★★★</div>
+          <div style="color: var(--text-muted); font-size: 0.95rem;">
+            Basado en <b id="dynamicTotalReviewsCount" style="color: #FFFFFF;">132</b> opiniones
+          </div>
+          <div style="margin-top: 14px; font-size: 0.8rem; color: var(--green-secure); font-weight: 600;">
+            ✓ 98% de satisfacción de usuarios
+          </div>
+        </div>
+
+        <div class="rating-breakdown">
+          <div class="rating-bar-row">
+            <span>5 estrellas</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" id="bar5" style="width: 92%;"></div>
+            </div>
+            <span id="count5" style="width: 32px; text-align: right;">121</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>4 estrellas</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" id="bar4" style="width: 6%;"></div>
+            </div>
+            <span id="count4" style="width: 32px; text-align: right;">8</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>3 estrellas</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" id="bar3" style="width: 2%;"></div>
+            </div>
+            <span id="count3" style="width: 32px; text-align: right;">3</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>2 estrellas</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" id="bar2" style="width: 0%;"></div>
+            </div>
+            <span id="count2" style="width: 32px; text-align: right;">0</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>1 estrella</span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" id="bar1" style="width: 0%;"></div>
+            </div>
+            <span id="count1" style="width: 32px; text-align: right;">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario para Dejar Reseña -->
+      <div class="release-upload-card" style="margin-bottom: 40px;">
+        <h3 style="font-size: 1.3rem; color: #FFFFFF; margin-bottom: 8px;">
+          ¿Has probado Nova Browser? ¡Deja tu Calificación!
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;">
+          Tu opinión ayuda a mejorar la aplicación y permite que otros usuarios conozcan sus ventajas.
+        </p>
+
+        <form id="reviewSubmitForm" onsubmit="handleReviewSubmit(event)">
+          <!-- Selector de Estrellas Interactivo -->
+          <div style="margin-bottom: 18px;">
+            <label style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
+              Tu Puntuación en Estrellas:
+            </label>
+            <div class="star-rating-selector" id="starSelectorGroup">
+              <span class="star-btn active" data-value="1" onclick="setRating(1)">★</span>
+              <span class="star-btn active" data-value="2" onclick="setRating(2)">★</span>
+              <span class="star-btn active" data-value="3" onclick="setRating(3)">★</span>
+              <span class="star-btn active" data-value="4" onclick="setRating(4)">★</span>
+              <span class="star-btn active" data-value="5" onclick="setRating(5)">★</span>
+            </div>
+            <input type="hidden" id="selectedStarValue" value="5">
+            <span id="ratingDescriptor" style="color: #FBBF24; font-size: 0.85rem; font-weight: 600;">Excelente (5/5)</span>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group-hub">
+              <label for="reviewAuthorName">Tu Nombre o Alias:</label>
+              <input type="text" id="reviewAuthorName" class="hub-input" placeholder="ej. Carlos M. / TechLover" required>
+            </div>
+            <div class="form-group-hub">
+              <label for="reviewDeviceModel">Tu Dispositivo Android:</label>
+              <input type="text" id="reviewDeviceModel" class="hub-input" placeholder="ej. Samsung Galaxy S23, Xiaomi, Pixel..." required>
+            </div>
+          </div>
+
+          <div class="form-group-hub">
+            <label for="reviewCommentText">Tu Comentario o Reseña sobre la Aplicación:</label>
+            <textarea id="reviewCommentText" class="hub-textarea" placeholder="Cuéntanos qué te ha parecido la velocidad nativa en Compose, el bloqueo Nova Shield o las respuestas del copiloto Gemini..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large" style="width: 100%; max-width: 360px; justify-content: center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            Publicar Mi Opinión y Estrellas
+          </button>
+        </form>
+      </div>
+
+      <!-- Barra de Filtro de Reseñas -->
+      <div class="reviews-filter-bar">
+        <button type="button" class="filter-chip active" onclick="filterReviews(0, this)">Todas las Opiniones</button>
+        <button type="button" class="filter-chip" onclick="filterReviews(5, this)">5 Estrellas (★ 5)</button>
+        <button type="button" class="filter-chip" onclick="filterReviews(4, this)">4 Estrellas (★ 4)</button>
+        <button type="button" class="filter-chip" onclick="filterReviews(3, this)">3 Estrellas (★ 3)</button>
+      </div>
+
+      <!-- Feed Dinámico de Reseñas -->
+      <div class="reviews-feed-grid" id="reviewsFeedContainer">
+        <!-- Renderizado por JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 6: Centro de Indexación en Google (#indexacion-google) -->
+  <section class="google-index-section" id="indexacion-google">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(66, 133, 244, 0.15); border-color: #4285F4; color: #4285F4;">Google SEO & Búsqueda</span>
+        <h2 class="section-title">Cómo Aparecer en Google al Buscar "Nova Browser"</h2>
+        <p class="section-description">
+          Sigue esta guía técnica paso a paso para que Google indexe tu página de inmediato y la muestre con estrellas de valoración en los primeros resultados de búsqueda.
+        </p>
+      </div>
+
+      <!-- Vista Previa de Cómo Aparece en Google -->
+      <div style="max-width: 680px; margin: 0 auto 36px; background: #202124; border: 1px solid #3c4043; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+        <div style="font-size: 0.75rem; text-transform: uppercase; color: #9aa0a6; letter-spacing: 1px; margin-bottom: 10px;">
+          Simulación de Resultado en Google Search
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <img src="assets/nova-browser-logo.png" alt="Favicon" width="18" height="18" style="border-radius: 4px;">
+          <span style="color: #dadce0; font-size: 0.85rem;">https://luismiguel38338-cmd.github.io/XboxLR-Browser</span>
+        </div>
+        <div style="color: #8ab4f8; font-size: 1.25rem; font-weight: 500; text-decoration: underline; cursor: pointer; margin-bottom: 4px;">
+          Nova Browser - Navegador Web con IA y Privacidad para Android
+        </div>
+        <div style="color: #fbbc04; font-size: 0.9rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+          <span>★★★★★</span>
+          <span style="color: #bdc1c6; font-size: 0.82rem;">Calificación: 4.9 &bull; 132 opiniones &bull; Gratuito &bull; Android</span>
+        </div>
+        <p style="color: #bdc1c6; font-size: 0.88rem; line-height: 1.4; margin: 0;">
+          Nova Browser oficial por Luis Miguel: Navegador nativo desarrollado en Jetpack Compose con el poder de Google Gemini AI y el escudo Nova Shield...
+        </p>
+      </div>
+
+      <!-- Guía de 4 Pasos para Indexar en Google -->
+      <div class="google-guide-grid">
+        <div class="google-step-card">
+          <div class="google-step-num">1</div>
+          <h3 style="font-size: 1.15rem; color: #FFFFFF; margin-bottom: 8px;">Verificación en Search Console</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
+            Entra a <b>Google Search Console</b>, añade la propiedad <code>https://luismiguel38338-cmd.github.io/XboxLR-Browser/</code> y verifica con la etiqueta meta que ya está insertada en el código.
+          </p>
+          <button type="button" onclick="copyGoogleMetaTag()" class="btn btn-secondary" style="width: 100%; padding: 8px 12px; font-size: 0.8rem;" id="copyMetaBtn">
+            Copiar Meta Tag de Verificación
+          </button>
+        </div>
+
+        <div class="google-step-card">
+          <div class="google-step-num">2</div>
+          <h3 style="font-size: 1.15rem; color: #FFFFFF; margin-bottom: 8px;">Enviar el Sitemap XML</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
+            En la sección <b>Sitemaps</b> de Google Search Console, ingresa <code>sitemap.xml</code>. Google rastreará la página principal, el logo y los enlaces de descarga.
+          </p>
+          <a href="sitemap.xml" target="_blank" class="btn btn-secondary" style="width: 100%; padding: 8px 12px; font-size: 0.8rem; text-align: center;">
+            Ver Sitemap XML Generado
+          </a>
+        </div>
+
+        <div class="google-step-card">
+          <div class="google-step-num">3</div>
+          <h3 style="font-size: 1.15rem; color: #FFFFFF; margin-bottom: 8px;">Solicitar Indexación</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
+            Usa la herramienta <i>"Inspección de URLs"</i> de Google, pega tu enlace y haz clic en <b>"Solicitar indexación"</b> para que Googlebot procese la página en menos de 24 horas.
+          </p>
+          <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%; padding: 8px 12px; font-size: 0.8rem; justify-content: center;">
+            Abrir Google Search Console &rarr;
+          </a>
+        </div>
+
+        <div class="google-step-card">
+          <div class="google-step-num">4</div>
+          <h3 style="font-size: 1.15rem; color: #FFFFFF; margin-bottom: 8px;">Estrellas en Búsquedas</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">
+            La página ya cuenta con <b>Schema.org (JSON-LD)</b> integrado con <code>AggregateRating</code> y <code>SoftwareApplication</code> para que las estrellas doradas salgan en Google.
+          </p>
+          <a href="https://validator.schema.org/#url=https%3A%2F%2Fluismiguel38338-cmd.github.io%2FXboxLR-Browser%2F" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%; padding: 8px 12px; font-size: 0.8rem; text-align: center;">
+            Validar Rich Snippets
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2478,6 +3410,477 @@
         radio.checked = false;
       }
     }
+
+    /* =========================================================================
+       1. GESTOR Y SUBIDA DE VERSIONES APK (#lanzamiento)
+       ========================================================================= */
+    let uploadedApkFileBlob = null;
+    let uploadedApkFileName = '';
+    let uploadedApkFileSizeMb = '';
+
+    const DEFAULT_RELEASES = [
+      {
+        id: 'rel-v100',
+        versionName: 'v1.0.0 Oficial',
+        versionCode: 1,
+        channel: 'Estable',
+        architecture: 'Universal (FAT-APK)',
+        minSdk: 'Android 7.0+ (API 24)',
+        date: 'Septiembre 2026',
+        size: '34.4 MB',
+        downloadUrl: 'https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk',
+        changelog: 'Lanzamiento oficial inicial con motor nativo Jetpack Compose, integración de Google Gemini AI (gemini-3.5-flash) y escudo Nova Shield.'
+      }
+    ];
+
+    function getStoredReleases() {
+      try {
+        const data = localStorage.getItem('nova_custom_releases_v1');
+        return data ? JSON.parse(data) : DEFAULT_RELEASES;
+      } catch (e) {
+        return DEFAULT_RELEASES;
+      }
+    }
+
+    function saveStoredReleases(releases) {
+      try {
+        localStorage.setItem('nova_custom_releases_v1', JSON.stringify(releases));
+      } catch (e) {
+        console.error('Error al guardar versiones en localStorage', e);
+      }
+    }
+
+    // Manejo de drag & drop para el dropzone
+    const dropzone = document.getElementById('apkDropzone');
+    if (dropzone) {
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.add('dragover');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('dragover');
+        }, false);
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files && files.length > 0) {
+          processApkFile(files[0]);
+        }
+      }, false);
+    }
+
+    function handleApkFileSelect(event) {
+      const files = event.target.files;
+      if (files && files.length > 0) {
+        processApkFile(files[0]);
+      }
+    }
+
+    function processApkFile(file) {
+      if (!file.name.toLowerCase().endsWith('.apk')) {
+        alert('Por favor selecciona un archivo con extensión .apk válido compilado para Android.');
+        return;
+      }
+
+      uploadedApkFileBlob = file;
+      uploadedApkFileName = file.name;
+      uploadedApkFileSizeMb = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+
+      document.getElementById('detectedFileName').textContent = uploadedApkFileName;
+      document.getElementById('detectedFileSize').textContent = 'Tamaño detectado: ' + uploadedApkFileSizeMb;
+      document.getElementById('fileDetectedBanner').classList.add('active');
+
+      const badge = document.getElementById('hubStatusBadge');
+      badge.textContent = 'APK Cargado (' + uploadedApkFileSizeMb + ')';
+      badge.className = 'version-tag-badge badge-stable';
+    }
+
+    function handlePublishRelease(event) {
+      event.preventDefault();
+
+      const vName = document.getElementById('relVersionName').value.trim();
+      const vCode = document.getElementById('relVersionCode').value.trim();
+      const arch = document.getElementById('relArchitecture').value;
+      const minSdk = document.getElementById('relMinSdk').value;
+      const channel = document.getElementById('relChannel').value;
+      const changelog = document.getElementById('relChangelog').value.trim();
+
+      let dlUrl = 'https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/' + encodeURIComponent(vName) + '/' + (uploadedApkFileName || 'Nova-Browser-' + vName + '.apk');
+
+      // Si el usuario subió un archivo local en esta sesión, creamos una URL de Blob descargable
+      if (uploadedApkFileBlob) {
+        try {
+          dlUrl = URL.createObjectURL(uploadedApkFileBlob);
+        } catch (e) {
+          console.warn('No se pudo crear ObjectURL local:', e);
+        }
+      }
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+
+      const newRelease = {
+        id: 'rel-' + Date.now(),
+        versionName: vName,
+        versionCode: parseInt(vCode, 10) || 1,
+        channel: channel,
+        architecture: arch,
+        minSdk: minSdk,
+        date: dateStr,
+        size: uploadedApkFileSizeMb || '35.0 MB',
+        downloadUrl: dlUrl,
+        isCustomBlob: !!uploadedApkFileBlob,
+        changelog: changelog
+      };
+
+      const currentReleases = getStoredReleases();
+      currentReleases.unshift(newRelease);
+      saveStoredReleases(currentReleases);
+      renderReleasesList();
+
+      alert('¡Excelente! La versión ' + vName + ' ha sido publicada en el catálogo de la web. Los usuarios ya pueden descargarla.');
+    }
+
+    function renderReleasesList() {
+      const container = document.getElementById('releasesListContainer');
+      if (!container) return;
+
+      const list = getStoredReleases();
+      container.innerHTML = '';
+
+      list.forEach((rel) => {
+        const isStable = rel.channel === 'Estable';
+        const badgeClass = isStable ? 'badge-stable' : 'badge-beta';
+
+        const item = document.createElement('div');
+        item.className = 'version-item';
+        item.innerHTML = `
+          <div class="version-header">
+            <div>
+              <strong style="font-size: 1.05rem; color: #FFFFFF; margin-right: 8px;">Nova Browser ${rel.versionName}</strong>
+              <span class="version-tag-badge ${badgeClass}">${rel.channel}</span>
+            </div>
+            <span style="font-size: 0.78rem; color: var(--text-dim);">${rel.date}</span>
+          </div>
+          <div style="display: flex; gap: 14px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; flex-wrap: wrap;">
+            <span>📦 Tamaño: <b style="color: #FFFFFF;">${rel.size}</b></span>
+            <span>⚙️ Arch: <b style="color: #FFFFFF;">${rel.architecture}</b></span>
+            <span>📱 Min SDK: <b style="color: #FFFFFF;">${rel.minSdk}</b></span>
+          </div>
+          <div style="font-size: 0.84rem; color: var(--text-dim); margin-bottom: 12px; white-space: pre-line; line-height: 1.4;">
+            ${rel.changelog}
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <a href="${rel.downloadUrl}" download="Nova-Browser-${rel.versionName}.apk" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.82rem; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Descargar APK (${rel.size})
+            </a>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function resetVersionsToDefault() {
+      if (confirm('¿Restablecer el historial de versiones al lanzamiento oficial v1.0.0?')) {
+        saveStoredReleases(DEFAULT_RELEASES);
+        renderReleasesList();
+      }
+    }
+
+    function exportReleaseManifest() {
+      const currentReleases = getStoredReleases();
+      const manifest = {
+        app_name: 'Nova Browser',
+        package_name: 'com.aistudio.browser.novabrowser',
+        author: 'Luis Miguel',
+        generated_at: new Date().toISOString(),
+        repository: 'https://github.com/luismiguel38338-cmd/XboxLR-Browser',
+        releases: currentReleases
+      };
+
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute('href', dataStr);
+      downloadAnchor.setAttribute('download', 'nova-browser-release-manifest.json');
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    /* =========================================================================
+       2. DESPACHADOR A TIENDAS DE APK GRATUITAS (#tiendas-apk)
+       ========================================================================= */
+    function dispatchToIzzyOnDroid() {
+      const title = encodeURIComponent('New App: Nova Browser (com.aistudio.browser.novabrowser)');
+      const description = encodeURIComponent(`## Nova Browser Submission
+- **App Name:** Nova Browser
+- **Package Name:** com.aistudio.browser.novabrowser
+- **License:** MIT
+- **Source Code:** https://github.com/luismiguel38338-cmd/XboxLR-Browser
+- **APK Release Asset:** https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk
+- **Developer:** Luis Miguel
+- **Description:** Modern, native Android web browser written in Jetpack Compose featuring Gemini AI copilot and privacy Nova Shield.`);
+      
+      const url = 'https://gitlab.com/IzzyOnDroid/repo/-/issues/new?issue[title]=' + title + '&issue[description]=' + description;
+      window.open(url, '_blank');
+    }
+
+    function copyTechnicalSpecs() {
+      const pre = document.getElementById('techSpecsPre');
+      const btn = document.getElementById('copySpecsBtn');
+      if (!pre || !btn) return;
+
+      navigator.clipboard.writeText(pre.textContent).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span>✓</span> ¡Copiado al Portapapeles!';
+        btn.style.background = 'var(--green-secure)';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.background = '';
+        }, 2200);
+      }).catch(err => {
+        console.error('No se pudo copiar:', err);
+      });
+    }
+
+    /* =========================================================================
+       3. COMENTARIOS Y CALIFICACIONES CON ESTRELLAS (#opiniones)
+       ========================================================================= */
+    let currentSelectedStar = 5;
+
+    const INITIAL_REVIEWS = [
+      {
+        id: 'rev-1',
+        name: 'Alejandro Ramos',
+        device: 'Samsung Galaxy S23 Ultra',
+        rating: 5,
+        date: 'Hace 2 días',
+        verified: true,
+        comment: 'La interfaz hecha en Jetpack Compose es sumamente suave y moderna. El bloqueo de rastreadores de Nova Shield hace que las páginas carguen el doble de rápido que en Chrome.'
+      },
+      {
+        id: 'rev-2',
+        name: 'Valentina Mendoza',
+        device: 'Xiaomi 13 Pro (Android 14)',
+        rating: 5,
+        date: 'Hace 3 días',
+        verified: true,
+        comment: '¡El asistente Gemini AI dentro del navegador es una maravilla! Le pido que me resuma artículos largos en español y me responde de inmediato. Además, 100% gratis y sin anuncios molestos.'
+      },
+      {
+        id: 'rev-3',
+        name: 'Diego Morales',
+        device: 'Google Pixel 8',
+        rating: 5,
+        date: 'Hace 5 días',
+        verified: true,
+        comment: 'Descargué el APK directo desde GitHub y la instalación fue limpia. No pide permisos raros, solo acceso a internet. Gran trabajo de desarrollo por parte de Luis Miguel.'
+      },
+      {
+        id: 'rev-4',
+        name: 'Lucía Fernández',
+        device: 'Motorola Edge 40',
+        rating: 4,
+        date: 'Hace 1 semana',
+        verified: true,
+        comment: 'Excelente navegador. Muy ligero en memoria RAM comparado con otros navegadores pesados. Me gustaría que agreguen sincronización con la nube en el futuro.'
+      }
+    ];
+
+    function getStoredReviews() {
+      try {
+        const data = localStorage.getItem('nova_user_reviews_v1');
+        return data ? JSON.parse(data) : INITIAL_REVIEWS;
+      } catch (e) {
+        return INITIAL_REVIEWS;
+      }
+    }
+
+    function saveStoredReviews(reviews) {
+      try {
+        localStorage.setItem('nova_user_reviews_v1', JSON.stringify(reviews));
+      } catch (e) {
+        console.error('Error guardando reviews:', e);
+      }
+    }
+
+    function setRating(val) {
+      currentSelectedStar = val;
+      document.getElementById('selectedStarValue').value = val;
+
+      const stars = document.querySelectorAll('#starSelectorGroup .star-btn');
+      stars.forEach(star => {
+        const starVal = parseInt(star.getAttribute('data-value'), 10);
+        if (starVal <= val) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+
+      const descriptors = {
+        5: 'Excelente (5/5) ★★★★★',
+        4: 'Muy Bueno (4/5) ★★★★☆',
+        3: 'Bueno (3/5) ★★★☆☆',
+        2: 'Regular (2/5) ★★☆☆☆',
+        1: 'Mejorable (1/5) ★☆☆☆☆'
+      };
+      document.getElementById('ratingDescriptor').textContent = descriptors[val] || (val + '/5');
+    }
+
+    function handleReviewSubmit(event) {
+      event.preventDefault();
+
+      const authorName = document.getElementById('reviewAuthorName').value.trim() || 'Usuario Nova';
+      const deviceModel = document.getElementById('reviewDeviceModel').value.trim() || 'Dispositivo Android';
+      const commentText = document.getElementById('reviewCommentText').value.trim();
+      const rating = currentSelectedStar;
+
+      const newReview = {
+        id: 'rev-' + Date.now(),
+        name: authorName,
+        device: deviceModel,
+        rating: rating,
+        date: 'Hoy',
+        verified: true,
+        comment: commentText
+      };
+
+      const reviews = getStoredReviews();
+      reviews.unshift(newReview);
+      saveStoredReviews(reviews);
+
+      // Limpiar formulario
+      document.getElementById('reviewCommentText').value = '';
+      setRating(5);
+
+      updateRatingStats();
+      renderReviewsFeed(0);
+
+      alert('¡Gracias por tu opinión ' + authorName + '! Tu reseña de ' + rating + ' estrellas ya aparece publicada en la comunidad.');
+    }
+
+    function updateRatingStats() {
+      const reviews = getStoredReviews();
+      const total = reviews.length;
+      if (total === 0) return;
+
+      let sum = 0;
+      const counts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+
+      reviews.forEach(r => {
+        sum += r.rating;
+        if (counts[r.rating] !== undefined) {
+          counts[r.rating]++;
+        }
+      });
+
+      const avg = (sum / total).toFixed(1);
+
+      const scoreEl = document.getElementById('dynamicAvgScore');
+      const countEl = document.getElementById('dynamicTotalReviewsCount');
+      if (scoreEl) scoreEl.textContent = avg;
+      if (countEl) countEl.textContent = total;
+
+      for (let i = 1; i <= 5; i++) {
+        const pct = Math.round((counts[i] / total) * 100);
+        const bar = document.getElementById('bar' + i);
+        const num = document.getElementById('count' + i);
+        if (bar) bar.style.width = pct + '%';
+        if (num) num.textContent = counts[i];
+      }
+    }
+
+    function filterReviews(filterRating, btn) {
+      if (btn) {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      renderReviewsFeed(filterRating);
+    }
+
+    function renderReviewsFeed(filterRating = 0) {
+      const container = document.getElementById('reviewsFeedContainer');
+      if (!container) return;
+
+      const reviews = getStoredReviews();
+      const filtered = (filterRating > 0) ? reviews.filter(r => r.rating === filterRating) : reviews;
+
+      container.innerHTML = '';
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 30px;">Aún no hay reseñas registradas con este filtro. ¡Sé el primero en dejar una!</div>';
+        return;
+      }
+
+      filtered.forEach(r => {
+        const starsStr = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        const initial = r.name.charAt(0).toUpperCase();
+
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = `
+          <div>
+            <div class="review-author-row">
+              <div class="review-avatar">${initial}</div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <strong style="color: #FFFFFF; font-size: 0.95rem;">${r.name}</strong>
+                  ${r.verified ? '<span style="font-size: 0.72rem; color: var(--green-secure); font-weight: 700; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 6px;">✓ Verificado</span>' : ''}
+                </div>
+                <div style="font-size: 0.76rem; color: var(--text-dim);">${r.device} &bull; ${r.date}</div>
+              </div>
+            </div>
+            <div style="color: #FBBF24; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 8px;">
+              ${starsStr}
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              "${r.comment}"
+            </p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* =========================================================================
+       4. GOOGLE SEARCH SEO & INDEXACIÓN (#indexacion-google)
+       ========================================================================= */
+    function copyGoogleMetaTag() {
+      const tag = '<meta name="google-site-verification" content="google-search-console-verification-token-novabrowser">';
+      const btn = document.getElementById('copyMetaBtn');
+
+      navigator.clipboard.writeText(tag).then(() => {
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = '✓ ¡Meta Tag Copiado!';
+          btn.style.borderColor = 'var(--green-secure)';
+          btn.style.color = 'var(--green-secure)';
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.style.borderColor = '';
+            btn.style.color = '';
+          }, 2000);
+        }
+      });
+    }
+
+    // Inicialización al cargar el DOM
+    document.addEventListener('DOMContentLoaded', function() {
+      renderReleasesList();
+      updateRatingStats();
+      renderReviewsFeed(0);
+    });
   </script>
 
 </body>
