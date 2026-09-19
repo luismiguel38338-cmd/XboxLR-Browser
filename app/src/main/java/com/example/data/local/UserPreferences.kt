@@ -21,7 +21,10 @@ data class BrowserSettings(
     val allowAiPageContext: Boolean = true,
     val customApiKey: String = "",
     val language: String = "es",
-    val shieldProtection: Boolean = true
+    val shieldProtection: Boolean = true,
+    val smartDarkMode: Boolean = false,
+    val autoBlockCookieBanners: Boolean = true,
+    val aiModel: String = "gemini-3.5-flash"
 )
 
 class UserPreferences(context: Context) {
@@ -46,8 +49,26 @@ class UserPreferences(context: Context) {
             allowAiPageContext = prefs.getBoolean("allow_ai_page_context", true),
             customApiKey = prefs.getString("custom_api_key", "") ?: "",
             language = prefs.getString("language", "es") ?: "es",
-            shieldProtection = prefs.getBoolean("shield_protection", true)
+            shieldProtection = prefs.getBoolean("shield_protection", true),
+            smartDarkMode = prefs.getBoolean("smart_dark_mode", false),
+            autoBlockCookieBanners = prefs.getBoolean("auto_block_cookie_banners", true),
+            aiModel = prefs.getString("ai_model", "gemini-3.5-flash") ?: "gemini-3.5-flash"
         )
+    }
+
+    fun updateSmartDarkMode(enabled: Boolean) {
+        prefs.edit().putBoolean("smart_dark_mode", enabled).apply()
+        _settings.value = _settings.value.copy(smartDarkMode = enabled)
+    }
+
+    fun updateAutoBlockCookieBanners(enabled: Boolean) {
+        prefs.edit().putBoolean("auto_block_cookie_banners", enabled).apply()
+        _settings.value = _settings.value.copy(autoBlockCookieBanners = enabled)
+    }
+
+    fun updateAiModel(model: String) {
+        prefs.edit().putString("ai_model", model).apply()
+        _settings.value = _settings.value.copy(aiModel = model)
     }
 
     fun updateShieldProtection(enabled: Boolean) {

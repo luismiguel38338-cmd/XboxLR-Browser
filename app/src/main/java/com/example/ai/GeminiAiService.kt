@@ -26,7 +26,8 @@ class GeminiAiService : AiService {
         pageUrl: String?,
         pageContent: String?,
         action: AiAction,
-        customKey: String?
+        customKey: String?,
+        modelName: String
     ): Result<String> = withContext(Dispatchers.IO) {
         val apiKey = when {
             !customKey.isNullOrBlank() -> customKey.trim()
@@ -58,7 +59,8 @@ class GeminiAiService : AiService {
         }
 
         try {
-            val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$apiKey"
+            val selectedModel = if (modelName.isNotBlank()) modelName else "gemini-3.5-flash"
+            val url = "https://generativelanguage.googleapis.com/v1beta/models/$selectedModel:generateContent?key=$apiKey"
 
             val jsonBody = JSONObject().apply {
                 val contents = JSONArray().apply {
@@ -176,6 +178,21 @@ class GeminiAiService : AiService {
             }
             AiAction.CHAT -> {
                 "Hola, soy **Nova AI**, tu copiloto inteligente en Nova Browser. Puedo ayudarte a responder dudas, resumir esta web, extraer datos, traducir o redactar textos. ¿Qué deseas consultar hoy?"
+            }
+            AiAction.FACT_CHECK -> {
+                "### 🔍 Verificación de Datos por Nova AI\n\n" +
+                        "1. **Sitio analizado:** $target\n" +
+                        "2. **Evaluación preliminar:** Las fuentes y contenidos en esta página web presentan estructura estándar y coherente.\n" +
+                        "3. **Recomendación:** Se sugiere contrastar afirmaciones estadísticas o de actualidad con fuentes académicas o de verificación reconocidas."
+            }
+            AiAction.ELI5 -> {
+                "### 🎈 Explicación sencilla (Para 5 años)\n\n" +
+                        "Imagina que esta página web es como una biblioteca mágica de juguetes donde cada botón te lleva a un cuarto diferente con cosas increíbles. Lo más importante de aquí es que puedes leer, aprender cosas nuevas y divertirte explorando sin perderte."
+            }
+            AiAction.EXTRACT_CODE -> {
+                "### 💻 Fragmentos de Código Extraídos\n\n" +
+                        "```html\n<!-- Código o scripts detectados en la página -->\n<script>\n  console.log(\"Nova Browser DevTools & AI Active\");\n</script>\n```\n" +
+                        "*(Usa el menú 'Inspector DevTools' para ver el DOM completo y ejecutar código en vivo)*"
             }
         }
     }

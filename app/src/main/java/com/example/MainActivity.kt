@@ -20,6 +20,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ai.AiAction
 import com.example.ui.components.BrowserMenuSheet
 import com.example.ui.components.ClearDataDialog
+import com.example.ui.components.DevToolsSheet
 import com.example.ui.components.FindInPageBar
 import com.example.ui.components.NovaAiSheet
 import com.example.ui.components.NovaBottomBar
@@ -28,6 +29,7 @@ import com.example.ui.components.QrCodeDialog
 import com.example.ui.components.ReaderModeView
 import com.example.ui.components.ShieldDialog
 import com.example.ui.components.TabsSheet
+import com.example.ui.components.WebNarratorHud
 import com.example.ui.screens.BookmarksScreen
 import com.example.ui.screens.BrowserScreen
 import com.example.ui.screens.DownloadsScreen
@@ -97,12 +99,25 @@ fun NovaBrowserApp(viewModel: BrowserViewModel) {
     val blockedTrackerCount by viewModel.blockedTrackerCount.collectAsState()
     val isQrDialogVisible by viewModel.isQrDialogVisible.collectAsState()
 
+    // Advanced & Unique Features state: Narrator & DevTools
+    val isNarratorVisible by viewModel.isNarratorVisible.collectAsState()
+    val isNarratorSpeaking by viewModel.isNarratorSpeaking.collectAsState()
+    val isNarratorPaused by viewModel.isNarratorPaused.collectAsState()
+    val narratorSpeedRate by viewModel.narratorSpeedRate.collectAsState()
+    val narratorTitle by viewModel.narratorTitle.collectAsState()
+
+    val isDevToolsVisible by viewModel.isDevToolsVisible.collectAsState()
+    val pageHtml by viewModel.pageHtml.collectAsState()
+    val consoleLogs by viewModel.consoleLogs.collectAsState()
+
     // Handle back button hierarchically
     BackHandler(enabled = true) {
         when {
             isFindInPageVisible -> viewModel.setFindInPageVisible(false)
             isShieldDialogVisible -> viewModel.setShieldDialogVisible(false)
             isQrDialogVisible -> viewModel.setQrDialogVisible(false)
+            isDevToolsVisible -> viewModel.setDevToolsVisible(false)
+            isNarratorVisible -> viewModel.closeNarrator()
             currentTab.isReaderMode -> viewModel.toggleReaderMode()
             activeOverlay != null -> viewModel.closeOverlay()
             isAiSheetVisible -> viewModel.setAiSheetVisible(false)
@@ -198,6 +213,9 @@ fun NovaBrowserApp(viewModel: BrowserViewModel) {
                         onUpdateClearOnExit = { enabled -> viewModel.updateClearOnExit(enabled) },
                         onUpdateAllowAiContext = { enabled -> viewModel.updateAllowAiPageContext(enabled) },
                         onUpdateCustomApiKey = { key -> viewModel.updateCustomApiKey(key) },
+                        onUpdateSmartDarkMode = { enabled -> viewModel.toggleSmartDarkMode() },
+                        onUpdateAutoBlockCookies = { viewModel.toggleAutoBlockCookies() },
+                        onUpdateAiModel = { model -> viewModel.updateAiModel(model) },
                         onClearHistory = { viewModel.clearHistory() },
                         onOpenDownloads = { viewModel.openOverlay(OverlayScreen.DOWNLOADS) },
                         onOpenPrivacyPolicy = { viewModel.openOverlay(OverlayScreen.PRIVACY_POLICY) },
@@ -213,6 +231,10 @@ fun NovaBrowserApp(viewModel: BrowserViewModel) {
                         isVisible = true,
                         onDismiss = { viewModel.closeOverlay() }
                     )
+                }
+                OverlayScreen.DEV_TOOLS -> {
+                    viewModel.closeOverlay()
+                    viewModel.setDevToolsVisible(true)
                 }
                 null -> {
                     // Standard Browser or Home View
@@ -269,8 +291,12 @@ fun NovaBrowserApp(viewModel: BrowserViewModel) {
                                 },
                                 onGoHome = { viewModel.goHome() },
                                 isShieldEnabled = settings.shieldProtection,
+                                isSmartDarkGlobal = settings.smartDarkMode,
+                                isAutoBlockCookiesEnabled = settings.autoBlockCookieBanners,
                                 onTrackerBlocked = { viewModel.onTrackerBlocked() },
-                                onFindResult = { active, count -> viewModel.updateFindMatchStatus(active, count) }
+                                onFindResult = { active, count -> viewModel.updateFindMatchStatus(active, count) },
+                                onHtmlExtracted = { html -> viewModel.onHtmlExtracted(html) },
+                                onJsExecutionResult = { result, error -> viewModel.onJsExecutionResult(result, error) }
                             )
                         }
                     }
@@ -312,6 +338,7 @@ fun NovaBrowserApp(viewModel: BrowserViewModel) {
         currentUrl = currentTab.url,
         isDesktopMode = currentTab.isDesktopMode,
         isReaderMode = currentTab.isReaderMode,
+        isSmartDarkMode = currentTab.isSmartDark,
         textZoom = currentTab.textZoom,
         onDismiss = { viewModel.setMenuSheetVisible(false) },
         onNewTab = { isIncognito -> viewModel.openNewTab(isIncognito = isIncognito) },
@@ -319,10 +346,39 @@ fun NovaBrowserApp(viewModel: BrowserViewModel) {
         onOpenClearData = { viewModel.setClearDataDialogVisible(true) },
         onToggleDesktop = { viewModel.toggleDesktopMode() },
         onToggleReader = { viewModel.toggleReaderMode() },
+        onToggleSmartDark = { viewModel.toggleSmartDarkMode() },
+        onStartNarrator = { viewModel.startWebNarrator() },
+        onOpenDevTools = { viewModel.setDevToolsVisible(true) },
+        onPrintPdf = { viewModel.requestPrintPdf() },
+        onPanicWipe = { viewModel.panicWipeAndGoHome() },
         onFindInPage = { viewModel.setFindInPageVisible(true) },
         onOpenShield = { viewModel.setShieldDialogVisible(true) },
         onOpenQr = { viewModel.setQrDialogVisible(true) },
         onUpdateZoom = { zoom -> viewModel.updateTextZoom(zoom) }
+    )
+
+    // Web Narrator Floating HUD (Lectura en voz alta TTS)
+    WebNarratorHud(
+        isVisible = isNarratorVisible,
+        title = narratorTitle,
+        isSpeaking = isNarratorSpeaking,
+        isPaused = isNarratorPaused,
+        speedRate = narratorSpeedRate,
+        onTogglePlayPause = { viewModel.toggleNarratorPlayPause() },
+        onCycleSpeed = { viewModel.cycleNarratorSpeed() },
+        onClose = { viewModel.closeNarrator() }
+    )
+
+    // Developer Tools Sheet (Consola JavaScript e Inspector DOM/HTML)
+    DevToolsSheet(
+        isVisible = isDevToolsVisible,
+        pageTitle = currentTab.title,
+        pageUrl = currentTab.url,
+        pageHtml = pageHtml,
+        consoleLogs = consoleLogs,
+        onExecuteJs = { script -> viewModel.executeJsInPage(script) },
+        onClearLogs = { viewModel.clearConsoleLogs() },
+        onDismiss = { viewModel.setDevToolsVisible(false) }
     )
 
     // Dialog: Clear Browsing Data

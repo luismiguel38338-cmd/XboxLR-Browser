@@ -15,5 +15,6 @@ data class TabItem(
     val pageSnippet: String = "",
     val isDesktopMode: Boolean = false,
     val textZoom: Int = 100,
-    val isReaderMode: Boolean = false
+    val isReaderMode: Boolean = false,
+    val isSmartDark: Boolean = false
 )

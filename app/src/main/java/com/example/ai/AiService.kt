@@ -8,6 +8,7 @@ interface AiService {
         pageUrl: String? = null,
         pageContent: String? = null,
         action: AiAction = AiAction.CHAT,
-        customKey: String? = null
+        customKey: String? = null,
+        modelName: String = "gemini-3.5-flash"
     ): Result<String>
 }

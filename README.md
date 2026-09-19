@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-  <a href="https://luismiguel38338-cmd.github.io/Nova-Browser/"><img src="https://img.shields.io/badge/Sitio%20Web-Oficial-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=black" alt="Sitio Web Oficial" /></a>
-  <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/releases"><img src="https://img.shields.io/badge/Descargar%20APK-v1.0.0-3B82F6?style=for-the-badge&logo=android&logoColor=white" alt="Descargar APK" /></a>
-  <a href="https://github.com/luismiguel38338-cmd/Nova-Browser/actions"><img src="https://img.shields.io/badge/CI%2FCD-Build%20Passing-success?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build Status" /></a>
+  <a href="https://luismiguel38338-cmd.github.io/XboxLR-Browser/"><img src="https://img.shields.io/badge/Sitio%20Web-Oficial-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=black" alt="Sitio Web Oficial" /></a>
+  <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases/download/v1.0.0/Nova-Browser-v1.0-debug.apk"><img src="https://img.shields.io/badge/Descargar%20APK-v1.0.0-3B82F6?style=for-the-badge&logo=android&logoColor=white" alt="Descargar APK" /></a>
+  <a href="https://github.com/luismiguel38338-cmd/XboxLR-Browser/actions"><img src="https://img.shields.io/badge/CI%2FCD-Build%20Passing-success?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build Status" /></a>
   <img src="https://img.shields.io/badge/Android-7.0%2B%20(API%2024%2B)-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android Version" />
   <img src="https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
   <img src="https://img.shields.io/badge/UI-Jetpack%20Compose%20M3-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="Jetpack Compose" />
@@ -193,8 +193,8 @@ Nova Browser incorpora un panel deslizable inferior de Inteligencia Artificial q
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/luismiguel38338-cmd/Nova-Browser.git
-cd Nova-Browser
+git clone https://github.com/luismiguel38338-cmd/XboxLR-Browser.git
+cd XboxLR-Browser
 ```
 
 ### 2. Configurar la clave de Google Gemini (Opcional)
@@ -289,7 +289,7 @@ El proyecto incluye un flujo de trabajo listo en `.github/workflows/build.yml`. 
 > 📖 Para una guía detallada paso a paso sobre cómo subir el proyecto a cada canal sin costo, consulta la **[Guía Oficial de Distribución (DISTRIBUTION.md)](DISTRIBUTION.md)**.
 
 ### Canales Gratuitos Soportados:
-- 🚀 **[GitHub Releases](https://github.com/luismiguel38338-cmd/Nova-Browser/releases)**: Descarga directa del APK generado automáticamente por CI/CD.
+- 🚀 **[GitHub Releases](https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases)**: Descarga directa del APK generado automáticamente por CI/CD.
 - 📱 **[IzzyOnDroid / F-Droid](https://gitlab.com/IzzyOnDroid/repo)**: Repositorio libre para Android sin costes.
 - 🌐 **[Uptodown](https://developer.uptodown.com/)**: Plataforma global gratuita para subir APKs.
 - 📂 **[APKMirror](https://www.apkmirror.com/apk-submissions/)**: Portal verificado y gratuito de instaladores Android.
@@ -383,7 +383,7 @@ Desarrollado con dedicación y pasión por la tecnología por:
 
 - **Desarrollador**: Luis Miguel
 - **Perfil de GitHub**: [@luismiguel38338-cmd](https://github.com/luismiguel38338-cmd)
-- **Repositorio Oficial**: [https://github.com/luismiguel38338-cmd/Nova-Browser](https://github.com/luismiguel38338-cmd)
+- **Repositorio Oficial**: [https://github.com/luismiguel38338-cmd/XboxLR-Browser](https://github.com/luismiguel38338-cmd/XboxLR-Browser)
 
 ---
 

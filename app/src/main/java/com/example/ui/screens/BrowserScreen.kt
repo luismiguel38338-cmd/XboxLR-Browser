@@ -71,8 +71,12 @@ fun BrowserScreen(
     onDownloadRequested: (fileName: String, url: String, mimeType: String, sizeBytes: Long) -> Unit,
     onGoHome: () -> Unit,
     isShieldEnabled: Boolean = true,
+    isSmartDarkGlobal: Boolean = false,
+    isAutoBlockCookiesEnabled: Boolean = true,
     onTrackerBlocked: () -> Unit = {},
     onFindResult: (activeOrdinal: Int, numberOfMatches: Int) -> Unit = { _, _ -> },
+    onHtmlExtracted: (String) -> Unit = {},
+    onJsExecutionResult: (String, Boolean) -> Unit = { _, _ -> },
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -80,13 +84,24 @@ fun BrowserScreen(
     var hasError by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
 
+    fun loadUrlSafely(targetWebView: WebView, targetUrl: String) {
+        if (targetUrl.contains("welcome.html") || targetUrl.startsWith("file:///android_asset/")) {
+            try {
+                val html = context.assets.open("welcome.html").bufferedReader().use { it.readText() }
+                targetWebView.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", null)
+                return
+            } catch (_: Exception) {}
+        }
+        targetWebView.loadUrl(targetUrl)
+    }
+
     // Handle incoming navigation commands
     LaunchedEffect(navigationCommand, webViewRef) {
         val webView = webViewRef ?: return@LaunchedEffect
         when (navigationCommand) {
             is NavigationCommand.LoadUrl -> {
                 hasError = false
-                webView.loadUrl(navigationCommand.url)
+                loadUrlSafely(webView, navigationCommand.url)
                 onNavigationHandled()
             }
             is NavigationCommand.GoBack -> {
@@ -127,6 +142,41 @@ fun BrowserScreen(
             }
             is NavigationCommand.SetTextZoom -> {
                 webView.settings.textZoom = navigationCommand.zoom
+                onNavigationHandled()
+            }
+            is NavigationCommand.ExecuteJs -> {
+                webView.evaluateJavascript(navigationCommand.script) { result ->
+                    val clean = result?.trim() ?: "null"
+                    if (navigationCommand.script.contains("outerHTML")) {
+                        val unquoted = clean
+                            .removeSurrounding("\"")
+                            .replace("\\\"", "\"")
+                            .replace("\\n", "\n")
+                            .replace("\\u003C", "<")
+                            .replace("\\u003E", ">")
+                        onHtmlExtracted(unquoted)
+                    } else {
+                        onJsExecutionResult(clean, false)
+                    }
+                }
+                onNavigationHandled()
+            }
+            is NavigationCommand.ToggleSmartDark -> {
+                val js = if (navigationCommand.enabled) {
+                    "(function() { let s = document.getElementById('nova-smart-dark'); if(!s){ s = document.createElement('style'); s.id = 'nova-smart-dark'; s.textContent = 'html { filter: invert(0.92) hue-rotate(180deg) !important; background: #121212 !important; } img, video, canvas, svg { filter: invert(1) hue-rotate(180deg) !important; }'; document.head.appendChild(s); } })();"
+                } else {
+                    "(function() { let s = document.getElementById('nova-smart-dark'); if(s) s.remove(); })();"
+                }
+                webView.evaluateJavascript(js, null)
+                onNavigationHandled()
+            }
+            is NavigationCommand.PrintPdf -> {
+                try {
+                    val printManager = context.getSystemService(android.content.Context.PRINT_SERVICE) as? android.print.PrintManager
+                    val jobName = "Nova_Page_${System.currentTimeMillis()}"
+                    val printAdapter = webView.createPrintDocumentAdapter(jobName)
+                    printManager?.print(jobName, printAdapter, android.print.PrintAttributes.Builder().build())
+                } catch (_: Exception) {}
                 onNavigationHandled()
             }
             null -> {}
@@ -251,6 +301,22 @@ fun BrowserScreen(
                                             ?: ""
                                         onPageSnippetExtracted(cleanText)
                                     }
+
+                                    // Smart Dark Mode Injection
+                                    if (tab.isSmartDark || isSmartDarkGlobal) {
+                                        view?.evaluateJavascript(
+                                            "(function() { let s = document.getElementById('nova-smart-dark'); if(!s){ s = document.createElement('style'); s.id = 'nova-smart-dark'; s.textContent = 'html { filter: invert(0.92) hue-rotate(180deg) !important; background: #121212 !important; } img, video, canvas, svg { filter: invert(1) hue-rotate(180deg) !important; }'; document.head.appendChild(s); } })();",
+                                            null
+                                        )
+                                    }
+
+                                    // Auto-Cookie Banner Annihilator
+                                    if (isAutoBlockCookiesEnabled) {
+                                        view?.evaluateJavascript(
+                                            "(function() { const selectors = ['#cookie-notice', '#onetrust-banner-sdk', '.cookie-banner', '.gdpr-banner', '.cc-window', '#qc-cmp2-container', '.fc-consent-root', '#CybotCookiebotDialog', '.cookie-modal', '#cookie-law-info-bar']; selectors.forEach(s => { document.querySelectorAll(s).forEach(el => el.remove()); }); document.body.style.overflow = 'auto'; })();",
+                                            null
+                                        )
+                                    }
                                 }
                             }
 
@@ -282,6 +348,11 @@ fun BrowserScreen(
                             ) {
                                 super.onReceivedError(view, request, error)
                                 if (request?.isForMainFrame == true) {
+                                    val errUrl = request.url?.toString() ?: ""
+                                    if (errUrl.contains("welcome.html") || errUrl.startsWith("file:///android_asset/")) {
+                                        view?.let { loadUrlSafely(it, "welcome.html") }
+                                        return
+                                    }
                                     hasError = true
                                     val desc = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                         error?.description?.toString() ?: "Error de red"
@@ -315,7 +386,7 @@ fun BrowserScreen(
                         })
 
                         if (tab.url.isNotBlank() && tab.url != "about:blank") {
-                            loadUrl(tab.url)
+                            loadUrlSafely(this, tab.url)
                         }
 
                         webViewRef = this
@@ -324,7 +395,7 @@ fun BrowserScreen(
                 update = { webView ->
                     // Ensure initial load if needed
                     if (webView.url.isNullOrBlank() && tab.url.isNotBlank() && tab.url != "about:blank") {
-                        webView.loadUrl(tab.url)
+                        loadUrlSafely(webView, tab.url)
                     }
                 }
             )

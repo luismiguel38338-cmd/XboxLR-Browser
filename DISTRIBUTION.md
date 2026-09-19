@@ -13,7 +13,7 @@
 
 | Plataforma | Costo de Registro | Tipo de Distribución | Enlace |
 | :--- | :---: | :--- | :--- |
-| **GitHub Releases** | **$0 (Gratis)** | APK directo automático mediante CI/CD | [GitHub Releases](https://github.com/luismiguel38338-cmd/Nova-Browser/releases) |
+| **GitHub Releases** | **$0 (Gratis)** | APK directo automático mediante CI/CD | [GitHub Releases](https://github.com/luismiguel38338-cmd/XboxLR-Browser/releases) |
 | **IzzyOnDroid (F-Droid Repo)** | **$0 (Gratis)** | Repositorio APK para Android / F-Droid client | [IzzyOnDroid Submission](https://gitlab.com/IzzyOnDroid/repo) |
 | **F-Droid Oficial** | **$0 (Gratis)** | Catálogo de software libre para Android | [F-Droid Inclusion](https://f-droid.org/docs/Inclusion_Policy/) |
 | **Uptodown Developers** | **$0 (Gratis)** | Portal mundial de distribución de APKs | [Uptodown Zone](https://developer.uptodown.com/) |
@@ -46,7 +46,7 @@ git commit -m "feat: Lanzamiento oficial de Nova Browser v1.0.0 - Navegador con 
 git branch -M main
 
 # 5. Conectar con tu repositorio de GitHub (reemplaza con tu URL si es diferente)
-git remote add origin https://github.com/luismiguel38338-cmd/Nova-Browser.git
+git remote add origin https://github.com/luismiguel38338-cmd/XboxLR-Browser.git
 
 # 6. Subir los cambios a GitHub
 git push -u origin main
@@ -84,7 +84,7 @@ git push origin v1.0.1
 **IzzyOnDroid** permite que los usuarios de la aplicación cliente de F-Droid instalen y actualicen tu APK directamente desde GitHub Releases sin coste alguno:
 1. Asegúrate de tener tu APK publicado en GitHub Releases (completado con el Paso 1).
 2. Abre una solicitud de inclusión en el repositorio de GitLab: [Solicitar inclusión en IzzyOnDroid](https://gitlab.com/IzzyOnDroid/repo/-/issues).
-3. Proporciona la URL de tu repositorio de GitHub: `https://github.com/luismiguel38338-cmd/Nova-Browser`.
+3. Proporciona la URL de tu repositorio de GitHub: `https://github.com/luismiguel38338-cmd/XboxLR-Browser`.
 4. Una vez aceptado, cada nueva release que publiques en GitHub se actualizará automáticamente para todos los usuarios.
 
 ---

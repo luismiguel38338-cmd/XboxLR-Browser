@@ -34,10 +34,13 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.ChildCare
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.FactCheck
 import androidx.compose.material.icons.filled.FindInPage
 import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material.icons.filled.Security
@@ -313,6 +316,27 @@ fun NovaAiSheet(
                     label = "Ayuda a redactar",
                     onClick = {
                         onSendMessage("Ayúdame a redactar un texto profesional basado en la información que estamos viendo.", AiAction.HELP_WRITE, true)
+                    }
+                )
+                AiActionChip(
+                    icon = Icons.Default.FactCheck,
+                    label = "Verificar Datos",
+                    onClick = {
+                        onSendMessage("Verifica la precisión, veracidad y rigor de los datos clave expuestos en esta página web.", AiAction.FACT_CHECK, true)
+                    }
+                )
+                AiActionChip(
+                    icon = Icons.Default.ChildCare,
+                    label = "Explicar para niños (ELI5)",
+                    onClick = {
+                        onSendMessage("Explícame de forma ultra sencilla, como si tuviera 5 años y con analogías divertidas, el contenido de esta página.", AiAction.ELI5, true)
+                    }
+                )
+                AiActionChip(
+                    icon = Icons.Default.Code,
+                    label = "Extraer Código & Scripts",
+                    onClick = {
+                        onSendMessage("Extrae y formatea limpiamente cualquier código fuente, snippets técnicos o scripts presentes en esta página web.", AiAction.EXTRACT_CODE, true)
                     }
                 )
             }

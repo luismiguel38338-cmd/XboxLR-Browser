@@ -22,17 +22,22 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.CleaningServices
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DesktopWindows
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.ElectricBolt
 import androidx.compose.material.icons.filled.FindInPage
+import androidx.compose.material.icons.filled.GraphicEq
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Policy
+import androidx.compose.material.icons.filled.Print
 import androidx.compose.material.icons.filled.QrCode2
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material.icons.filled.Terminal
 import androidx.compose.material.icons.filled.ZoomIn
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
@@ -63,6 +68,7 @@ fun BrowserMenuSheet(
     currentUrl: String,
     isDesktopMode: Boolean = false,
     isReaderMode: Boolean = false,
+    isSmartDarkMode: Boolean = false,
     textZoom: Int = 100,
     onDismiss: () -> Unit,
     onNewTab: (Boolean) -> Unit,
@@ -70,6 +76,11 @@ fun BrowserMenuSheet(
     onOpenClearData: () -> Unit,
     onToggleDesktop: () -> Unit = {},
     onToggleReader: () -> Unit = {},
+    onToggleSmartDark: () -> Unit = {},
+    onStartNarrator: () -> Unit = {},
+    onOpenDevTools: () -> Unit = {},
+    onPrintPdf: () -> Unit = {},
+    onPanicWipe: () -> Unit = {},
     onFindInPage: () -> Unit = {},
     onOpenShield: () -> Unit = {},
     onOpenQr: () -> Unit = {},
@@ -164,6 +175,47 @@ fun BrowserMenuSheet(
                         onToggleReader()
                     },
                     testTag = "menu_toggle_reader"
+                )
+
+                MenuItemRow(
+                    icon = Icons.Default.GraphicEq,
+                    label = "Narrar página en voz alta (TTS)",
+                    onClick = {
+                        onDismiss()
+                        onStartNarrator()
+                    },
+                    testTag = "menu_start_narrator"
+                )
+
+                MenuItemRowWithToggle(
+                    icon = Icons.Default.DarkMode,
+                    label = "Modo Oscuro AMOLED (Universal)",
+                    isChecked = isSmartDarkMode,
+                    onClick = {
+                        onDismiss()
+                        onToggleSmartDark()
+                    },
+                    testTag = "menu_toggle_smart_dark"
+                )
+
+                MenuItemRow(
+                    icon = Icons.Default.Terminal,
+                    label = "Inspector DevTools & Consola JS",
+                    onClick = {
+                        onDismiss()
+                        onOpenDevTools()
+                    },
+                    testTag = "menu_open_devtools"
+                )
+
+                MenuItemRow(
+                    icon = Icons.Default.Print,
+                    label = "Imprimir o Guardar como PDF",
+                    onClick = {
+                        onDismiss()
+                        onPrintPdf()
+                    },
+                    testTag = "menu_print_pdf"
                 )
 
                 MenuItemRow(
@@ -308,6 +360,21 @@ fun BrowserMenuSheet(
                     onOpenOverlay(OverlayScreen.PRIVACY_POLICY)
                 },
                 testTag = "menu_privacy"
+            )
+
+            HorizontalDivider(
+                color = MaterialTheme.colorScheme.error.copy(alpha = 0.3f),
+                modifier = Modifier.padding(vertical = 6.dp)
+            )
+
+            MenuItemRow(
+                icon = Icons.Default.ElectricBolt,
+                label = "🚨 Modo Pánico (Cierre y Limpieza Express)",
+                onClick = {
+                    onDismiss()
+                    onPanicWipe()
+                },
+                testTag = "menu_panic_mode"
             )
 
             Spacer(modifier = Modifier.height(16.dp))

@@ -21,6 +21,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Delete
@@ -80,6 +82,9 @@ fun SettingsScreen(
     onUpdateClearOnExit: (Boolean) -> Unit,
     onUpdateAllowAiContext: (Boolean) -> Unit,
     onUpdateCustomApiKey: (String) -> Unit,
+    onUpdateSmartDarkMode: (Boolean) -> Unit = {},
+    onUpdateAutoBlockCookies: (Boolean) -> Unit = {},
+    onUpdateAiModel: (String) -> Unit = {},
     onClearHistory: () -> Unit,
     onOpenDownloads: () -> Unit,
     onOpenPrivacyPolicy: () -> Unit,
@@ -90,6 +95,7 @@ fun SettingsScreen(
     var showThemeDialog by remember { mutableStateOf(false) }
     var showHomeDialog by remember { mutableStateOf(false) }
     var showApiKeyDialog by remember { mutableStateOf(false) }
+    var showAiModelDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -205,6 +211,31 @@ fun SettingsScreen(
                 }
             }
 
+            // Sección Potencia & Herramientas Avanzadas
+            SettingsSectionHeader(title = "Potencia & Herramientas Avanzadas")
+            Card(
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                shape = RoundedCornerShape(16.dp)
+            ) {
+                Column {
+                    SettingsToggleRow(
+                        icon = Icons.Default.DarkMode,
+                        title = "Modo Oscuro Universal AMOLED",
+                        subtitle = "Aplica contraste negro puro inteligente a todas las páginas web de internet",
+                        checked = settings.smartDarkMode,
+                        onCheckedChange = onUpdateSmartDarkMode
+                    )
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
+                    SettingsToggleRow(
+                        icon = Icons.Default.Block,
+                        title = "Auto-Bloquear Banners de Cookies",
+                        subtitle = "Suprime automáticamente los molestos carteles de consentimiento de cookies y GDPR",
+                        checked = settings.autoBlockCookieBanners,
+                        onCheckedChange = onUpdateAutoBlockCookies
+                    )
+                }
+            }
+
             // Sección Inteligencia Artificial (Nova AI)
             SettingsSectionHeader(title = "Inteligencia Artificial (Nova AI)")
             Card(
@@ -221,9 +252,20 @@ fun SettingsScreen(
                     )
                     HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
                     SettingsClickableRow(
+                        icon = Icons.Default.AutoAwesome,
+                        title = "Modelo de IA Activo",
+                        subtitle = when (settings.aiModel) {
+                            "gemini-2.5-pro" -> "Gemini 2.5 Pro (Razonamiento profundo)"
+                            "gemini-2.5-flash-lite" -> "Gemini 2.5 Flash-Lite (Máxima eficiencia)"
+                            else -> "Gemini 2.5 Flash (Ultrarrápido y balanceado)"
+                        },
+                        onClick = { showAiModelDialog = true }
+                    )
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
+                    SettingsClickableRow(
                         icon = Icons.Default.Key,
                         title = "Proveedor y Clave API de IA",
-                        subtitle = if (settings.customApiKey.isNotBlank()) "Clave personalizada configurada" else "Google Gemini 3.5 Flash (Servidor por defecto)",
+                        subtitle = if (settings.customApiKey.isNotBlank()) "Clave personalizada configurada" else "Google Gemini API (Servidor seguro por defecto)",
                         onClick = { showApiKeyDialog = true }
                     )
                 }
@@ -422,6 +464,51 @@ fun SettingsScreen(
             },
             dismissButton = {
                 TextButton(onClick = { showApiKeyDialog = false }) { Text("Cancelar") }
+            },
+            containerColor = MaterialTheme.colorScheme.surface,
+            shape = RoundedCornerShape(16.dp)
+        )
+    }
+
+    // Modal Selección de Modelo de IA
+    if (showAiModelDialog) {
+        val models = listOf(
+            "gemini-2.5-flash" to "Gemini 2.5 Flash (Ultrarrápido y recomendado)",
+            "gemini-2.5-pro" to "Gemini 2.5 Pro (Razonamiento profundo)",
+            "gemini-2.5-flash-lite" to "Gemini 2.5 Flash-Lite (Máxima eficiencia)"
+        )
+        AlertDialog(
+            onDismissRequest = { showAiModelDialog = false },
+            title = { Text("Seleccionar Modelo de IA", fontWeight = FontWeight.Bold) },
+            text = {
+                Column {
+                    models.forEach { (id, label) ->
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    onUpdateAiModel(id)
+                                    showAiModelDialog = false
+                                }
+                                .padding(vertical = 10.dp)
+                        ) {
+                            RadioButton(
+                                selected = settings.aiModel == id,
+                                onClick = {
+                                    onUpdateAiModel(id)
+                                    showAiModelDialog = false
+                                }
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(label, fontSize = 14.sp)
+                        }
+                    }
+                }
+            },
+            confirmButton = {},
+            dismissButton = {
+                TextButton(onClick = { showAiModelDialog = false }) { Text("Cerrar") }
             },
             containerColor = MaterialTheme.colorScheme.surface,
             shape = RoundedCornerShape(16.dp)

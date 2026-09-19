@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luismiguel38338-cmd.github.io/Nova-Browser/sitemap.xml
+Sitemap: https://luismiguel38338-cmd.github.io/XboxLR-Browser/sitemap.xml

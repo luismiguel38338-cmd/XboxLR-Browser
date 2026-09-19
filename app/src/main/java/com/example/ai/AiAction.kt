@@ -8,5 +8,8 @@ enum class AiAction(val title: String, val promptPrefix: String) {
     ANALYZE_PAGE("Analizar Web", "Realiza un análisis detallado del contenido, propósito, veracidad y puntos clave de la siguiente página web:"),
     EXTRACT_INFO("Extraer Datos", "Extrae la información más importante (fechas, cifras, conceptos clave, conclusiones) en formato de lista estructurada del siguiente texto:"),
     HELP_WRITE("Redactar", "Ayúdame a redactar un texto profesional, claro y persuasivo con base en lo siguiente:"),
-    SMART_SEARCH("Búsqueda Inteligente", "Genera una síntesis informativa y objetiva respondiendo a la siguiente búsqueda del usuario:")
+    SMART_SEARCH("Búsqueda Inteligente", "Genera una síntesis informativa y objetiva respondiendo a la siguiente búsqueda del usuario:"),
+    FACT_CHECK("Verificar y Sesgos", "Analiza críticamente el siguiente contenido web: evalúa su fiabilidad, posibles sesgos ideológicos o comerciales, solidez de sus afirmaciones y fuentes mencionadas:"),
+    ELI5("Explicar para 5 Años", "Explica este tema como si tuviera 5 años (ELI5) usando analogías sencillas, lenguaje divertido y ejemplos cotidianos sin jerga técnica:"),
+    EXTRACT_CODE("Extraer Código/Datos", "Extrae y organiza de forma limpia todo el código, fragmentos de comandos, tablas de datos numéricos o especificaciones técnicas presentes en el texto:")
 }

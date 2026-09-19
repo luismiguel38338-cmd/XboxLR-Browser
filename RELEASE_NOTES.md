@@ -47,4 +47,4 @@ Este navegador web está diseñado con una interfaz moderna y futurista, combina
 
 ## 👨‍💻 Créditos
 - **Desarrollador**: [Luis Miguel](https://github.com/luismiguel38338-cmd)
-- **Repositorio en GitHub**: [https://github.com/luismiguel38338-cmd/Nova-Browser](https://github.com/luismiguel38338-cmd)
+- **Repositorio en GitHub**: [https://github.com/luismiguel38338-cmd/XboxLR-Browser](https://github.com/luismiguel38338-cmd/XboxLR-Browser)

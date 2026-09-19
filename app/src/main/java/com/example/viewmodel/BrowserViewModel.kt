@@ -10,6 +10,8 @@ import com.example.ai.AiAction
 import com.example.ai.AiMessage
 import com.example.ai.AiService
 import com.example.ai.GeminiAiService
+import com.example.tts.TextToSpeechManager
+import com.example.ui.components.ConsoleLogItem
 import com.example.data.local.AppDatabase
 import com.example.data.local.BrowserSettings
 import com.example.data.local.ThemeMode
@@ -126,6 +128,23 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
     // QR Code dialog
     private val _isQrDialogVisible = MutableStateFlow(false)
     val isQrDialogVisible: StateFlow<Boolean> = _isQrDialogVisible.asStateFlow()
+
+    // Web Narrator (Text-to-Speech)
+    private val ttsManager = TextToSpeechManager(application)
+    val isNarratorSpeaking: StateFlow<Boolean> = ttsManager.isSpeaking
+    val isNarratorPaused: StateFlow<Boolean> = ttsManager.isPaused
+    val narratorSpeedRate: StateFlow<Float> = ttsManager.speechRate
+    val narratorTitle: StateFlow<String> = ttsManager.currentText
+    private val _isNarratorVisible = MutableStateFlow(false)
+    val isNarratorVisible: StateFlow<Boolean> = _isNarratorVisible.asStateFlow()
+
+    // DevTools & Live JS Console
+    private val _isDevToolsVisible = MutableStateFlow(false)
+    val isDevToolsVisible: StateFlow<Boolean> = _isDevToolsVisible.asStateFlow()
+    private val _pageHtml = MutableStateFlow("")
+    val pageHtml: StateFlow<String> = _pageHtml.asStateFlow()
+    private val _consoleLogs = MutableStateFlow<List<ConsoleLogItem>>(emptyList())
+    val consoleLogs: StateFlow<List<ConsoleLogItem>> = _consoleLogs.asStateFlow()
 
     // Quick Shortcuts
     private val _shortcuts = MutableStateFlow<List<QuickShortcut>>(
@@ -423,7 +442,8 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
                 pageUrl = pageUrl,
                 pageContent = pageContent,
                 action = action,
-                customKey = settings.value.customApiKey
+                customKey = settings.value.customApiKey,
+                modelName = settings.value.aiModel
             )
 
             val replyText = result.getOrElse { e ->
@@ -586,6 +606,100 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
     fun setQrDialogVisible(visible: Boolean) {
         _isQrDialogVisible.value = visible
     }
+
+    // Web Narrator (Text-to-Speech)
+    fun startWebNarrator() {
+        val textToRead = currentTab.pageSnippet.ifBlank { currentTab.title }
+        if (textToRead.isNotBlank()) {
+            _isNarratorVisible.value = true
+            ttsManager.speak(textToRead, currentTab.title)
+        }
+    }
+
+    fun toggleNarratorPlayPause() {
+        if (ttsManager.isSpeaking.value) {
+            ttsManager.pause()
+        } else {
+            val textToRead = currentTab.pageSnippet.ifBlank { currentTab.title }
+            ttsManager.resume(textToRead)
+        }
+    }
+
+    fun cycleNarratorSpeed() = ttsManager.cycleSpeed()
+
+    fun closeNarrator() {
+        ttsManager.stop()
+        _isNarratorVisible.value = false
+    }
+
+    // DevTools & Live JS Console
+    fun setDevToolsVisible(visible: Boolean) {
+        _isDevToolsVisible.value = visible
+        if (visible) {
+            // Request full HTML extraction
+            _webViewNavigationEvent.value = NavigationCommand.ExecuteJs(
+                "(function() { return document.documentElement.outerHTML; })();"
+            )
+        }
+    }
+
+    fun onHtmlExtracted(html: String) {
+        _pageHtml.value = html
+    }
+
+    fun executeJsInPage(script: String) {
+        _consoleLogs.value = _consoleLogs.value + ConsoleLogItem("input", script)
+        _webViewNavigationEvent.value = NavigationCommand.ExecuteJs(script)
+    }
+
+    fun onJsExecutionResult(result: String, isError: Boolean = false) {
+        _consoleLogs.value = _consoleLogs.value + ConsoleLogItem(if (isError) "error" else "output", result)
+    }
+
+    fun clearConsoleLogs() {
+        _consoleLogs.value = emptyList()
+    }
+
+    // Universal Smart Dark Mode
+    fun toggleSmartDarkMode() {
+        val tabId = _currentTabId.value
+        val newDark = !currentTab.isSmartDark
+        _tabs.value = _tabs.value.map { tab ->
+            if (tab.id == tabId) tab.copy(isSmartDark = newDark) else tab
+        }
+        _webViewNavigationEvent.value = NavigationCommand.ToggleSmartDark(newDark)
+    }
+
+    fun toggleAutoBlockCookies() {
+        val current = settings.value.autoBlockCookieBanners
+        repository.userPreferences.updateAutoBlockCookieBanners(!current)
+    }
+
+    fun updateAiModel(model: String) {
+        repository.userPreferences.updateAiModel(model)
+    }
+
+    // Print / PDF Export
+    fun requestPrintPdf() {
+        _webViewNavigationEvent.value = NavigationCommand.PrintPdf
+    }
+
+    // Stealth / Panic Mode
+    fun panicWipeAndGoHome() {
+        ttsManager.stop()
+        _isNarratorVisible.value = false
+        _isDevToolsVisible.value = false
+        _isAiSheetVisible.value = false
+        _isMenuSheetVisible.value = false
+        _isTabsSheetVisible.value = false
+        clearBrowsingData(clearHistory = true, clearCookies = true, clearCache = true)
+        closeAllTabs()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        ttsManager.destroy()
+    }
 }
 
 sealed interface NavigationCommand {
@@ -597,8 +711,11 @@ sealed interface NavigationCommand {
     data class FindInPage(val query: String, val forward: Boolean = true) : NavigationCommand
     object ClearMatches : NavigationCommand
     data class SetTextZoom(val zoom: Int) : NavigationCommand
+    data class ExecuteJs(val script: String) : NavigationCommand
+    data class ToggleSmartDark(val enabled: Boolean) : NavigationCommand
+    object PrintPdf : NavigationCommand
 }
 
 enum class OverlayScreen {
-    HISTORY, BOOKMARKS, DOWNLOADS, SETTINGS, PRIVACY_POLICY
+    HISTORY, BOOKMARKS, DOWNLOADS, SETTINGS, PRIVACY_POLICY, DEV_TOOLS
 }
