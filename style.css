@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #09090b;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    background: #111116;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff1744;
+}
+
+.live {
+    background: #ff1744;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.hero {
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #aaa;
+}
+
+.player {
+    margin: 0 18px 30px;
+    padding: 25px;
+    text-align: center;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #1b1b22, #0d0d10);
+}
+
+.cover {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #ff1744, #7b1fa2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+}
+
+.station-name {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.status {
+    color: #999;
+    margin-top: 7px;
+}
+
+.play {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 50%;
+    margin-top: 20px;
+    background: #ff1744;
+    color: white;
+    font-size: 25px;
+}
+
+.volume {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.section {
+    padding: 0 18px 30px;
+}
+
+.section h2 {
+    margin-bottom: 15px;
+}
+
+.search {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    border-radius: 14px;
+    background: #19191f;
+    color: white;
+    margin-bottom: 18px;
+}
+
+.station {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: #15151a;
+    border-radius: 16px;
+}
+
+.station-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #222, #ff1744);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.info {
+    flex: 1;
+}
+
+.info h3 {
+    font-size: 16px;
+}
+
+.info p {
+    color: #888;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.favorite {
+    font-size: 22px;
+    color: #777;
+}
+
+.favorite.active {
+    color: #ff1744;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+}
