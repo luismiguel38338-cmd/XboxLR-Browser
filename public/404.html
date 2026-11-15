@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Página no encontrada | Nova Browser</title>
+  <meta name="theme-color" content="#070B14">
+  <link rel="icon" type="image/png" href="assets/nova-browser-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 20%, #0F2042 0%, #070B14 70%);
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      background: rgba(18, 30, 54, 0.85);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      border-radius: 28px;
+      padding: 48px 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(0, 229, 255, 0.15);
+      backdrop-filter: blur(12px);
+    }
+    .glitch {
+      font-family: 'Outfit', sans-serif;
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #00E5FF 0%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    p {
+      color: #94A3B8;
+      font-size: 1rem;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #00E5FF 0%, #0091EA 100%);
+      color: #050B14;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 229, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="glitch">404</div>
+    <h1>Coordenada Espacial Extraviada</h1>
+    <p>La página que intentas visitar no existe o ha cambiado de órbita. Regresa a la página oficial de Nova Browser.</p>
+    <a href="./" class="btn">
+      Volver al Inicio
+    </a>
+  </div>
+</body>
+</html>
